@@ -14,7 +14,8 @@ class PlanGroup {
     
     init(parentNotification: ((Plan?, DbAction?) -> Void)?) {
         self.parentNotification = parentNotification
-        database = DbMemory(parentNotification: receivingNotification)
+//        database = DbMemory(parentNotification: receivingNotification)
+        database = DbFirebasePlan(parentNotification: receivingNotification) 
     }
     
     func receivingNotification(plan: Plan?, action: DbAction?){

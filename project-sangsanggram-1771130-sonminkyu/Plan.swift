@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import FirebaseFirestore
+
 class Plan {
     enum Kind: Int {
         case Todo = 0, Metting, Study, Etc
@@ -32,8 +34,33 @@ class Plan {
         self.kind = kind
         self.content = content
     }
-
 }
+
+extension Plan {
+    func toDict() -> [String: Any?] {
+        var dict: [String: Any?] = [:]
+        dict["key"] = key
+        dict["date"] = Timestamp(date: date)
+        dict["owner"] = owner
+        dict["kind"] = kind.rawValue
+        dict["content"] = content
+        
+        return dict
+    }
+    
+    func toPlan(dict: [String: Any?]) {
+        key = dict["key"] as! String
+        date = Date()
+        if let timestamp = dict["date"] as? Timestamp{
+            date = timestamp.dateValue()
+        }
+        owner = dict["owner"] as? String
+        let rawValue = dict["kind"] as! Int
+        kind = Plan.Kind(rawValue: rawValue)!
+        content = dict["content"] as! String
+    }
+}
+
 extension Plan{
     convenience init(date: Date? = nil, withData: Bool = false){
         if withData == true{
