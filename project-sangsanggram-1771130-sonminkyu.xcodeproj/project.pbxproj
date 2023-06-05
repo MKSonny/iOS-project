@@ -13,6 +13,19 @@
 		E7D063252A2B3CF20024349C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7D063232A2B3CF20024349C /* Main.storyboard */; };
 		E7D063272A2B3CF20024349C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7D063262A2B3CF20024349C /* Assets.xcassets */; };
 		E7D0632A2A2B3CF20024349C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7D063282A2B3CF20024349C /* LaunchScreen.storyboard */; };
+		E7D063322A2B3D8E0024349C /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D063312A2B3D8E0024349C /* Plan.swift */; };
+		E7D063342A2B3E330024349C /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D063332A2B3E330024349C /* Database.swift */; };
+		E7D063362A2B3ED10024349C /* DbMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D063352A2B3ED10024349C /* DbMemory.swift */; };
+		E7D063382A2B402D0024349C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D063372A2B402D0024349C /* Post.swift */; };
+		E7D0633A2A2B409D0024349C /* PostDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D063392A2B409D0024349C /* PostDatabase.swift */; };
+		E7D0633C2A2B446D0024349C /* PostDbMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0633B2A2B446D0024349C /* PostDbMemory.swift */; };
+		E7D0633E2A2B46050024349C /* PlanGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0633D2A2B46050024349C /* PlanGroup.swift */; };
+		E7D063402A2B4FC80024349C /* PostGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0633F2A2B4FC80024349C /* PostGroup.swift */; };
+		E7D063422A2B513F0024349C /* ExtendedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D063412A2B513F0024349C /* ExtendedDate.swift */; };
+		E7D063442A2B52A40024349C /* PlanGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D063432A2B52A40024349C /* PlanGroupViewController.swift */; };
+		E7D063482A2B56890024349C /* PostGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D063472A2B56890024349C /* PostGroupViewController.swift */; };
+		E7FBF5E02A2B6020005A56DB /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FBF5DE2A2B6020005A56DB /* PostTableViewCell.swift */; };
+		E7FBF5E12A2B6020005A56DB /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7FBF5DF2A2B6020005A56DB /* PostTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +37,19 @@
 		E7D063262A2B3CF20024349C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7D063292A2B3CF20024349C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7D0632B2A2B3CF20024349C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7D063312A2B3D8E0024349C /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
+		E7D063332A2B3E330024349C /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		E7D063352A2B3ED10024349C /* DbMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbMemory.swift; sourceTree = "<group>"; };
+		E7D063372A2B402D0024349C /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		E7D063392A2B409D0024349C /* PostDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDatabase.swift; sourceTree = "<group>"; };
+		E7D0633B2A2B446D0024349C /* PostDbMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDbMemory.swift; sourceTree = "<group>"; };
+		E7D0633D2A2B46050024349C /* PlanGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanGroup.swift; sourceTree = "<group>"; };
+		E7D0633F2A2B4FC80024349C /* PostGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGroup.swift; sourceTree = "<group>"; };
+		E7D063412A2B513F0024349C /* ExtendedDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedDate.swift; sourceTree = "<group>"; };
+		E7D063432A2B52A40024349C /* PlanGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanGroupViewController.swift; sourceTree = "<group>"; };
+		E7D063472A2B56890024349C /* PostGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGroupViewController.swift; sourceTree = "<group>"; };
+		E7FBF5DE2A2B6020005A56DB /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		E7FBF5DF2A2B6020005A56DB /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +89,19 @@
 				E7D063262A2B3CF20024349C /* Assets.xcassets */,
 				E7D063282A2B3CF20024349C /* LaunchScreen.storyboard */,
 				E7D0632B2A2B3CF20024349C /* Info.plist */,
+				E7D063372A2B402D0024349C /* Post.swift */,
+				E7D063312A2B3D8E0024349C /* Plan.swift */,
+				E7D063332A2B3E330024349C /* Database.swift */,
+				E7D063352A2B3ED10024349C /* DbMemory.swift */,
+				E7D063392A2B409D0024349C /* PostDatabase.swift */,
+				E7D0633B2A2B446D0024349C /* PostDbMemory.swift */,
+				E7D0633D2A2B46050024349C /* PlanGroup.swift */,
+				E7D0633F2A2B4FC80024349C /* PostGroup.swift */,
+				E7D063412A2B513F0024349C /* ExtendedDate.swift */,
+				E7D063432A2B52A40024349C /* PlanGroupViewController.swift */,
+				E7D063472A2B56890024349C /* PostGroupViewController.swift */,
+				E7FBF5DE2A2B6020005A56DB /* PostTableViewCell.swift */,
+				E7FBF5DF2A2B6020005A56DB /* PostTableViewCell.xib */,
 			);
 			path = "project-sangsanggram-1771130-sonminkyu";
 			sourceTree = "<group>";
@@ -128,6 +167,7 @@
 				E7D0632A2A2B3CF20024349C /* LaunchScreen.storyboard in Resources */,
 				E7D063272A2B3CF20024349C /* Assets.xcassets in Resources */,
 				E7D063252A2B3CF20024349C /* Main.storyboard in Resources */,
+				E7FBF5E12A2B6020005A56DB /* PostTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +178,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7D0633A2A2B409D0024349C /* PostDatabase.swift in Sources */,
+				E7D0633C2A2B446D0024349C /* PostDbMemory.swift in Sources */,
+				E7FBF5E02A2B6020005A56DB /* PostTableViewCell.swift in Sources */,
+				E7D0633E2A2B46050024349C /* PlanGroup.swift in Sources */,
+				E7D063322A2B3D8E0024349C /* Plan.swift in Sources */,
 				E7D063222A2B3CF20024349C /* ViewController.swift in Sources */,
+				E7D063442A2B52A40024349C /* PlanGroupViewController.swift in Sources */,
 				E7D0631E2A2B3CF20024349C /* AppDelegate.swift in Sources */,
+				E7D063342A2B3E330024349C /* Database.swift in Sources */,
+				E7D063362A2B3ED10024349C /* DbMemory.swift in Sources */,
+				E7D063422A2B513F0024349C /* ExtendedDate.swift in Sources */,
+				E7D063482A2B56890024349C /* PostGroupViewController.swift in Sources */,
+				E7D063402A2B4FC80024349C /* PostGroup.swift in Sources */,
+				E7D063382A2B402D0024349C /* Post.swift in Sources */,
 				E7D063202A2B3CF20024349C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
