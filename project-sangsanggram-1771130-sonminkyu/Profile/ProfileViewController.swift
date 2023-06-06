@@ -10,6 +10,7 @@ import FirebaseAuth
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
     var uid: String!
@@ -52,6 +53,9 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        
+
+        
         MyDatabase.shared.findUsernameAndProfileImage(with: Auth.auth().currentUser!.uid) { username, profileUrl in
             print("username 로딩 성공 \(username)")
             self.userName.text = username
@@ -59,4 +63,3 @@ class ProfileViewController: UIViewController {
         }
     }
 }
-

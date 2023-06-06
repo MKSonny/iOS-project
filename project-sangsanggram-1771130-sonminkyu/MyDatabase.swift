@@ -11,6 +11,25 @@ import FirebaseFirestore
 public class MyDatabase {
     static let shared = MyDatabase()
     var reference: CollectionReference = Firestore.firestore().collection("users")
+    var postRef: CollectionReference = Firestore.firestore().collection("posts")
+    
+    public func findPostByUsername(with username: String, completion: @escaping ([String]) -> Void) {
+        Firestore.firestore().collection("posts").whereField("writer", isEqualTo: username)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                    completion([])
+                } else {
+                    var postIDs: [String] = []
+                    for document in querySnapshot!.documents {
+                        postIDs.append(document.documentID)
+                        print("did \(document.documentID) => \(document.data())")
+                    }
+                    completion(postIDs)
+                }
+        }
+    }
+
     
     // check if username and email is available
     public func canCreateNewUser(withEmail: String, usernmae: String, completion: (Bool) -> Void) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HKq-dT-D41">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Go9-lh-RFQ">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -163,7 +163,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ked-vp-CIB">
-                                <rect key="frame" x="155.66666666666666" y="409" width="81.666666666666657" height="34.333333333333314"/>
+                                <rect key="frame" x="283" y="67" width="81.666666666666686" height="34.333333333333343"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Log out"/>
                                 <connections>
@@ -171,20 +171,29 @@
                                     <action selector="logoutButtonPressed:" destination="ncW-Ka-kHJ" eventType="touchUpInside" id="3Jd-O6-avt"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3A8-lY-cF3">
+                                <rect key="frame" x="8" y="180" width="377" height="581"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="a3E-ci-zUY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Ked-vp-CIB" firstAttribute="centerX" secondItem="ZE3-fd-gry" secondAttribute="centerX" id="68Z-sz-a7q"/>
+                            <constraint firstItem="3A8-lY-cF3" firstAttribute="leading" secondItem="a3E-ci-zUY" secondAttribute="leading" constant="8" id="5gP-se-1tK"/>
+                            <constraint firstItem="Ked-vp-CIB" firstAttribute="top" secondItem="V7c-2g-Fy8" secondAttribute="top" id="FeE-w8-2wQ"/>
+                            <constraint firstItem="a3E-ci-zUY" firstAttribute="trailing" secondItem="3A8-lY-cF3" secondAttribute="trailing" constant="8" id="H1a-nw-D40"/>
                             <constraint firstItem="a3E-ci-zUY" firstAttribute="trailing" secondItem="V7c-2g-Fy8" secondAttribute="trailing" constant="197.66666666666666" id="NM9-U8-SS3"/>
+                            <constraint firstItem="Ked-vp-CIB" firstAttribute="leading" secondItem="V7c-2g-Fy8" secondAttribute="trailing" constant="87.666666666666657" id="VVr-hB-KFJ"/>
                             <constraint firstItem="V7c-2g-Fy8" firstAttribute="top" secondItem="a3E-ci-zUY" secondAttribute="top" constant="8" id="dTA-CX-3sg"/>
                             <constraint firstItem="V7c-2g-Fy8" firstAttribute="leading" secondItem="a3E-ci-zUY" secondAttribute="leading" constant="8" id="fkX-j9-1OW"/>
-                            <constraint firstItem="Ked-vp-CIB" firstAttribute="centerY" secondItem="ZE3-fd-gry" secondAttribute="centerY" id="xwC-A9-XVi"/>
+                            <constraint firstItem="3A8-lY-cF3" firstAttribute="top" secondItem="V7c-2g-Fy8" secondAttribute="bottom" constant="8" id="g39-bP-8QF"/>
+                            <constraint firstItem="a3E-ci-zUY" firstAttribute="bottom" secondItem="3A8-lY-cF3" secondAttribute="bottom" constant="8" id="uwD-Lt-lxN"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="person.fill" catalog="system" id="uZj-HW-Xez"/>
                     <connections>
                         <outlet property="profileImage" destination="ufE-lj-WOX" id="X5Y-Z8-IKI"/>
+                        <outlet property="tableView" destination="3A8-lY-cF3" id="4bX-Lf-My0"/>
                         <outlet property="userName" destination="kVQ-eW-hDB" id="RiQ-9W-XkP"/>
                         <outlet property="userPostCount" destination="shh-ZM-VlG" id="UaT-pT-yOr"/>
                     </connections>
@@ -193,6 +202,21 @@
                 <exit id="6Hs-RV-ipn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1675.5725190839694" y="-792.25352112676057"/>
+        </scene>
+        <!--Profile View Controller2-->
+        <scene sceneID="GXl-No-Zbo">
+            <objects>
+                <viewController id="Go9-lh-RFQ" customClass="ProfileViewController2" customModule="project_sangsanggram_1771130_sonminkyu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZNa-9C-fXI">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Q4P-54-pXy"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qkj-RW-L0f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2668" y="-792"/>
         </scene>
         <!--Plan Group View Controller-->
         <scene sceneID="tne-QT-ifu">
