@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import FirebaseFirestore
 
 class Post {
     var image: UIImage
@@ -34,4 +35,26 @@ class Post {
         self.likes = 0
     }
 
+}
+
+extension Post {
+    func toDict() -> [String: Any?] {
+        var dict: [String: Any?] = [:]
+        dict["key"] = key
+        dict["date"] = Timestamp(date: date)
+        dict["owner"] = writer
+        dict["content"] = content
+        
+        return dict
+    }
+    
+    func toPost(dict: [String: Any?]) {
+        key = dict["key"] as! String
+        date = Date()
+        if let timestamp = dict["date"] as? Timestamp{
+            date = timestamp.dateValue()
+        }
+        writer = dict["writer"] as! String
+        content = dict["content"] as! String
+    }
 }

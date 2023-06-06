@@ -92,7 +92,7 @@ extension PostGroup {
 }
 
 extension PostGroup {
-    private func addPost(post: Post) {
+    public func addPost(post: Post) {
         posts.append(post)
     }
     private func modifyPost(modifiedPost: Post) {

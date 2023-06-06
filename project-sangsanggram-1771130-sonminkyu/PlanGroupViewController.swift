@@ -8,6 +8,22 @@
 import UIKit
 
 class PlanGroupViewController: UIViewController {
+    
+    @IBAction func editingPlans(_ sender: UIButton) {
+        if planGroupTableView.isEditing == true {
+            planGroupTableView.isEditing = false
+            sender.setTitle("Edit", for: .normal)
+        } else {
+            planGroupTableView.isEditing = true
+            sender.setTitle("Done", for: .normal)
+        }
+    }
+    
+    @IBAction func addingPlan(_ sender: UIButton) {
+        let plan = Plan(date: nil, withData: true)        // 가짜 데이터 생성
+        planGroup.saveChange(plan: plan, action: .Add)    // 단지 데이터베이스에 저장만한다. 그러면 receivingNotification 함수가 호출되고 tableView.reloadData()를 호출하여 생성된 데이터가 테이블뷰에 보이게 된다.
+    }
+    
     @IBOutlet weak var planGroupTableView: UITableView!
     var planGroup: PlanGroup!
 
@@ -48,5 +64,22 @@ extension PlanGroupViewController: UITableViewDataSource {
         cell.detailTextLabel?.text = plan.content
         
         return cell
+    }
+}
+
+extension PlanGroupViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let plan = self.planGroup.getPlans()[indexPath.row]
+            
+            self.planGroup.saveChange(plan: plan, action: .Delete)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let from = planGroup.getPlans()[sourceIndexPath.row]
+        let to = planGroup.getPlans()[destinationIndexPath.row]
+        planGroup.changePlan(from: from, to: to)
+        tableView.moveRow(at: sourceIndexPath, to: destinationIndexPath)
     }
 }

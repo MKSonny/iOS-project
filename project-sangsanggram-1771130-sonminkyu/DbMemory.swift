@@ -20,7 +20,7 @@ class DbMemory: Database {
 
         storage = []
         // 100개의 가상 데이터를 만든다. 현재 기준으로 -50일 +50일 사이에 랜덤하게 만듬
-        let amount = 50
+        let amount = 10
         for _ in 0...amount{
             let delta = Int(arc4random_uniform(UInt32(amount))) - amount/2
             let date = Date(timeInterval: TimeInterval(delta*24*60*60), since: Date())

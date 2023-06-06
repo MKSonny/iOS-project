@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E7B825B42A2D9EF7006AB415 /* DbFirebasePlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B825B32A2D9EF7006AB415 /* DbFirebasePlan.swift */; };
+		E79880D92A2DBBAB00736C96 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79880D82A2DBBAB00736C96 /* AddPostViewController.swift */; };
+		E79880DB2A2DC3B200736C96 /* DbFirebasePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79880DA2A2DC3B200736C96 /* DbFirebasePost.swift */; };
 		E7B825B92A2D9FAB006AB415 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E7B825B82A2D9FAB006AB415 /* FirebaseAnalytics */; };
 		E7B825BB2A2D9FAB006AB415 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = E7B825BA2A2D9FAB006AB415 /* FirebaseAnalyticsOnDeviceConversion */; };
 		E7B825BD2A2D9FAB006AB415 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E7B825BC2A2D9FAB006AB415 /* FirebaseAnalyticsSwift */; };
@@ -36,6 +37,7 @@
 		E7B825EB2A2D9FAB006AB415 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E7B825EA2A2D9FAB006AB415 /* FirebaseStorage */; };
 		E7B825ED2A2D9FAB006AB415 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = E7B825EC2A2D9FAB006AB415 /* FirebaseStorageCombine-Community */; };
 		E7B825EF2A2DA227006AB415 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7B825EE2A2DA227006AB415 /* GoogleService-Info.plist */; };
+		E7B825F12A2DA5F7006AB415 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B825F02A2DA5F7006AB415 /* CameraViewController.swift */; };
 		E7D0631E2A2B3CF20024349C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0631D2A2B3CF20024349C /* AppDelegate.swift */; };
 		E7D063202A2B3CF20024349C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0631F2A2B3CF20024349C /* SceneDelegate.swift */; };
 		E7D063222A2B3CF20024349C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D063212A2B3CF20024349C /* ViewController.swift */; };
@@ -58,8 +60,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E7B825B32A2D9EF7006AB415 /* DbFirebasePlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbFirebasePlan.swift; sourceTree = "<group>"; };
+		E79880D82A2DBBAB00736C96 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
+		E79880DA2A2DC3B200736C96 /* DbFirebasePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbFirebasePost.swift; sourceTree = "<group>"; };
 		E7B825EE2A2DA227006AB415 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E7B825F02A2DA5F7006AB415 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		E7D0631A2A2B3CF20024349C /* project-sangsanggram-1771130-sonminkyu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project-sangsanggram-1771130-sonminkyu.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7D0631D2A2B3CF20024349C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7D0631F2A2B3CF20024349C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -161,7 +165,9 @@
 				E7D063472A2B56890024349C /* PostGroupViewController.swift */,
 				E7FBF5DE2A2B6020005A56DB /* PostTableViewCell.swift */,
 				E7FBF5DF2A2B6020005A56DB /* PostTableViewCell.xib */,
-				E7B825B32A2D9EF7006AB415 /* DbFirebasePlan.swift */,
+				E7B825F02A2DA5F7006AB415 /* CameraViewController.swift */,
+				E79880D82A2DBBAB00736C96 /* AddPostViewController.swift */,
+				E79880DA2A2DC3B200736C96 /* DbFirebasePost.swift */,
 			);
 			path = "project-sangsanggram-1771130-sonminkyu";
 			sourceTree = "<group>";
@@ -273,18 +279,20 @@
 			files = (
 				E7D0633A2A2B409D0024349C /* PostDatabase.swift in Sources */,
 				E7D0633C2A2B446D0024349C /* PostDbMemory.swift in Sources */,
-				E7B825B42A2D9EF7006AB415 /* DbFirebasePlan.swift in Sources */,
+				E7B825F12A2DA5F7006AB415 /* CameraViewController.swift in Sources */,
 				E7FBF5E02A2B6020005A56DB /* PostTableViewCell.swift in Sources */,
 				E7D0633E2A2B46050024349C /* PlanGroup.swift in Sources */,
 				E7D063322A2B3D8E0024349C /* Plan.swift in Sources */,
 				E7D063222A2B3CF20024349C /* ViewController.swift in Sources */,
 				E7D063442A2B52A40024349C /* PlanGroupViewController.swift in Sources */,
 				E7D0631E2A2B3CF20024349C /* AppDelegate.swift in Sources */,
+				E79880D92A2DBBAB00736C96 /* AddPostViewController.swift in Sources */,
 				E7D063342A2B3E330024349C /* Database.swift in Sources */,
 				E7D063362A2B3ED10024349C /* DbMemory.swift in Sources */,
 				E7D063422A2B513F0024349C /* ExtendedDate.swift in Sources */,
 				E7D063482A2B56890024349C /* PostGroupViewController.swift in Sources */,
 				E7D063402A2B4FC80024349C /* PostGroup.swift in Sources */,
+				E79880DB2A2DC3B200736C96 /* DbFirebasePost.swift in Sources */,
 				E7D063382A2B402D0024349C /* Post.swift in Sources */,
 				E7D063202A2B3CF20024349C /* SceneDelegate.swift in Sources */,
 			);
@@ -362,7 +370,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -416,7 +424,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

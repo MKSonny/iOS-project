@@ -14,6 +14,8 @@ class PostGroupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tabBarController?.delegate = self
+        
         let nib = UINib(nibName: "PostTableViewCell", bundle: nil)
         postTableView.register(nib, forCellReuseIdentifier: "PostTableViewCell")
         postTableView.dataSource = self        // 테이블뷰의 데이터 소스로 등록
@@ -45,5 +47,20 @@ extension PostGroupViewController: UITableViewDataSource {
         cell.setData(post: postGroup.getPosts()[indexPath.row])
         
         return cell
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        postTableView.reloadData()
+    }
+}
+
+extension PostGroupViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        
+        if viewController is CameraViewController {
+            let vc = viewController as! CameraViewController
+            vc.postGroup = postGroup
+        }
     }
 }
