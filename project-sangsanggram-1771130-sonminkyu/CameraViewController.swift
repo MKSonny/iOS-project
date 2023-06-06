@@ -6,15 +6,17 @@
 //
 
 import UIKit
-
+import FirebaseStorage
 
 class CameraViewController: UIViewController {
     @IBOutlet weak var previewImageView: UIImageView!
     var postGroup: PostGroup!
-//    var tableView: UITableView!
+    var imageUrl: String!
     
     @IBAction func addButton(_ sender: UIButton) {
-        var post = Post(image: previewImageView.image!, writer: "hello world", date: Date().setCurrentTime(), content: "hello world", likes: 3)
+        print("imageUrl 성공 \(imageUrl)")
+        
+        let post = Post(imageUrl: imageUrl!, writer: "hello world", date: Date().setCurrentTime(), content: "hello world", likes: 3)
         
         postGroup.saveChange(post: post, action: .Add)
     }
@@ -51,6 +53,12 @@ extension CameraViewController: UINavigationControllerDelegate, UIImagePickerCon
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
  
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            uploadImage(image: image, pathRoot: "post_image") { url in
+                if let url = url {
+                    self.imageUrl = url.absoluteString
+                    print("업로드 성공 \(url)")
+                }
+            }
             previewImageView.image = image
         }
         
@@ -63,3 +71,17 @@ extension CameraViewController: UINavigationControllerDelegate, UIImagePickerCon
     }
 }
 
+func uploadImage(image: UIImage, pathRoot: String, completion: @escaping (URL?) -> Void) {
+        guard let imageData = image.jpegData(compressionQuality: 0.4) else { return }
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpeg"
+        
+        let imageName = UUID().uuidString + String(Date().timeIntervalSince1970)
+        
+        let firebaseReference = Storage.storage().reference().child("\(imageName)")
+        firebaseReference.putData(imageData, metadata: metaData) { metaData, error in
+            firebaseReference.downloadURL { url, _ in
+                completion(url)
+            }
+        }
+    }

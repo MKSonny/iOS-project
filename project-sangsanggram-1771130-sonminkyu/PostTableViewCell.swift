@@ -6,8 +6,7 @@
 //
 
 import UIKit
-
-import UIKit
+import FirebaseStorage
 
 class PostTableViewCell: UITableViewCell {
     // 게시글에 표시할 요소들을 위한 아웃렛 변수 선언
@@ -141,12 +140,26 @@ class PostTableViewCell: UITableViewCell {
     
     func setData(post: Post) {
         self.post = post
-        profileImageView.image = post.image
+        downloadImage(imageView: profileImageView, url: URL(string: post.imageUrl)!)
+//        profileImageView.image = post.imageUrl
         usernameLabel.text = "post.username"
-        postImageView.image = post.image
+        downloadImage(imageView: postImageView, url: URL(string: post.imageUrl)!)
+//        postImageView.image = post.imageUrl
         likesLabel.text = "\(post.likes) likes"
         captionLabel.text = post.content
         dateLabel.text = post.date.toStringDate()
         updateLikes()
+    }
+    
+    func downloadImage(imageView: UIImageView, url: URL) {
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data, error == nil else {
+                return
+            }
+            DispatchQueue.main.async {
+                let image = UIImage(data: data)
+                imageView.image = image
+            }
+        }.resume()
     }
 }

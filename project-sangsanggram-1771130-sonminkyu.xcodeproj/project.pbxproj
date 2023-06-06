@@ -38,6 +38,7 @@
 		E7B825ED2A2D9FAB006AB415 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = E7B825EC2A2D9FAB006AB415 /* FirebaseStorageCombine-Community */; };
 		E7B825EF2A2DA227006AB415 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7B825EE2A2DA227006AB415 /* GoogleService-Info.plist */; };
 		E7B825F12A2DA5F7006AB415 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B825F02A2DA5F7006AB415 /* CameraViewController.swift */; };
+		E7C099D22A2ED59F00394819 /* DbFirebasePlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C099D12A2ED59F00394819 /* DbFirebasePlan.swift */; };
 		E7D0631E2A2B3CF20024349C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0631D2A2B3CF20024349C /* AppDelegate.swift */; };
 		E7D063202A2B3CF20024349C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0631F2A2B3CF20024349C /* SceneDelegate.swift */; };
 		E7D063222A2B3CF20024349C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D063212A2B3CF20024349C /* ViewController.swift */; };
@@ -64,6 +65,7 @@
 		E79880DA2A2DC3B200736C96 /* DbFirebasePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbFirebasePost.swift; sourceTree = "<group>"; };
 		E7B825EE2A2DA227006AB415 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E7B825F02A2DA5F7006AB415 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		E7C099D12A2ED59F00394819 /* DbFirebasePlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbFirebasePlan.swift; sourceTree = "<group>"; };
 		E7D0631A2A2B3CF20024349C /* project-sangsanggram-1771130-sonminkyu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project-sangsanggram-1771130-sonminkyu.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7D0631D2A2B3CF20024349C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7D0631F2A2B3CF20024349C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				E7B825F02A2DA5F7006AB415 /* CameraViewController.swift */,
 				E79880D82A2DBBAB00736C96 /* AddPostViewController.swift */,
 				E79880DA2A2DC3B200736C96 /* DbFirebasePost.swift */,
+				E7C099D12A2ED59F00394819 /* DbFirebasePlan.swift */,
 			);
 			path = "project-sangsanggram-1771130-sonminkyu";
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				E7D063222A2B3CF20024349C /* ViewController.swift in Sources */,
 				E7D063442A2B52A40024349C /* PlanGroupViewController.swift in Sources */,
 				E7D0631E2A2B3CF20024349C /* AppDelegate.swift in Sources */,
+				E7C099D22A2ED59F00394819 /* DbFirebasePlan.swift in Sources */,
 				E79880D92A2DBBAB00736C96 /* AddPostViewController.swift in Sources */,
 				E7D063342A2B3E330024349C /* Database.swift in Sources */,
 				E7D063362A2B3ED10024349C /* DbMemory.swift in Sources */,

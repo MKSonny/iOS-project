@@ -10,16 +10,16 @@ import UIKit
 import FirebaseFirestore
 
 class Post {
-    var image: UIImage
+    var imageUrl: String
     var writer: String
     var date: Date
     var likes: Int
     var content: String
     var key: String
     
-    init(image: UIImage, writer: String, date: Date, content: String, likes: Int) {
+    init(imageUrl: String, writer: String, date: Date, content: String, likes: Int) {
         self.key = UUID().uuidString
-        self.image = image
+        self.imageUrl = imageUrl
         self.writer = writer
         self.date = date
         self.content = content
@@ -28,7 +28,7 @@ class Post {
 
     init(date: Date) {
         self.key = UUID().uuidString
-        self.image = UIImage(named: "helloworld")!
+        self.imageUrl =  "https://firebasestorage.googleapis.com/v0/b/sangsanggram.appspot.com/o/1C768A5D-E42E-4C78-AEDC-AC241026BFDB1686022565.9349241?alt=media&token=bc33a00e-d755-4c29-bfea-5abf9f01da9a&_gl=1*1bb2xin*_ga*MTE3NTg0NzAzNi4xNjczMjQzOTM3*_ga_CW55HF8NVT*MTY4NjAxOTc5Mi40Ni4xLjE2ODYwMjI5NjkuMC4wLjA."
         self.writer = "writer"
         self.date = date
         self.content = "content"
@@ -42,8 +42,9 @@ extension Post {
         var dict: [String: Any?] = [:]
         dict["key"] = key
         dict["date"] = Timestamp(date: date)
-        dict["owner"] = writer
+        dict["writer"] = writer
         dict["content"] = content
+        dict["image_url"] = imageUrl
         
         return dict
     }
@@ -56,5 +57,6 @@ extension Post {
         }
         writer = dict["writer"] as! String
         content = dict["content"] as! String
+        imageUrl = dict["image_url"] as! String
     }
 }

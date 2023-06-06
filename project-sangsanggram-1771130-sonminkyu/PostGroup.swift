@@ -14,7 +14,8 @@ class PostGroup {
     
     init(parentNotification: ((Post?, PostDbAction?) -> Void)?) {
         self.parentNotification = parentNotification
-        database = PostDbMemory(parentNotification: receivingNotification)
+//        database = PostDbMemory(parentNotification: receivingNotification)
+        database = DbFirebasePost(parentNotification: receivingNotification)
     }
     
     func receivingNotification(post: Post?, action: PostDbAction?){
