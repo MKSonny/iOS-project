@@ -31,6 +31,7 @@ extension DbFirebasePost{
         
         let data = post.toDict()
         
+        // 게시물 추가 시 수정하면 여기도 수정!
         // 저장 형태로 만든다
         let storeDate: [String : Any] = ["date": post.date, "content": data["content"]!, "writer": data["writer"]!, "key": data["key"]!, "image_url": data["image_url"]]
                 reference.document(post.key).setData(storeDate)
@@ -63,7 +64,7 @@ extension DbFirebasePost{
             let data = documentChange.document.data() //["date": date, "data": data!]로 구성되어 있다
             
             let post = Post(date: Date().setCurrentTime())
-            if data["image_url"] != nil {
+            if data["writerImage"] != nil {
                 post.toPost(dict: data)
             }
             

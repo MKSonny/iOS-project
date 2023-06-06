@@ -6,13 +6,17 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class PostGroupViewController: UIViewController {
     @IBOutlet weak var postTableView: UITableView!
     var postGroup: PostGroup!
+    var uid :String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        uid = Auth.auth().currentUser?.uid
         
         tabBarController?.delegate = self
         
@@ -49,6 +53,20 @@ extension PostGroupViewController: UITableViewDataSource {
         return cell
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+       
+        if Auth.auth().currentUser == nil {
+            // show log in
+            print("로그인 한 유저 없음")
+            let loginVC = RegisterViewController()
+            loginVC.modalPresentationStyle = .fullScreen
+            present(loginVC, animated: true)
+        } else {
+            print("로그인 한 유저 uid \(Auth.auth().currentUser?.uid)")
+            print("로그인 한 유저 있음 \(Auth.auth().currentUser?.email)")
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         postTableView.reloadData()
@@ -57,10 +75,9 @@ extension PostGroupViewController: UITableViewDataSource {
 
 extension PostGroupViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        
-        if viewController is CameraViewController {
-            let vc = viewController as! CameraViewController
-            vc.postGroup = postGroup
+        if let cameraViewController = viewController as? CameraViewController {
+            cameraViewController.postGroup = postGroup
         }
     }
 }
+

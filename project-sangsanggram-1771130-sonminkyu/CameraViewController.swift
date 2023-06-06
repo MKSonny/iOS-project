@@ -7,23 +7,25 @@
 
 import UIKit
 import FirebaseStorage
+import FirebaseAuth
 
 class CameraViewController: UIViewController {
     @IBOutlet weak var previewImageView: UIImageView!
     var postGroup: PostGroup!
     var imageUrl: String!
+    var writer: String!
+    var writerImage: String!
     
     @IBAction func addButton(_ sender: UIButton) {
         print("imageUrl 성공 \(imageUrl)")
         
-        let post = Post(imageUrl: imageUrl!, writer: "hello world", date: Date().setCurrentTime(), content: "hello world", likes: 3)
+        let post = Post(imageUrl: imageUrl!, writer: writer, writerImage: writerImage, date: Date().setCurrentTime(), content: "hello world", likes: 3)
         
         postGroup.saveChange(post: post, action: .Add)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self // 이 딜리게이터를 설정하면 사진을 찍은 후 호출된다
@@ -45,6 +47,15 @@ class CameraViewController: UIViewController {
 //        // 데이터가 올때마다 이 함수가 호출되는데 맨 처음에는 기본적으로 add라는 액션으로 데이터가 온다.
 //        self.tableView.reloadData()  // 속도를 증가시키기 위해 action에 따라 개별적 코딩도 가능하다.
 //    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        MyDatabase.shared.findUsernameAndProfileImage(with: Auth.auth().currentUser!.uid) { userName, imageUrl in
+            self.writer = userName
+            self.writerImage = imageUrl
+        }
+    }
 }
 
 extension CameraViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {

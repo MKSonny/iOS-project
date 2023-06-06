@@ -140,9 +140,9 @@ class PostTableViewCell: UITableViewCell {
     
     func setData(post: Post) {
         self.post = post
-        downloadImage(imageView: profileImageView, url: URL(string: post.imageUrl)!)
+        downloadImage(imageView: profileImageView, url: URL(string: post.writerImage)!)
 //        profileImageView.image = post.imageUrl
-        usernameLabel.text = "post.username"
+        usernameLabel.text = post.writer
         downloadImage(imageView: postImageView, url: URL(string: post.imageUrl)!)
 //        postImageView.image = post.imageUrl
         likesLabel.text = "\(post.likes) likes"

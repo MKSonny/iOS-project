@@ -12,18 +12,20 @@ import FirebaseFirestore
 class Post {
     var imageUrl: String
     var writer: String
+    var writerImage: String
     var date: Date
     var likes: Int
     var content: String
     var key: String
     
-    init(imageUrl: String, writer: String, date: Date, content: String, likes: Int) {
+    init(imageUrl: String, writer: String, writerImage: String, date: Date, content: String, likes: Int) {
         self.key = UUID().uuidString
         self.imageUrl = imageUrl
         self.writer = writer
         self.date = date
         self.content = content
         self.likes = likes
+        self.writerImage = writerImage
     }
 
     init(date: Date) {
@@ -33,6 +35,7 @@ class Post {
         self.date = date
         self.content = "content"
         self.likes = 0
+        self.writerImage = "dafsdfadf"
     }
 
 }
@@ -45,6 +48,7 @@ extension Post {
         dict["writer"] = writer
         dict["content"] = content
         dict["image_url"] = imageUrl
+        dict["writerImage"] = writerImage
         
         return dict
     }
@@ -58,5 +62,6 @@ extension Post {
         writer = dict["writer"] as! String
         content = dict["content"] as! String
         imageUrl = dict["image_url"] as! String
+        writerImage = dict["writerImage"] as! String
     }
 }
