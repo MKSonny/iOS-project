@@ -44,6 +44,12 @@ extension PostGroup {
         database.queryPosts(fromDate: fromDate!, toDate: toDate!)
     }
     
+    func queryDataWithWriter(writer: String) {
+        posts.removeAll()
+        
+        database.queryPostsByWriter(writer: writer)
+    }
+    
     func saveChange(post: Post, action: PostDbAction){
         // 단순히 데이터베이스에 변경요청을 하고 plans에 대해서는
         // 데이터베이스가 변경알림을 호출하는 receivingNotification에서 적용한다

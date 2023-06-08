@@ -74,9 +74,16 @@ extension PostGroupViewController: UITableViewDataSource {
 }
 
 extension PostGroupViewController: UITabBarControllerDelegate {
+    
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if let cameraViewController = viewController as? CameraViewController {
+            print("hello world2 cameraViewController")
             cameraViewController.postGroup = postGroup
+        }
+        if let profileViewController2 = viewController as? ProfileViewController2 {
+            print("hello world2 good")
+//            profileViewController2.tableView = postTableView
+//            profileViewController2.postGroup = postGroup
         }
     }
 }

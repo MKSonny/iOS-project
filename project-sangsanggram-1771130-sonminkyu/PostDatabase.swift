@@ -16,4 +16,6 @@ protocol PostDatabase {
     func queryPosts(fromDate: Date, toDate: Date)
     
     func saveChange(post: Post, action: PostDbAction)
+    
+    func queryPostsByWriter(writer: String)
 }

@@ -8,12 +8,19 @@
 import UIKit
 import FirebaseStorage
 
+protocol PostTableViewCellDelegate: AnyObject {
+    func didTapLikeButton()
+}
+
 class PostTableViewCell: UITableViewCell {
     // 게시글에 표시할 요소들을 위한 아웃렛 변수 선언
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        // 이미지 원형으로 설정
+        imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 40/2.0
         return imageView
     }()
     

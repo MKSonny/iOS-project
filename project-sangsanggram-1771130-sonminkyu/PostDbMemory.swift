@@ -7,6 +7,7 @@
 
 import Foundation
 class PostDbMemory: PostDatabase {
+    
     private var storage: [Post]
     
     var parentNotification: ((Post?, PostDbAction?) -> Void)?
@@ -29,6 +30,18 @@ extension PostDbMemory {
     func queryPosts(fromDate: Date, toDate: Date) {
         for i in 0..<storage.count {
             if storage[i].date >= fromDate && storage[i].date <= toDate {
+                if let parentNotification = parentNotification {
+                    // 한 개씩 여러번 전달한다.
+                    parentNotification(storage[i], .Add)
+                }
+            }
+        }
+    }
+    
+    // 게시글 작성자로 게시물 찾아 스트리지에 추가한다.
+    func queryPostsByWriter(writer: String) {
+        for i in 0..<storage.count {
+            if storage[i].writer == writer {
                 if let parentNotification = parentNotification {
                     // 한 개씩 여러번 전달한다.
                     parentNotification(storage[i], .Add)

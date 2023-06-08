@@ -10,7 +10,6 @@ import FirebaseFirestore
 
 class DbFirebasePost: PostDatabase {
     
-    
     var reference: CollectionReference                    // firestore에서 데이터베이스 위치
     var parentNotification: ((Post?, PostDbAction?) -> Void)? // PlanGroupViewController에서 설정
     var existQuery: ListenerRegistration?                 // 이미 설정한 Query의 존재여부
@@ -38,6 +37,14 @@ extension DbFirebasePost{
     }
 }
 extension DbFirebasePost{
+    func queryPostsByWriter(writer: String) {
+        if let existQuery = existQuery{    // 이미 적용 쿼리가 있으면 제거, 중복 방지
+            existQuery.remove()
+        }
+        let queryReference = reference.whereField("writer", isEqualTo: writer)
+        
+        existQuery = queryReference.addSnapshotListener(onChangingData)
+    }
     
     func queryPosts(fromDate: Date, toDate: Date) {
         
