@@ -220,6 +220,36 @@
             </objects>
             <point key="canvasLocation" x="2198" y="-792"/>
         </scene>
+        <!--Following View Controller-->
+        <scene sceneID="MSF-fR-K0X">
+            <objects>
+                <viewController id="OxF-S8-MB7" customClass="FollowingViewController" customModule="project_sangsanggram_1771130_sonminkyu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qt0-gn-5pG">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VKt-X5-FmW">
+                                <rect key="frame" x="8" y="67" width="377" height="751"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wWg-Nj-csD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VKt-X5-FmW" firstAttribute="top" secondItem="wWg-Nj-csD" secondAttribute="top" constant="8" id="DaW-He-7De"/>
+                            <constraint firstItem="wWg-Nj-csD" firstAttribute="trailing" secondItem="VKt-X5-FmW" secondAttribute="trailing" constant="8" id="HV8-TJ-6SW"/>
+                            <constraint firstItem="VKt-X5-FmW" firstAttribute="leading" secondItem="wWg-Nj-csD" secondAttribute="leading" constant="8" id="lQE-3f-rkC"/>
+                            <constraint firstItem="wWg-Nj-csD" firstAttribute="bottom" secondItem="VKt-X5-FmW" secondAttribute="bottom" id="vSh-rj-BH8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="followersList" destination="VKt-X5-FmW" id="r9B-3b-DY7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dIF-8K-u9T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3185.4961832061067" y="-792.25352112676057"/>
+        </scene>
         <!--Plan Group View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>

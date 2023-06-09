@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol ProfileInfoHeaderCollectionReusableViewDelegate: AnyObject {
+    func didTapFollowingButton()
+}
+
 class ProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
     static let identifier = "ProfileInfoHeaderCollectionReusableView"
+    public weak var delegate: ProfileInfoHeaderCollectionReusableViewDelegate?
     
     private let profilePhotoImageView: UIImageView = {
         let imageView = UIImageView()
@@ -27,8 +32,13 @@ class ProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
     private let followingButton: UIButton = {
         let button = UIButton()
         button.setTitle("following", for: .normal)
+        button.addTarget(self, action: #selector(didPressedFollowingButton), for: .touchUpInside)
         return button
     }()
+    
+    @objc func didPressedFollowingButton() {
+        delegate?.didTapFollowingButton()
+    }
     
     private let followersButton: UIButton = {
         let button = UIButton()

@@ -49,6 +49,7 @@ extension Post {
         dict["content"] = content
         dict["image_url"] = imageUrl
         dict["writerImage"] = writerImage
+        dict["likes"] = likes
         
         return dict
     }
@@ -63,5 +64,6 @@ extension Post {
         content = dict["content"] as! String
         imageUrl = dict["image_url"] as! String
         writerImage = dict["writerImage"] as! String
+        likes = dict["likes"] as! Int
     }
 }

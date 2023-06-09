@@ -32,8 +32,8 @@ extension DbFirebasePost{
         
         // 게시물 추가 시 수정하면 여기도 수정!
         // 저장 형태로 만든다
-        let storeDate: [String : Any] = ["date": post.date, "content": data["content"]!, "writer": data["writer"]!, "key": data["key"]!, "image_url": data["image_url"], "writerImage": data["writerImage"]]
-                reference.document(post.key).setData(storeDate)
+        let storeData: [String : Any] = ["date": post.date, "content": data["content"]!, "writer": data["writer"]!, "key": data["key"]!, "image_url": data["image_url"], "writerImage": data["writerImage"], "likes": data["likes"]]
+        reference.document(post.key).setData(storeData)
     }
 }
 extension DbFirebasePost{

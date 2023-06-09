@@ -48,6 +48,7 @@ extension PostGroupViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
         
+        cell.delegate = self
         cell.setData(post: postGroup.getPosts()[indexPath.row])
         
         return cell
@@ -88,3 +89,16 @@ extension PostGroupViewController: UITabBarControllerDelegate {
     }
 }
 
+extension PostGroupViewController: PostTableViewCellDelegate {
+    // 좋아요 버튼을 누르면 파이어베이스에 업데이트
+    func didTapLikeButton(post: Post) {
+        // postId를 활용하여 해당 게시글에 대한 처리 로직을 구현
+        // 예: Firebase API를 사용하여 해당 게시글의 데이터를 업데이트
+        
+        // 예시: 게시글의 좋아요 버튼을 눌렀을 때 로직
+//        print("Like button tapped for postId: \(postId)")
+        
+        // 해당 게시글에 대한 업데이트 등의 로직을 구현
+        postGroup.saveChange(post: post, action: .Modify)
+    }
+}

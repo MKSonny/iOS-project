@@ -11,6 +11,7 @@ class User {
     var userName: String
     var postCount: Int
     var key: String
+    var following = [User]()
     
     init(imageUrl: String, userName: String, postCount: Int) {
         self.key = UUID().uuidString
@@ -39,10 +40,14 @@ extension User {
         return dict
     }
     
-    func toPost(dict: [String: Any?]) {
+    func toUser(dict: [String: Any?]) {
         key = dict["key"] as! String
         userName = dict["userName"] as! String
         postCount = dict["postCount"] as! Int
         imageUrl = dict["image_url"] as! String
+    }
+    
+    func toUserOnlyUsername(dict: [String: Any?]) {
+        userName = dict["username"] as! String
     }
 }

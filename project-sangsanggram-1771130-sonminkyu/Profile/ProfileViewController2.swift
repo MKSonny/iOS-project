@@ -10,14 +10,19 @@ import UIKit
 class ProfileViewController2: UIViewController {
     var collectionView: UICollectionView!
     var postGroup: PostGroup!
+    var userGroup: UserGroup!
     private var userPosts = [Post]()
+    private var users = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         postGroup = PostGroup(parentNotification: receivingNotification)
         postGroup.queryDataWithWriter(writer: "sonny4")
-
+        
+        userGroup = UserGroup(parentNotification: receivingUsersInfo)
+        userGroup.database.queryUser()
+        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 1
@@ -25,6 +30,8 @@ class ProfileViewController2: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 1, bottom: 0, right: 1)
         let size = (view.width - 4)/3
         layout.itemSize = CGSize(width: size, height: size)
+        
+        
         
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -44,6 +51,10 @@ class ProfileViewController2: UIViewController {
             return
         }
         view.addSubview(collectionView)
+    }
+    
+    func receivingUsersInfo(user: User?, action: UserDbAction?) {
+        
     }
     
     func receivingNotification(post: Post?, action: PostDbAction?){
@@ -85,6 +96,8 @@ extension ProfileViewController2: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
+        users = userGroup.getUsers()
+        print("users \(users.count)")
         // get the model and open post contoller
 //        let model = userPosts[indexPath.row]
 //        print("hello world2 \(postGroup.getPosts().count)")
@@ -112,6 +125,7 @@ extension ProfileViewController2: UICollectionViewDelegate, UICollectionViewData
         
         let profileHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ProfileInfoHeaderCollectionReusableView.identifier, for: indexPath) as! ProfileInfoHeaderCollectionReusableView
         
+        profileHeader.delegate = self
         profileHeader.nameLabelText(name: "sonny4")
         
         return profileHeader
@@ -124,6 +138,14 @@ extension ProfileViewController2: UICollectionViewDelegate, UICollectionViewData
         
         // size of section tabs
         return CGSize(width: collectionView.width, height: 50)
+    }
+}
+
+extension ProfileViewController2: ProfileInfoHeaderCollectionReusableViewDelegate {
+    func didTapFollowingButton() {
+        print("hello world6")
+        let vc = FollowingViewController()
+        present(vc, animated: true)
     }
 }
 

@@ -6,13 +6,16 @@
 //
 
 import UIKit
-import FirebaseStorage
 
+// 다음과 같이 PostTableViewCellDelegate을 만든 이유는 이 클래스에는
+// 파이어 스트리지와 연결되어 있지 않아 책임을 postGroupController로 넘김
 protocol PostTableViewCellDelegate: AnyObject {
-    func didTapLikeButton()
+    func didTapLikeButton(post: Post)
 }
 
 class PostTableViewCell: UITableViewCell {
+    public weak var delegate: PostTableViewCellDelegate?
+    
     // 게시글에 표시할 요소들을 위한 아웃렛 변수 선언
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -48,6 +51,14 @@ class PostTableViewCell: UITableViewCell {
         return likeButton
     }()
     
+    let commentButton: UIButton = {
+        let commentButton = UIButton()
+        commentButton.translatesAutoresizingMaskIntoConstraints = false
+        commentButton.setImage(UIImage(systemName: "message"), for: .normal)
+        commentButton.tintColor = .black
+        return commentButton
+    }()
+    
     let likesLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -81,6 +92,7 @@ class PostTableViewCell: UITableViewCell {
             post?.likes -= 1
         }
         updateLikes() // 변경된 likes 값을 업데이트하여 화면에 반영
+        delegate?.didTapLikeButton(post: post!)
     }
     
     private func updateLikes() {
@@ -99,6 +111,7 @@ class PostTableViewCell: UITableViewCell {
         contentView.addSubview(usernameLabel)
         contentView.addSubview(postImageView)
         contentView.addSubview(likeButton)
+        contentView.addSubview(commentButton)
         contentView.addSubview(likesLabel)
         contentView.addSubview(captionLabel)
         contentView.addSubview(dateLabel)
@@ -125,9 +138,12 @@ class PostTableViewCell: UITableViewCell {
             likeButton.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 6),
             likeButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             
+            commentButton.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 6),
+            commentButton.leadingAnchor.constraint(equalTo: likeButton.trailingAnchor, constant: 8),
+            
             // 좋아요 레이블
-            likesLabel.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 8),
-            likesLabel.leadingAnchor.constraint(equalTo: likeButton.trailingAnchor, constant: 3),
+            likesLabel.topAnchor.constraint(equalTo: commentButton.bottomAnchor, constant: 8),
+            likesLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             
             // 캡션 레이블
             captionLabel.topAnchor.constraint(equalTo: likesLabel.bottomAnchor, constant: 4),

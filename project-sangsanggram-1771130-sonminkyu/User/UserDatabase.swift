@@ -13,7 +13,7 @@ enum UserDbAction {
 protocol UserDatabase {
     init(parentNotification: ((User?, UserDbAction?) -> Void)?)
     
-    func queryUser(fromDate: Date, toDate: Date)
+    func queryUser()
     
-    func saveChange(post: Post, action: PostDbAction)
+    func saveChange(user: User, action: UserDbAction)
 }
