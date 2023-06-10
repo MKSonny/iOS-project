@@ -32,7 +32,7 @@ extension DbFirebasePost{
         
         // 게시물 추가 시 수정하면 여기도 수정!
         // 저장 형태로 만든다
-        let storeData: [String : Any] = ["date": post.date, "content": data["content"]!, "writer": data["writer"]!, "key": data["key"]!, "image_url": data["image_url"], "writerImage": data["writerImage"], "likes": data["likes"]]
+        let storeData: [String : Any] = ["date": post.date, "content": data["content"]!, "username": data["username"]!, "key": data["key"]!, "image_url": data["image_url"], "writerImage": data["writerImage"], "likes": data["likes"], "uid": data["uid"]]
         reference.document(post.key).setData(storeData)
     }
 }
@@ -41,7 +41,18 @@ extension DbFirebasePost{
         if let existQuery = existQuery{    // 이미 적용 쿼리가 있으면 제거, 중복 방지
             existQuery.remove()
         }
-        let queryReference = reference.whereField("writer", isEqualTo: writer)
+        let queryReference = reference.whereField("uid", isEqualTo: writer)
+        
+        existQuery = queryReference.addSnapshotListener(onChangingData)
+    }
+    
+    func queryPostsByFollowing(followingList: [String]) {
+        if let existQuery = existQuery{    // 이미 적용 쿼리가 있으면 제거, 중복 방지
+            existQuery.remove()
+        }
+        let queryReference = reference.whereField("uid", in: followingList)
+        
+        print("hello world 99 \(queryReference)")
         
         existQuery = queryReference.addSnapshotListener(onChangingData)
     }
@@ -70,14 +81,16 @@ extension DbFirebasePost{
         for documentChange in querySnapshot.documentChanges {
             let data = documentChange.document.data() //["date": date, "data": data!]로 구성되어 있다
             
+            print("hello world 98")
+            
             let post = Post(date: Date().setCurrentTime())
-            if data["writerImage"] != nil {
+            if data["uid"] != nil {
                 post.toPost(dict: data)
             }
             
             var action: PostDbAction?
             switch(documentChange.type){    // 단순히 DbAction으로 설정
-            case    .added: action = .Add
+            case    .added: action = .Add;
             case    .modified: action = .Modify
             case    .removed: action = .Delete
             }

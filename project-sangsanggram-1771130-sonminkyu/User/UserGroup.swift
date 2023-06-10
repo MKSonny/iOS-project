@@ -41,7 +41,7 @@ extension UserGroup {
     
     func queryFollowing() {
         users.removeAll()
-        database
+//        database
     }
     
     func saveChange(user: User, action: UserDbAction){

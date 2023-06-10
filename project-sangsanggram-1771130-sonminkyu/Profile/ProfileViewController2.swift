@@ -6,19 +6,24 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ProfileViewController2: UIViewController {
     var collectionView: UICollectionView!
     var postGroup: PostGroup!
     var userGroup: UserGroup!
+    var uid: String!
     private var userPosts = [Post]()
     private var users = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        uid = Auth.auth().currentUser?.uid
+        print("get my uid \(uid)")
+        
         postGroup = PostGroup(parentNotification: receivingNotification)
-        postGroup.queryDataWithWriter(writer: "sonny4")
+        postGroup.queryDataWithWriter(writer: uid)
         
         userGroup = UserGroup(parentNotification: receivingUsersInfo)
         userGroup.database.queryUser()
@@ -126,7 +131,13 @@ extension ProfileViewController2: UICollectionViewDelegate, UICollectionViewData
         let profileHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ProfileInfoHeaderCollectionReusableView.identifier, for: indexPath) as! ProfileInfoHeaderCollectionReusableView
         
         profileHeader.delegate = self
-        profileHeader.nameLabelText(name: "sonny4")
+        
+        MyUserFirebaseDatabase.shared.findUsernameAndProfileImageWithUid(with: uid) { userName, profileImage in
+            DispatchQueue.main.async {
+                profileHeader.nameLabelText(name: userName!)
+                self.downloadImage(imageView: profileHeader.profilePhotoImageView, url: URL(string: profileImage!)!)
+            }
+        }
         
         return profileHeader
     }
@@ -157,4 +168,16 @@ extension ProfileViewController2: ProfileTabsCollectionReusableViewDelegate {
     func didTapTaggedButtonTab() {
         //
     }
+    func downloadImage(imageView: UIImageView, url: URL) {
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data, error == nil else {
+                return
+            }
+            DispatchQueue.main.async {
+                let image = UIImage(data: data)
+                imageView.image = image
+            }
+        }.resume()
+    }
 }
+

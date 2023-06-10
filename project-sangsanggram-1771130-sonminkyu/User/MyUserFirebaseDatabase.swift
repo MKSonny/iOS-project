@@ -12,7 +12,7 @@ public class MyUserFirebaseDatabase {
     static let shared = MyUserFirebaseDatabase()
     var reference: CollectionReference = Firestore.firestore().collection("users")
    
-    public func getFollowersList(uid: String, completion: @escaping ([String]) -> Void) {
+    public func getFollowingList(uid: String, completion: @escaping ([String]) -> Void) {
         let documentRef = reference.document(uid)
         
         documentRef.getDocument { (document, error) in
@@ -67,7 +67,7 @@ public class MyUserFirebaseDatabase {
         completion(true)
     }
     
-    public func findUsernameAndProfileImage(with uid: String, completion: @escaping (String?, String?) -> Void) {
+    public func findUsernameAndProfileImageWithUid(with uid: String, completion: @escaping (String?, String?) -> Void) {
         let docRef = reference.document(uid)
 
         docRef.getDocument { (document, error) in
@@ -87,9 +87,11 @@ public class MyUserFirebaseDatabase {
 
     
     // insert new user data to database
-    public func insertNewUser(with email: String, username: String, uid: String, completion: @escaping (Bool) -> Void) {
+    public func insertNewUser(email: String, username: String, uid: String, completion: @escaping (Bool) -> Void) {
+        var following = [String]()
+        following.append(uid)
         reference.document(uid).setData(
-            ["username" : username, "profileImage" : "https://firebasestorage.googleapis.com/v0/b/sangsanggram.appspot.com/o/images.png?alt=media&token=10c7d64c-0aa6-40bc-8199-16f5b0d94a67&_gl=1*tc4kn7*_ga*MTE3NTg0NzAzNi4xNjczMjQzOTM3*_ga_CW55HF8NVT*MTY4NjA0MTYyMS40OC4xLjE2ODYwNDQ5ODMuMC4wLjA."]) { error in
+            ["username" : username, "profileImage" : "https://firebasestorage.googleapis.com/v0/b/sangsanggram.appspot.com/o/images.png?alt=media&token=10c7d64c-0aa6-40bc-8199-16f5b0d94a67&_gl=1*tc4kn7*_ga*MTE3NTg0NzAzNi4xNjczMjQzOTM3*_ga_CW55HF8NVT*MTY4NjA0MTYyMS40OC4xLjE2ODYwNDQ5ODMuMC4wLjA.", "following": following]) { error in
                 if error == nil {
                     // 성공
                     completion(true)

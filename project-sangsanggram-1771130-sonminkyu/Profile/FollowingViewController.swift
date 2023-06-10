@@ -6,17 +6,21 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class FollowingViewController: UIViewController {
 
     var followersListTableView: UITableView!
     var userGroup: UserGroup!
     var usersname: [String]!
+    var uid: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        MyUserFirebaseDatabase.shared.getFollowersList(uid: "kAekCXIZ0MhThXmJMWb9dR5vwKo1") { usersname in
+        uid = Auth.auth().currentUser?.uid
+        
+        MyUserFirebaseDatabase.shared.getFollowingList(uid: uid) { usersname in
             self.usersname = usersname
             print("hello world 10 \(usersname)")
             DispatchQueue.main.async {

@@ -17,5 +17,7 @@ protocol PostDatabase {
     
     func saveChange(post: Post, action: PostDbAction)
     
+    func queryPostsByFollowing(followingList: [String])
+    
     func queryPostsByWriter(writer: String)
 }

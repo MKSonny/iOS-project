@@ -13,19 +13,22 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var previewImageView: UIImageView!
     var postGroup: PostGroup!
     var imageUrl: String!
-    var writer: String!
+    var username: String!
     var writerImage: String!
+    var uid: String!
     
     @IBAction func addButton(_ sender: UIButton) {
         print("imageUrl 성공 \(imageUrl)")
         
-        let post = Post(imageUrl: imageUrl!, writer: writer, writerImage: writerImage, date: Date().setCurrentTime(), content: "hello world", likes: 0)
+        let post = Post(imageUrl: imageUrl!,username: username, uid: uid,writerImage: writerImage, date: Date().setCurrentTime(), content: "hello world", likes: 0)
         
         postGroup.saveChange(post: post, action: .Add)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        uid = Auth.auth().currentUser?.uid
         
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self // 이 딜리게이터를 설정하면 사진을 찍은 후 호출된다
@@ -50,11 +53,16 @@ class CameraViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        MyDatabase.shared.findUsernameAndProfileImage(with: Auth.auth().currentUser!.uid) { userName, imageUrl in
-            self.writer = userName
-            self.writerImage = imageUrl
+        print("please work: \(uid)")
+        MyUserFirebaseDatabase.shared.findUsernameAndProfileImageWithUid(with: uid) { writer, writerImage in
+            self.username = writer
+            print("done \(writer)")
+            self.writerImage = writerImage
         }
+//        MyDatabase.shared.findUsernameAndProfileImage(with: Auth.auth().currentUser!.uid) { userName, imageUrl in
+//            self.writer = userName
+//            self.writerImage = imageUrl
+//        }
     }
 }
 

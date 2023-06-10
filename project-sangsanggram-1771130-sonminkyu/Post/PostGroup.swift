@@ -44,6 +44,11 @@ extension PostGroup {
         database.queryPosts(fromDate: fromDate!, toDate: toDate!)
     }
     
+    func queryDataWithFollowingList(followingList: [String]) {
+        posts.removeAll()
+        database.queryPostsByFollowing(followingList: followingList)
+    }
+    
     func queryDataWithWriter(writer: String) {
         posts.removeAll()
         

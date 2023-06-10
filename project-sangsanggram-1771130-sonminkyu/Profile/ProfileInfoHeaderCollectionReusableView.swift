@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 protocol ProfileInfoHeaderCollectionReusableViewDelegate: AnyObject {
     func didTapFollowingButton()
@@ -15,9 +16,9 @@ class ProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
     static let identifier = "ProfileInfoHeaderCollectionReusableView"
     public weak var delegate: ProfileInfoHeaderCollectionReusableViewDelegate?
     
-    private let profilePhotoImageView: UIImageView = {
+    public let profilePhotoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .red
+//        imageView.backgroundColor = .red
         // 이미지 원형으로 설정
         imageView.layer.masksToBounds = true
         return imageView
@@ -117,5 +118,13 @@ class ProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
         let bioLabelSize = bioLabel.sizeThatFits(frame.size)
         
         bioLabel.frame = CGRect(x: 5, y: 5 + nameLabel.bottom, width: width - 10, height: bioLabelSize.height).integral
+        
+        editProfileButton.addTarget(self, action: #selector(logOut), for: .touchUpInside)
     }
+    
+    @objc func logOut() {
+        try? Auth.auth().signOut()
+    }
+    
+    
 }

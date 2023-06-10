@@ -24,6 +24,7 @@
 		E78BE1E32A2F4A2E009A3608 /* ProfileTabsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78BE1E22A2F4A2E009A3608 /* ProfileTabsCollectionReusableView.swift */; };
 		E78BE1E52A2F4A77009A3608 /* ProfileViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78BE1E42A2F4A77009A3608 /* ProfileViewController2.swift */; };
 		E79880DB2A2DC3B200736C96 /* DbFirebasePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79880DA2A2DC3B200736C96 /* DbFirebasePost.swift */; };
+		E7A1E3DB2A347EB000382AFB /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1E3DA2A347EB000382AFB /* UserService.swift */; };
 		E7B825B92A2D9FAB006AB415 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E7B825B82A2D9FAB006AB415 /* FirebaseAnalytics */; };
 		E7B825BB2A2D9FAB006AB415 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = E7B825BA2A2D9FAB006AB415 /* FirebaseAnalyticsOnDeviceConversion */; };
 		E7B825BD2A2D9FAB006AB415 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E7B825BC2A2D9FAB006AB415 /* FirebaseAnalyticsSwift */; };
@@ -96,6 +97,7 @@
 		E78BE1E22A2F4A2E009A3608 /* ProfileTabsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabsCollectionReusableView.swift; sourceTree = "<group>"; };
 		E78BE1E42A2F4A77009A3608 /* ProfileViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController2.swift; sourceTree = "<group>"; };
 		E79880DA2A2DC3B200736C96 /* DbFirebasePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbFirebasePost.swift; sourceTree = "<group>"; };
+		E7A1E3DA2A347EB000382AFB /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		E7B825EE2A2DA227006AB415 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E7B825F02A2DA5F7006AB415 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		E7C099D12A2ED59F00394819 /* DbFirebasePlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbFirebasePlan.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				E7650F5E2A331F3F00C841DD /* UserFirebaseDatabase.swift */,
 				E767A5A12A3322000027A896 /* UserGroup.swift */,
 				E74F045A2A343C6F00E5546A /* MyUserFirebaseDatabase.swift */,
+				E7A1E3DA2A347EB000382AFB /* UserService.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				E78BE1C42A2EEC05009A3608 /* UserDatabase.swift in Sources */,
 				E74BA12F2A31AD7F002BD9B2 /* MyDatabase.swift in Sources */,
 				E78BE1E32A2F4A2E009A3608 /* ProfileTabsCollectionReusableView.swift in Sources */,
+				E7A1E3DB2A347EB000382AFB /* UserService.swift in Sources */,
 				E7D063222A2B3CF20024349C /* ViewController.swift in Sources */,
 				E74F04592A342F9700E5546A /* SearchViewController.swift in Sources */,
 				E7650F5F2A331F3F00C841DD /* UserFirebaseDatabase.swift in Sources */,

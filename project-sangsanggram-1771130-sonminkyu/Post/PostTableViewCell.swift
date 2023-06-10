@@ -165,7 +165,7 @@ class PostTableViewCell: UITableViewCell {
         self.post = post
         downloadImage(imageView: profileImageView, url: URL(string: post.writerImage)!)
 //        profileImageView.image = post.imageUrl
-        usernameLabel.text = post.writer
+        usernameLabel.text = post.username
         downloadImage(imageView: postImageView, url: URL(string: post.imageUrl)!)
 //        postImageView.image = post.imageUrl
         likesLabel.text = "\(post.likes) likes"

@@ -7,6 +7,10 @@
 
 import Foundation
 class PostDbMemory: PostDatabase {
+    func queryPostsByFollowing(followingList: [String]) {
+        
+    }
+    
     
     private var storage: [Post]
     
@@ -41,7 +45,7 @@ extension PostDbMemory {
     // 게시글 작성자로 게시물 찾아 스트리지에 추가한다.
     func queryPostsByWriter(writer: String) {
         for i in 0..<storage.count {
-            if storage[i].writer == writer {
+            if storage[i].uid == writer {
                 if let parentNotification = parentNotification {
                     // 한 개씩 여러번 전달한다.
                     parentNotification(storage[i], .Add)
