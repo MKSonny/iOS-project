@@ -34,6 +34,16 @@ class UserGroup {
 }
 
 extension UserGroup {
+    func queryData(){
+        users.removeAll()      // 이달 마지막일이 속한 토요일을 마감시간
+        database.queryUser()
+    }
+    
+    func queryFollowing() {
+        users.removeAll()
+        database
+    }
+    
     func saveChange(user: User, action: UserDbAction){
         // 단순히 데이터베이스에 변경요청을 하고 plans에 대해서는
         // 데이터베이스가 변경알림을 호출하는 receivingNotification에서 적용한다

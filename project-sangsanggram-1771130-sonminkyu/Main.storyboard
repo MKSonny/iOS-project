@@ -112,11 +112,74 @@
                         <segue destination="BVK-pz-B20" kind="relationship" relationship="viewControllers" id="Eqb-Lg-rth"/>
                         <segue destination="aKT-AT-MBH" kind="relationship" relationship="viewControllers" id="eJD-gc-pvN"/>
                         <segue destination="Go9-lh-RFQ" kind="relationship" relationship="viewControllers" id="FkG-sy-3AF"/>
+                        <segue destination="obz-X1-gVf" kind="relationship" relationship="viewControllers" id="jce-g1-WVD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dru-Qv-4uj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="462" y="-792"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="OZ5-YV-S6Y">
+            <objects>
+                <viewController id="obz-X1-gVf" customClass="SearchViewController" customModule="project_sangsanggram_1771130_sonminkyu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pBw-8G-84w">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="glx-ha-wbK">
+                                <rect key="frame" x="8" y="67" width="377" height="694"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SerachTableViewCell" id="9tX-UL-5BG">
+                                        <rect key="frame" x="0.0" y="50" width="377" height="73"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9tX-UL-5BG" id="iJp-z3-vcD">
+                                            <rect key="frame" x="0.0" y="0.0" width="377" height="73"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0n-fG-rJ7">
+                                                    <rect key="frame" x="28" y="19" width="42" height="35"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5U-9C-YxG">
+                                                    <rect key="frame" x="290" y="19" width="75" height="35"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="S5U-9C-YxG" secondAttribute="bottom" constant="8" id="0Jd-uf-66t"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Z0n-fG-rJ7" secondAttribute="bottom" constant="8" id="3TW-NH-nY5"/>
+                                                <constraint firstItem="Z0n-fG-rJ7" firstAttribute="leading" secondItem="iJp-z3-vcD" secondAttribute="leadingMargin" constant="8" id="7Kf-dg-8i4"/>
+                                                <constraint firstItem="S5U-9C-YxG" firstAttribute="top" secondItem="iJp-z3-vcD" secondAttribute="topMargin" constant="8" id="Fk3-Ue-i3N"/>
+                                                <constraint firstItem="S5U-9C-YxG" firstAttribute="trailing" secondItem="iJp-z3-vcD" secondAttribute="trailingMargin" constant="8" id="P3r-sI-fCj"/>
+                                                <constraint firstItem="Z0n-fG-rJ7" firstAttribute="top" secondItem="iJp-z3-vcD" secondAttribute="topMargin" constant="8" id="c1a-yW-Djw"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hE6-Ct-OKz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="glx-ha-wbK" firstAttribute="top" secondItem="hE6-Ct-OKz" secondAttribute="top" constant="8" id="8hV-gw-RiN"/>
+                            <constraint firstItem="glx-ha-wbK" firstAttribute="leading" secondItem="hE6-Ct-OKz" secondAttribute="leading" constant="8" id="Wop-Z3-Y6m"/>
+                            <constraint firstItem="hE6-Ct-OKz" firstAttribute="trailing" secondItem="glx-ha-wbK" secondAttribute="trailing" constant="8" id="dHz-0J-uq1"/>
+                            <constraint firstItem="hE6-Ct-OKz" firstAttribute="bottom" secondItem="glx-ha-wbK" secondAttribute="bottom" constant="8" id="p75-nT-ZcR"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="RPF-ut-nHV"/>
+                    <connections>
+                        <outlet property="searchTableView" destination="glx-ha-wbK" id="6oI-9L-bGB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QT7-6A-BLq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="462" y="-1532"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="xFJ-Yq-O4T">
@@ -227,24 +290,9 @@
                     <view key="view" contentMode="scaleToFill" id="qt0-gn-5pG">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VKt-X5-FmW">
-                                <rect key="frame" x="8" y="67" width="377" height="751"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="wWg-Nj-csD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="VKt-X5-FmW" firstAttribute="top" secondItem="wWg-Nj-csD" secondAttribute="top" constant="8" id="DaW-He-7De"/>
-                            <constraint firstItem="wWg-Nj-csD" firstAttribute="trailing" secondItem="VKt-X5-FmW" secondAttribute="trailing" constant="8" id="HV8-TJ-6SW"/>
-                            <constraint firstItem="VKt-X5-FmW" firstAttribute="leading" secondItem="wWg-Nj-csD" secondAttribute="leading" constant="8" id="lQE-3f-rkC"/>
-                            <constraint firstItem="wWg-Nj-csD" firstAttribute="bottom" secondItem="VKt-X5-FmW" secondAttribute="bottom" id="vSh-rj-BH8"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="followersList" destination="VKt-X5-FmW" id="r9B-3b-DY7"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dIF-8K-u9T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -419,6 +467,7 @@
     </scenes>
     <resources>
         <image name="house.fill" catalog="system" width="128" height="104"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
