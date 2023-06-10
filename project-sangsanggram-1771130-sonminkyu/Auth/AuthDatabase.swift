@@ -43,7 +43,7 @@ public class AuthDatabase {
     }
     
     // completion: 로그인이 성공 혹은 실패했음을 알린다.
-    public func loginCheck(username: String?, email: String?, password: String, completion: @escaping ((Bool) -> Void)) {
+    public func loginCheck(email: String?, password: String, completion: @escaping ((Bool) -> Void)) {
         if let email = email {
             Auth.auth().signIn(withEmail: email, password: password) {
                 result, error in
@@ -54,9 +54,9 @@ public class AuthDatabase {
                 completion(true)
             }
         }
-        else if let username = username {
-            print("username \(username)")
-        }
+//        else if let username = username {
+//            print("username \(username)")
+//        }
     }
     
     public func logOut(completion: (Bool) -> Void) {

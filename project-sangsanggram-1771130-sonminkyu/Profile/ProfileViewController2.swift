@@ -16,9 +16,8 @@ class ProfileViewController2: UIViewController {
     private var userPosts = [Post]()
     private var users = [User]()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         uid = Auth.auth().currentUser?.uid
         print("get my uid \(uid)")
         
@@ -27,6 +26,12 @@ class ProfileViewController2: UIViewController {
         
         userGroup = UserGroup(parentNotification: receivingUsersInfo)
         userGroup.database.queryUser()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical

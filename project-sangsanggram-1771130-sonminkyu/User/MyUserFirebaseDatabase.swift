@@ -14,10 +14,11 @@ public class MyUserFirebaseDatabase {
    
     public func getFollowingList(uid: String, completion: @escaping ([String]) -> Void) {
         let documentRef = reference.document(uid)
-        
+        print("why? \(uid)")
         documentRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 if let following = document.data()?["following"] as? [String] {
+                    print("why? \(following)")
                     completion(following)
                 }
             }

@@ -24,6 +24,21 @@
             </objects>
             <point key="canvasLocation" x="-860" y="-80"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="sxx-FW-WOD">
+            <objects>
+                <viewController id="RaP-Yz-ZnU" customClass="LoginViewController" customModule="project_sangsanggram_1771130_sonminkyu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2z7-Fu-Ubd">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="dm4-kB-8OE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P3a-mM-yPn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2079" y="-792"/>
+        </scene>
         <!--Register View Controller-->
         <scene sceneID="27e-CQ-vze">
             <objects>
@@ -132,20 +147,20 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SerachTableViewCell" id="9tX-UL-5BG">
-                                        <rect key="frame" x="0.0" y="50" width="377" height="73"/>
+                                        <rect key="frame" x="0.0" y="50" width="377" height="73.333335876464844"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9tX-UL-5BG" id="iJp-z3-vcD">
-                                            <rect key="frame" x="0.0" y="0.0" width="377" height="73"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="377" height="73.333335876464844"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0n-fG-rJ7">
-                                                    <rect key="frame" x="28" y="19" width="42" height="35"/>
+                                                    <rect key="frame" x="28" y="19.000000000000004" width="42" height="35.333333333333343"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5U-9C-YxG">
-                                                    <rect key="frame" x="290" y="19" width="75" height="35"/>
+                                                    <rect key="frame" x="290" y="19.000000000000004" width="75" height="35.333333333333343"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                 </button>
