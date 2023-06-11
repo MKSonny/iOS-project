@@ -23,6 +23,7 @@ class PostGroupViewController: UIViewController {
         postTableView.dataSource = self        // 테이블뷰의 데이터 소스로 등록
 
         // 단순히 planGroup객체만 생성한다
+        // 시간 순 정렬 필요
         postGroup = PostGroup(parentNotification: receivingNotification)
         
         
@@ -60,7 +61,6 @@ extension PostGroupViewController: UITableViewDataSource {
     
     
     override func viewDidAppear(_ animated: Bool) {
-       
         if Auth.auth().currentUser == nil {
             // show log in
             print("로그인 한 유저 없음")
