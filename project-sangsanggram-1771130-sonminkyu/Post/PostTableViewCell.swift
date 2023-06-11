@@ -170,7 +170,7 @@ class PostTableViewCell: UITableViewCell {
 //        postImageView.image = post.imageUrl
         likesLabel.text = "\(post.likes) likes"
         captionLabel.text = post.content
-        dateLabel.text = post.date.toStringDate()
+        dateLabel.text = post.date.toStringDateForPostTime()
         updateLikes()
     }
     

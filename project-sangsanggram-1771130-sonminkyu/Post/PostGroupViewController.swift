@@ -26,7 +26,6 @@ class PostGroupViewController: UIViewController {
         // 시간 순 정렬 필요
         postGroup = PostGroup(parentNotification: receivingNotification)
         
-        
 //        postGroup.queryData(date: Date())       // 이달의 데이터를 가져온다. 데이터가 오면 planGroupListener가 호출된다.
         
     }
