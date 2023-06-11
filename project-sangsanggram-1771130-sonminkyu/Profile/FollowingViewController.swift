@@ -66,6 +66,4 @@ extension FollowingViewController: UITableViewDataSource {
         cell.textLabel?.text = usersname[indexPath.row]
         return cell
     }
-    
-    
 }

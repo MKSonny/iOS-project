@@ -6,15 +6,19 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SearchViewController: UIViewController {
     // 만약 팔로우 버튼을 누르면 나의 팔로잉 목록에 추가되어야 한다.
     @IBOutlet weak var searchTableView: UITableView!
     var userGroup: UserGroup!
     var users: [User]!
+    var uid: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        uid = Auth.auth().currentUser?.uid
 
         // Do any additional setup after loading the view.
         searchTableView.dataSource = self
@@ -47,6 +51,7 @@ extension SearchViewController: UITableViewDataSource {
     
     @objc func onTapFollowingButton(_ sender: UIButton) {
         let rowIndex = sender.tag
-        MyUserFirebaseDatabase.shared.addToFollowing(with: "kAekCXIZ0MhThXmJMWb9dR5vwKo1", followingUid: userGroup.getUsers()[rowIndex].userName)
+        print("hello world 7 \(userGroup.getUsers()[rowIndex].uid)")
+        MyUserFirebaseDatabase.shared.addToFollowing(with: uid, followingUid: userGroup.getUsers()[rowIndex].uid)
     }
 }

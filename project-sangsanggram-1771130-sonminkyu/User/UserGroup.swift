@@ -65,7 +65,7 @@ extension UserGroup {
     
     private func find(_ key: String) -> Int? {
         for i in 0..<users.count {
-            if key == users[i].key {
+            if key == users[i].uid {
                 return i
             }
         }
@@ -78,12 +78,12 @@ extension UserGroup {
         users.append(user)
     }
     private func modifyUser(modifiedUser: User) {
-        if let index = find(modifiedUser.key) {
+        if let index = find(modifiedUser.uid) {
             users[index] = modifiedUser
         }
     }
     private func removePost(removedUser: User) {
-        if let index = find(removedUser.key) {
+        if let index = find(removedUser.uid) {
             users.remove(at: index)
         }
     }

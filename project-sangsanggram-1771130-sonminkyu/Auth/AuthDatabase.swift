@@ -21,7 +21,6 @@ public class AuthDatabase {
                         completion(false)
                         return
                     }
-                    
                     // insert into database
                     MyUserFirebaseDatabase.shared.insertNewUser(email: email, username: username, uid: (result?.user.uid)!) { inserted in
                         if inserted {

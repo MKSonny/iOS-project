@@ -24,15 +24,17 @@ extension UserFirebaseDatabase{
     
     func saveChange(user: User, action: UserDbAction){
         if action == .Delete{
-            reference.document(user.key).delete()    // key로된 plan을 지운다
+            reference.document(user.uid).delete()    // key로된 plan을 지운다
             return
         }
         
         let data = user.toDict()
-        
+//        let storeData: [String : Any] = ["date": post.date, "content": data["content"]!, "username": data["username"]!, "key": data["key"]!, "image_url": data["image_url"], "writerImage": data["writerImage"], "likes": data["likes"], "uid": data["uid"]]
+//        reference.document(post.key).setData(storeData)
         // 저장 형태로 만든다
-        let storeDate: [String : Any] = ["username": user.userName]
-        reference.document(user.key).setData(storeDate)
+        let storeData: [String : Any] = ["username": data["username"], "image_url": data["image_url"], "uid": data["uid"]]
+        print("hello world 8 \(data["uid"])")
+        reference.document(user.uid).setData(storeData)
     }
 }
 extension UserFirebaseDatabase{
@@ -86,7 +88,8 @@ extension UserFirebaseDatabase{
             
             let user = User()
             if data["username"] != nil {
-                user.toUserOnlyUsername(dict: data)
+                print("hello world42 \(data["username"])")
+                user.toUser(dict: data)
             }
             
             var action: UserDbAction?

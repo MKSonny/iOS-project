@@ -16,8 +16,6 @@ class PostGroupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        uid = Auth.auth().currentUser?.uid
-        
         tabBarController?.delegate = self
         
         let nib = UINib(nibName: "PostTableViewCell", bundle: nil)
@@ -27,10 +25,7 @@ class PostGroupViewController: UIViewController {
         // 단순히 planGroup객체만 생성한다
         postGroup = PostGroup(parentNotification: receivingNotification)
         
-        MyUserFirebaseDatabase.shared.getFollowingList(uid: uid) { following in
-            print("hello world 11 \(following)")
-            self.postGroup.queryDataWithFollowingList(followingList: following)
-        }
+        
 //        postGroup.queryData(date: Date())       // 이달의 데이터를 가져온다. 데이터가 오면 planGroupListener가 호출된다.
         
     }
@@ -63,6 +58,7 @@ extension PostGroupViewController: UITableViewDataSource {
         return cell
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
        
         if Auth.auth().currentUser == nil {
@@ -80,6 +76,14 @@ extension PostGroupViewController: UITableViewDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if let uid = Auth.auth().currentUser?.uid {
+            MyUserFirebaseDatabase.shared.getFollowingList(uid: uid) { following in
+                print("hello world 11 \(following)")
+                self.postGroup.queryDataWithFollowingList(followingList: following)
+            }
+        }
+        
         postTableView.reloadData()
     }
 }
