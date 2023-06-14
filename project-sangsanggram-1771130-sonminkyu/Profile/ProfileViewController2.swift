@@ -31,8 +31,6 @@ class ProfileViewController2: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 1
@@ -140,6 +138,7 @@ extension ProfileViewController2: UICollectionViewDelegate, UICollectionViewData
         MyUserFirebaseDatabase.shared.findUsernameAndProfileImageWithUid(with: uid) { userName, profileImage in
             DispatchQueue.main.async {
                 profileHeader.nameLabelText(name: userName!)
+                profileHeader.postsCountLabel.text = String(self.postGroup.getPosts().count)
                 self.downloadImage(imageView: profileHeader.profilePhotoImageView, url: URL(string: profileImage!)!)
             }
         }

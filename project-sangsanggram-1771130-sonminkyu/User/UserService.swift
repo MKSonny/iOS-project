@@ -9,9 +9,9 @@ import Foundation
 
 class UserService {
     static let shared = UserService()
+    let userRepository = MyUserFirebaseDatabase.shared
     
-    public func getFollowersUsernameListByUid(uid: String) {
+    public func getPostCountByUid(uid: String, completion: @escaping (Int) -> Void) {
+        
     }
-    
-    
 }

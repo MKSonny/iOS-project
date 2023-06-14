@@ -24,15 +24,21 @@ class ProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
         return imageView
     }()
     
+    public let postsCountLabel: UILabel = {
+        let label = UILabel()
+//        label.text = "0"
+        return label
+    }()
+    
     private let postsButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Posts", for: .normal)
+        button.setTitle("게시물", for: .normal)
         return button
     }()
     
     private let followingButton: UIButton = {
         let button = UIButton()
-        button.setTitle("following", for: .normal)
+        button.setTitle("팔로잉", for: .normal)
         button.addTarget(self, action: #selector(didPressedFollowingButton), for: .touchUpInside)
         return button
     }()
@@ -43,7 +49,7 @@ class ProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
     
     private let followersButton: UIButton = {
         let button = UIButton()
-        button.setTitle("followers", for: .normal)
+        button.setTitle("팔로워", for: .normal)
         return button
     }()
     
@@ -84,6 +90,7 @@ class ProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
         addSubview(profilePhotoImageView)
         addSubview(followersButton)
         addSubview(followingButton)
+        addSubview(postsCountLabel)
         addSubview(postsButton)
         addSubview(bioLabel)
         addSubview(nameLabel)
@@ -103,15 +110,19 @@ class ProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
         let buttonHeight = profilePhotoSize/2
         let countButtonWidth = (width - 10 - profilePhotoSize)/3
         
-        postsButton.frame = CGRect(x: profilePhotoImageView.right, y: 5, width: countButtonWidth, height: buttonHeight).integral
+        let layoutYPos = CGFloat(45)
+        
+        postsButton.frame = CGRect(x: profilePhotoImageView.right, y: layoutYPos, width: countButtonWidth, height: buttonHeight).integral
+        
+        postsCountLabel.frame = CGRect(x: postsButton.center.x - 5, y: layoutYPos - 30, width: countButtonWidth, height: buttonHeight).integral
         
         profilePhotoImageView.layer.cornerRadius = profilePhotoSize/2.0
         
-        followersButton.frame = CGRect(x: postsButton.right, y: 5, width: countButtonWidth, height: buttonHeight).integral
+        followersButton.frame = CGRect(x: postsButton.right, y: layoutYPos, width: countButtonWidth, height: buttonHeight).integral
         
-        followingButton.frame = CGRect(x: followersButton.right, y: 5, width: countButtonWidth, height: buttonHeight).integral
+        followingButton.frame = CGRect(x: followersButton.right, y: layoutYPos, width: countButtonWidth, height: buttonHeight).integral
         
-        editProfileButton.frame = CGRect(x: profilePhotoImageView.right, y: 5 + buttonHeight, width: countButtonWidth * 3, height: buttonHeight).integral
+        editProfileButton.frame = CGRect(x: profilePhotoImageView.right, y: layoutYPos + buttonHeight, width: countButtonWidth * 3, height: buttonHeight).integral
         
         nameLabel.frame = CGRect(x: 5, y: 5 + profilePhotoImageView.bottom, width: width - 10, height: 50).integral
         
