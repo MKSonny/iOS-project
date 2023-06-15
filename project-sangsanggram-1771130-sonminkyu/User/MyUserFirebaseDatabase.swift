@@ -18,9 +18,33 @@ public class MyUserFirebaseDatabase {
         documentRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 if let following = document.data()?["following"] as? [String] {
-                    print("why? \(following)")
-                    completion(following)
+                    // 본인은 제외
+                    let filteredFollowing = following.filter { $0 != uid }
+                    print("why? \(filteredFollowing)")
+                    completion(filteredFollowing)
                 }
+            }
+        }
+    }
+    
+    public func getFollowingList(uid: String, completion: @escaping ([(username: String?, profileImage: String?)]) -> Void) {
+        MyUserFirebaseDatabase.shared.getFollowingList(uid: uid) { followingUIDs in
+            var userProfiles: [(username: String?, profileImage: String?)] = []
+            let dispatchGroup = DispatchGroup()
+            
+            // Iterate over the following UIDs
+            for followingUid in followingUIDs {
+                dispatchGroup.enter()
+                MyUserFirebaseDatabase.shared.findUsernameAndProfileImageWithUid(with: followingUid) { username, image in
+                    let userProfile = (username: username, profileImage: image)
+                    userProfiles.append(userProfile)
+                    dispatchGroup.leave()
+                }
+            }
+            
+            dispatchGroup.notify(queue: .main) {
+                // Completion handler with the retrieved user profiles
+                completion(userProfiles)
             }
         }
     }
@@ -82,6 +106,27 @@ public class MyUserFirebaseDatabase {
                 // 문서가 존재하지 않거나 가져오는 동안 오류가 발생한 경우
                 print("문서가 존재하지 않거나 오류 발생: \(error?.localizedDescription ?? "")")
                 completion(nil, nil)
+            }
+        }
+    }
+    
+    public func findUserProfileInfoWithUid(with uid: String, completion: @escaping (String?, String?, Int?) -> Void) {
+        let docRef = reference.document(uid)
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                // 문서가 존재하고 필드 값을 가져올 수 있는 경우
+                let data = document.data()
+                let fieldValue = data?["username"] as? String
+                let imageValue = data?["profileImage"] as? String
+                let followingValue = data?["following"] as? [String]
+                // 본인은 제외
+                let count = (followingValue?.count ?? 0) - 1
+                completion(fieldValue, imageValue, count)
+            } else {
+                // 문서가 존재하지 않거나 가져오는 동안 오류가 발생한 경우
+                print("문서가 존재하지 않거나 오류 발생: \(error?.localizedDescription ?? "")")
+                completion(nil, nil, nil)
             }
         }
     }

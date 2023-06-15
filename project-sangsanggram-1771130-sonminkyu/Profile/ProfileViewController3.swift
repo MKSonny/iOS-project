@@ -60,14 +60,12 @@ class ProfileViewController3: UIViewController {
         userGroup = UserGroup(parentNotification: receivingUsersInfo)
         userGroup.database.queryUser()
         
-        
-        
-        MyUserFirebaseDatabase.shared.findUsernameAndProfileImageWithUid(with: uid) { userName, profileImage in
+        MyUserFirebaseDatabase.shared.findUserProfileInfoWithUid(with: uid) { userName, profileImage, followingCount in
             DispatchQueue.main.async {
                 self.nameLabel.text = userName
 //                profileHeader.nameLabelText(name: userName!)
                 self.postLabel.text = String(self.postGroup.getPosts().count)
-                
+                self.followingLabel.text = String(followingCount!)
                 self.downloadImage(imageView: self.profileImageView, url: URL(string: profileImage!)!)
             }
         }
