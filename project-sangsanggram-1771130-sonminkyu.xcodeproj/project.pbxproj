@@ -79,6 +79,8 @@
 		E7DF04EF2A33450B00B3D5B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7DF04EE2A33450B00B3D5B5 /* Main.storyboard */; };
 		E7DF04F22A33474200B3D5B5 /* FollowersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DF04F02A33474200B3D5B5 /* FollowersTableViewCell.swift */; };
 		E7DF04F32A33474200B3D5B5 /* FollowersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7DF04F12A33474200B3D5B5 /* FollowersTableViewCell.xib */; };
+		E7EC94792A3AD66500F1B207 /* ProfileViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EC94782A3AD66500F1B207 /* ProfileViewController3.swift */; };
+		E7EC947B2A3ADBC800F1B207 /* MyPostsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EC947A2A3ADBC800F1B207 /* MyPostsCollectionViewCell.swift */; };
 		E7F266032A333FDE000C2392 /* FollowingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F266022A333FDE000C2392 /* FollowingViewController.swift */; };
 		E7FBF5E02A2B6020005A56DB /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FBF5DE2A2B6020005A56DB /* PostTableViewCell.swift */; };
 		E7FBF5E12A2B6020005A56DB /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7FBF5DF2A2B6020005A56DB /* PostTableViewCell.xib */; };
@@ -132,6 +134,8 @@
 		E7DF04EE2A33450B00B3D5B5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E7DF04F02A33474200B3D5B5 /* FollowersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersTableViewCell.swift; sourceTree = "<group>"; };
 		E7DF04F12A33474200B3D5B5 /* FollowersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowersTableViewCell.xib; sourceTree = "<group>"; };
+		E7EC94782A3AD66500F1B207 /* ProfileViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController3.swift; sourceTree = "<group>"; };
+		E7EC947A2A3ADBC800F1B207 /* MyPostsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsCollectionViewCell.swift; sourceTree = "<group>"; };
 		E7F266022A333FDE000C2392 /* FollowingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingViewController.swift; sourceTree = "<group>"; };
 		E7FBF5DE2A2B6020005A56DB /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		E7FBF5DF2A2B6020005A56DB /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
@@ -232,6 +236,8 @@
 				E7F266022A333FDE000C2392 /* FollowingViewController.swift */,
 				E7DF04F02A33474200B3D5B5 /* FollowersTableViewCell.swift */,
 				E7DF04F12A33474200B3D5B5 /* FollowersTableViewCell.xib */,
+				E7EC94782A3AD66500F1B207 /* ProfileViewController3.swift */,
+				E7EC947A2A3ADBC800F1B207 /* MyPostsCollectionViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -433,6 +439,7 @@
 				E7650F5F2A331F3F00C841DD /* UserFirebaseDatabase.swift in Sources */,
 				E7F266032A333FDE000C2392 /* FollowingViewController.swift in Sources */,
 				E74F045B2A343C6F00E5546A /* MyUserFirebaseDatabase.swift in Sources */,
+				E7EC947B2A3ADBC800F1B207 /* MyPostsCollectionViewCell.swift in Sources */,
 				E7BAA7082A39C68000659660 /* AlbumMemoViewController.swift in Sources */,
 				E74BA1272A319B85002BD9B2 /* ListViewController.swift in Sources */,
 				E7D063442A2B52A40024349C /* PlanGroupViewController.swift in Sources */,
@@ -445,6 +452,7 @@
 				E78BE1D12A2EF440009A3608 /* RegisterViewController.swift in Sources */,
 				E7D063362A2B3ED10024349C /* DbMemory.swift in Sources */,
 				E7D063422A2B513F0024349C /* ExtendedDate.swift in Sources */,
+				E7EC94792A3AD66500F1B207 /* ProfileViewController3.swift in Sources */,
 				E7D063482A2B56890024349C /* PostGroupViewController.swift in Sources */,
 				E7D063402A2B4FC80024349C /* PostGroup.swift in Sources */,
 				E79880DB2A2DC3B200736C96 /* DbFirebasePost.swift in Sources */,
