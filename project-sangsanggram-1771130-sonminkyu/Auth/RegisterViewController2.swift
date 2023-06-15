@@ -15,6 +15,8 @@ class RegisterViewController2: UIViewController {
     
     var passwordTextField: UITextField!
     
+    var cancelButton: UIButton!
+    
     var registerButton: UIButton!
     
     var privacyPolicy: UIButton!
@@ -52,11 +54,20 @@ class RegisterViewController2: UIViewController {
         usernameTextField = createTextField(placeHolder: "이름 입력...", frame: CGRect(x: 20, y: view.safeAreaInsets.top + 100, width: view.bounds.width - 49, height: 52))
         emailTextField = createTextField(placeHolder: "이메일 입력...", frame: CGRect(x: 20, y: usernameTextField.frame.maxY + 20, width: view.bounds.width - 49, height: 52))
         passwordTextField = createTextField(placeHolder: "비밀번호 입력...", frame: CGRect(x: 20, y: emailTextField.frame.maxY + 20, width: view.bounds.width - 49, height: 52))
+        
         registerButton = createButton(title: "회원가입", frame: CGRect(x: 20, y: passwordTextField.frame.maxY + 20, width: view.bounds.width - 49, height: 52), color: .systemGreen)
+        
+        cancelButton = createButton(title: "취소", frame: CGRect(x: 20, y: registerButton.frame.maxY + 20, width: view.bounds.width - 49, height: 52), color: .systemGray2)
+        
+        cancelButton.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
         
         registerButton.addTarget(self, action: #selector(didTapRegisterButton), for: .touchUpInside)
     }
     
+    
+}
+
+extension RegisterViewController2 {
     @objc func didTapRegisterButton() {
         usernameTextField.resignFirstResponder()
         emailTextField.resignFirstResponder()
@@ -80,9 +91,13 @@ class RegisterViewController2: UIViewController {
             }
         }
     }
+    
+    @objc func didTapCancelButton() {
+        dismiss(animated: true)
+    }
 }
 
-extension RegisterViewController2{
+extension RegisterViewController2 {
     func connectVertically(views: UIView..., spacing: CGFloat){
         for i in 0..<views.count - 1{
             views[i].bottomAnchor.constraint(equalTo: views[i+1].topAnchor, constant: spacing).isActive = true

@@ -64,7 +64,7 @@ extension PostGroupViewController: UITableViewDataSource {
             // show log in
             print("로그인 한 유저 없음")
 //            let loginVC = RegisterViewController()
-            let loginVC = RegisterViewController2()
+            let loginVC = LoginViewController2()
             loginVC.modalPresentationStyle = .fullScreen
             present(loginVC, animated: true)
         } else {

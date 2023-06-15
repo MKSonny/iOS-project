@@ -60,6 +60,8 @@
 		E7BAA70A2A39C6C300659660 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BAA7092A39C6C300659660 /* ImageCollectionViewCell.swift */; };
 		E7BAA70C2A39CD9B00659660 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BAA70B2A39CD9B00659660 /* NewPostViewController.swift */; };
 		E7C036E42A3B0EDC000E9E1E /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C036E32A3B0EDC000E9E1E /* ProfileEditViewController.swift */; };
+		E7C036E62A3B1D97000E9E1E /* LoginViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C036E52A3B1D97000E9E1E /* LoginViewController2.swift */; };
+		E7C036E82A3B1F3D000E9E1E /* PrivacyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C036E72A3B1F3D000E9E1E /* PrivacyInfoViewController.swift */; };
 		E7C099D22A2ED59F00394819 /* DbFirebasePlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C099D12A2ED59F00394819 /* DbFirebasePlan.swift */; };
 		E7D0631E2A2B3CF20024349C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0631D2A2B3CF20024349C /* AppDelegate.swift */; };
 		E7D063202A2B3CF20024349C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0631F2A2B3CF20024349C /* SceneDelegate.swift */; };
@@ -116,6 +118,8 @@
 		E7BAA7092A39C6C300659660 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E7BAA70B2A39CD9B00659660 /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
 		E7C036E32A3B0EDC000E9E1E /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
+		E7C036E52A3B1D97000E9E1E /* LoginViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController2.swift; sourceTree = "<group>"; };
+		E7C036E72A3B1F3D000E9E1E /* PrivacyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyInfoViewController.swift; sourceTree = "<group>"; };
 		E7C099D12A2ED59F00394819 /* DbFirebasePlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbFirebasePlan.swift; sourceTree = "<group>"; };
 		E7D0631A2A2B3CF20024349C /* project-sangsanggram-1771130-sonminkyu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project-sangsanggram-1771130-sonminkyu.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7D0631D2A2B3CF20024349C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 				E78BE1D22A2EFEB4009A3608 /* AuthDatabase.swift */,
 				E7A1E3DC2A3487E800382AFB /* LoginViewController.swift */,
 				E7EC947C2A3B076C00F1B207 /* RegisterViewController2.swift */,
+				E7C036E52A3B1D97000E9E1E /* LoginViewController2.swift */,
+				E7C036E72A3B1F3D000E9E1E /* PrivacyInfoViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -439,6 +445,7 @@
 				E7EC947D2A3B076C00F1B207 /* RegisterViewController2.swift in Sources */,
 				E7D063322A2B3D8E0024349C /* Plan.swift in Sources */,
 				E78BE1D72A2F2A95009A3608 /* Extentions.swift in Sources */,
+				E7C036E62A3B1D97000E9E1E /* LoginViewController2.swift in Sources */,
 				E78BE1C42A2EEC05009A3608 /* UserDatabase.swift in Sources */,
 				E74BA12F2A31AD7F002BD9B2 /* MyDatabase.swift in Sources */,
 				E78BE1E32A2F4A2E009A3608 /* ProfileTabsCollectionReusableView.swift in Sources */,
@@ -459,6 +466,7 @@
 				E7C099D22A2ED59F00394819 /* DbFirebasePlan.swift in Sources */,
 				E7DF04F22A33474200B3D5B5 /* FollowersTableViewCell.swift in Sources */,
 				E78BE1E12A2F49A6009A3608 /* ProfileInfoHeaderCollectionReusableView.swift in Sources */,
+				E7C036E82A3B1F3D000E9E1E /* PrivacyInfoViewController.swift in Sources */,
 				E7D063342A2B3E330024349C /* Database.swift in Sources */,
 				E767A5A22A3322000027A896 /* UserGroup.swift in Sources */,
 				E78BE1D12A2EF440009A3608 /* RegisterViewController.swift in Sources */,

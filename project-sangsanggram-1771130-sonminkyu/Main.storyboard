@@ -43,7 +43,6 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BJl-S0-cLM"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="IYI-5d-6Tt" firstAttribute="centerY" secondItem="rll-iY-vHa" secondAttribute="centerY" id="EZj-ok-FiZ"/>
                             <constraint firstItem="IYI-5d-6Tt" firstAttribute="centerX" secondItem="rll-iY-vHa" secondAttribute="centerX" id="IF6-vy-aut"/>
@@ -69,6 +68,21 @@
             </objects>
             <point key="canvasLocation" x="-860" y="-1499"/>
         </scene>
+        <!--Login View Controller2-->
+        <scene sceneID="JK5-Vy-JI7">
+            <objects>
+                <viewController id="kaa-0a-4Rl" customClass="LoginViewController2" customModule="project_sangsanggram_1771130_sonminkyu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ahU-i7-yG8">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="JbO-pH-vwC"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tna-fn-Nth" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2859" y="-792"/>
+        </scene>
         <!--Register View Controller2-->
         <scene sceneID="LOU-8i-znE">
             <objects>
@@ -83,6 +97,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qeU-rX-1ko" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1940" y="-792"/>
+        </scene>
+        <!--Privacy Info View Controller-->
+        <scene sceneID="m88-Lh-EBk">
+            <objects>
+                <viewController id="Bdf-MV-viU" customClass="PrivacyInfoViewController" customModule="project_sangsanggram_1771130_sonminkyu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4s1-ZQ-0kj">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="bVC-7X-oXo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y4j-DC-Kvc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2860" y="-109"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="27e-CQ-vze">
