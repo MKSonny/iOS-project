@@ -59,6 +59,7 @@
 		E7BAA7082A39C68000659660 /* AlbumMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BAA7072A39C68000659660 /* AlbumMemoViewController.swift */; };
 		E7BAA70A2A39C6C300659660 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BAA7092A39C6C300659660 /* ImageCollectionViewCell.swift */; };
 		E7BAA70C2A39CD9B00659660 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BAA70B2A39CD9B00659660 /* NewPostViewController.swift */; };
+		E7C036E42A3B0EDC000E9E1E /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C036E32A3B0EDC000E9E1E /* ProfileEditViewController.swift */; };
 		E7C099D22A2ED59F00394819 /* DbFirebasePlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C099D12A2ED59F00394819 /* DbFirebasePlan.swift */; };
 		E7D0631E2A2B3CF20024349C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0631D2A2B3CF20024349C /* AppDelegate.swift */; };
 		E7D063202A2B3CF20024349C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0631F2A2B3CF20024349C /* SceneDelegate.swift */; };
@@ -81,6 +82,8 @@
 		E7DF04F32A33474200B3D5B5 /* FollowersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7DF04F12A33474200B3D5B5 /* FollowersTableViewCell.xib */; };
 		E7EC94792A3AD66500F1B207 /* ProfileViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EC94782A3AD66500F1B207 /* ProfileViewController3.swift */; };
 		E7EC947B2A3ADBC800F1B207 /* MyPostsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EC947A2A3ADBC800F1B207 /* MyPostsCollectionViewCell.swift */; };
+		E7EC947D2A3B076C00F1B207 /* RegisterViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EC947C2A3B076C00F1B207 /* RegisterViewController2.swift */; };
+		E7EC947F2A3B0BE900F1B207 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EC947E2A3B0BE900F1B207 /* AlertViewController.swift */; };
 		E7F266032A333FDE000C2392 /* FollowingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F266022A333FDE000C2392 /* FollowingViewController.swift */; };
 		E7FBF5E02A2B6020005A56DB /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FBF5DE2A2B6020005A56DB /* PostTableViewCell.swift */; };
 		E7FBF5E12A2B6020005A56DB /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7FBF5DF2A2B6020005A56DB /* PostTableViewCell.xib */; };
@@ -112,6 +115,7 @@
 		E7BAA7072A39C68000659660 /* AlbumMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumMemoViewController.swift; sourceTree = "<group>"; };
 		E7BAA7092A39C6C300659660 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E7BAA70B2A39CD9B00659660 /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
+		E7C036E32A3B0EDC000E9E1E /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		E7C099D12A2ED59F00394819 /* DbFirebasePlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbFirebasePlan.swift; sourceTree = "<group>"; };
 		E7D0631A2A2B3CF20024349C /* project-sangsanggram-1771130-sonminkyu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project-sangsanggram-1771130-sonminkyu.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7D0631D2A2B3CF20024349C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +140,8 @@
 		E7DF04F12A33474200B3D5B5 /* FollowersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowersTableViewCell.xib; sourceTree = "<group>"; };
 		E7EC94782A3AD66500F1B207 /* ProfileViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController3.swift; sourceTree = "<group>"; };
 		E7EC947A2A3ADBC800F1B207 /* MyPostsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsCollectionViewCell.swift; sourceTree = "<group>"; };
+		E7EC947C2A3B076C00F1B207 /* RegisterViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController2.swift; sourceTree = "<group>"; };
+		E7EC947E2A3B0BE900F1B207 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		E7F266022A333FDE000C2392 /* FollowingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingViewController.swift; sourceTree = "<group>"; };
 		E7FBF5DE2A2B6020005A56DB /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		E7FBF5DF2A2B6020005A56DB /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
@@ -221,6 +227,7 @@
 				E78BE1D02A2EF440009A3608 /* RegisterViewController.swift */,
 				E78BE1D22A2EFEB4009A3608 /* AuthDatabase.swift */,
 				E7A1E3DC2A3487E800382AFB /* LoginViewController.swift */,
+				E7EC947C2A3B076C00F1B207 /* RegisterViewController2.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -238,6 +245,7 @@
 				E7DF04F12A33474200B3D5B5 /* FollowersTableViewCell.xib */,
 				E7EC94782A3AD66500F1B207 /* ProfileViewController3.swift */,
 				E7EC947A2A3ADBC800F1B207 /* MyPostsCollectionViewCell.swift */,
+				E7C036E32A3B0EDC000E9E1E /* ProfileEditViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -305,6 +313,7 @@
 				E78BE1D62A2F2A95009A3608 /* Extentions.swift */,
 				E74BA1262A319B85002BD9B2 /* ListViewController.swift */,
 				E74BA12E2A31AD7F002BD9B2 /* MyDatabase.swift */,
+				E7EC947E2A3B0BE900F1B207 /* AlertViewController.swift */,
 			);
 			path = "project-sangsanggram-1771130-sonminkyu";
 			sourceTree = "<group>";
@@ -426,6 +435,8 @@
 				E78BE1D32A2EFEB4009A3608 /* AuthDatabase.swift in Sources */,
 				E7FBF5E02A2B6020005A56DB /* PostTableViewCell.swift in Sources */,
 				E7D0633E2A2B46050024349C /* PlanGroup.swift in Sources */,
+				E7EC947F2A3B0BE900F1B207 /* AlertViewController.swift in Sources */,
+				E7EC947D2A3B076C00F1B207 /* RegisterViewController2.swift in Sources */,
 				E7D063322A2B3D8E0024349C /* Plan.swift in Sources */,
 				E78BE1D72A2F2A95009A3608 /* Extentions.swift in Sources */,
 				E78BE1C42A2EEC05009A3608 /* UserDatabase.swift in Sources */,
@@ -443,6 +454,7 @@
 				E7BAA7082A39C68000659660 /* AlbumMemoViewController.swift in Sources */,
 				E74BA1272A319B85002BD9B2 /* ListViewController.swift in Sources */,
 				E7D063442A2B52A40024349C /* PlanGroupViewController.swift in Sources */,
+				E7C036E42A3B0EDC000E9E1E /* ProfileEditViewController.swift in Sources */,
 				E7D0631E2A2B3CF20024349C /* AppDelegate.swift in Sources */,
 				E7C099D22A2ED59F00394819 /* DbFirebasePlan.swift in Sources */,
 				E7DF04F22A33474200B3D5B5 /* FollowersTableViewCell.swift in Sources */,

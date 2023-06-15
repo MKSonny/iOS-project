@@ -64,7 +64,7 @@ extension PostGroupViewController: UITableViewDataSource {
             // show log in
             print("로그인 한 유저 없음")
 //            let loginVC = RegisterViewController()
-            let loginVC = LoginViewController()
+            let loginVC = RegisterViewController2()
             loginVC.modalPresentationStyle = .fullScreen
             present(loginVC, animated: true)
         } else {
@@ -79,7 +79,9 @@ extension PostGroupViewController: UITableViewDataSource {
         if let uid = Auth.auth().currentUser?.uid {
             MyUserFirebaseDatabase.shared.getFollowingList(uid: uid) { following in
                 print("hello world 11 \(following)")
-                self.postGroup.queryDataWithFollowingList(followingList: following)
+                if following.count > 0 {
+                    self.postGroup.queryDataWithFollowingList(followingList: following)
+                }
             }
         }
         
@@ -93,9 +95,14 @@ extension PostGroupViewController: UITabBarControllerDelegate {
         
         if let viewController = viewController as? UINavigationController{
             print("hello world 12 \(viewController.viewControllers[0])")
-            let albumMemoVC = viewController.viewControllers[0] as! AlbumMemoViewController
-            albumMemoVC.postGroup = postGroup
+//            let albumMemoVC = viewController.viewControllers[0] as! AlbumMemoViewController
+            if let profileVC3 = viewController.viewControllers[0] as? ProfileViewController3 {
+                profileVC3.postGroup = postGroup
+            }
             
+            if let albumMemoVC = viewController.viewControllers[0] as? AlbumMemoViewController {
+                albumMemoVC.postGroup = postGroup
+            }
         }
         if let cameraViewController = viewController as? CameraViewController {
             print("hello world2 cameraViewController")

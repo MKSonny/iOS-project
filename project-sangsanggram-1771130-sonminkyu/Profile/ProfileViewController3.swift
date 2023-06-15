@@ -20,10 +20,13 @@ class ProfileViewController3: UIViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
     
-    @IBOutlet weak var profileInfoTextView: UITextView!
+    @IBOutlet weak var profileEditButton: UIButton!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBAction func logOutButtonPressed(_ sender: UIBarButtonItem) {
+        try? Auth.auth().signOut()
+    }
     var postGroup: PostGroup!
     var userGroup: UserGroup!
     
@@ -32,6 +35,8 @@ class ProfileViewController3: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        profileEditButton.layer.cornerRadius = 8.0
         
         profileImageView.layer.cornerRadius = profileImageView.frame.width / 2
         profileImageView.clipsToBounds = true

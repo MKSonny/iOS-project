@@ -19,9 +19,9 @@ public class MyUserFirebaseDatabase {
             if let document = document, document.exists {
                 if let following = document.data()?["following"] as? [String] {
                     // 본인은 제외
-                    let filteredFollowing = following.filter { $0 != uid }
-                    print("why? \(filteredFollowing)")
-                    completion(filteredFollowing)
+//                    let filteredFollowing = following.filter { $0 != uid }
+//                    print("why? \(filteredFollowing)")
+                    completion(following)
                 }
             }
         }
