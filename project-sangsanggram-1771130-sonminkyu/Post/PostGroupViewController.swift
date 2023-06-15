@@ -90,6 +90,13 @@ extension PostGroupViewController: UITableViewDataSource {
 extension PostGroupViewController: UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        
+        if let viewController = viewController as? UINavigationController{
+            print("hello world 12 \(viewController.viewControllers[0])")
+            let albumMemoVC = viewController.viewControllers[0] as! AlbumMemoViewController
+            albumMemoVC.postGroup = postGroup
+            
+        }
         if let cameraViewController = viewController as? CameraViewController {
             print("hello world2 cameraViewController")
             cameraViewController.postGroup = postGroup

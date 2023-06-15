@@ -6,14 +6,29 @@
 //
 
 import UIKit
+import FirebaseStorage
+import FirebaseAuth
 
 class NewPostViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var textField: UITextField!
+    var postGroup: PostGroup!
+    var imageUrl: String!
+    var username: String!
+    var writerImage: String!
+    var uid: String!
     // 오토레이아웃을 프로그램으로 조정할 수 있다.
     @IBOutlet weak var bottomViewContraint: NSLayoutConstraint!
+    @IBAction func addPostButton(_ sender: UIBarButtonItem) {
+        print("hello world 11")
+        
+        let post = Post(imageUrl: imageUrl!,username: username, uid: uid,writerImage: writerImage, date: Date().setCurrentTime(), content: "hello world", likes: 0)
+        
+        postGroup.saveChange(post: post, action: .Add)
+        navigationController?.popViewController(animated: true)
+    }
     
     var image: UIImage? {
         // image 값이 변경되면 항상 didSet가 호출된다.
@@ -23,6 +38,12 @@ class NewPostViewController: UIViewController {
         didSet {
             if let imageView = imageView {
                 imageView.image = image
+                uploadImage(image: image!, pathRoot: "post_image") { url in
+                    if let url = url {
+                        self.imageUrl = url.absoluteString
+                        print("업로드 성공 \(url)")
+                    }
+                }
             }
         }
     }
@@ -42,6 +63,17 @@ class NewPostViewController: UIViewController {
                 )
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(removeKeyboard))
         view.addGestureRecognizer(tapGestureRecognizer)
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        uid = Auth.auth().currentUser?.uid
+        MyUserFirebaseDatabase.shared.findUsernameAndProfileImageWithUid(with: uid) { writer, writerImage in
+            self.username = writer
+            self.writerImage = writerImage
+        }
     }
     
     @objc private func keyboardWillShow(_ notification: Notification) {
@@ -57,5 +89,21 @@ class NewPostViewController: UIViewController {
     @objc func removeKeyboard(sender: UITapGestureRecognizer){
         textField.resignFirstResponder()
     }
+}
 
+extension NewPostViewController {
+    func uploadImage(image: UIImage, pathRoot: String, completion: @escaping (URL?) -> Void) {
+        guard let imageData = image.jpegData(compressionQuality: 0.4) else { return }
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpeg"
+        
+        let imageName = UUID().uuidString + String(Date().timeIntervalSince1970)
+        
+        let firebaseReference = Storage.storage().reference().child("\(imageName)")
+        firebaseReference.putData(imageData, metadata: metaData) { metaData, error in
+            firebaseReference.downloadURL { url, _ in
+                completion(url)
+            }
+        }
+    }
 }

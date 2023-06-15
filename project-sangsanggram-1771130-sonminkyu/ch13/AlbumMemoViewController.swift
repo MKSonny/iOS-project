@@ -14,6 +14,7 @@ class AlbumMemoViewController: UIViewController {
     @IBOutlet weak var takePictureButton: UIButton!
     var captureSession: AVCaptureSession?
     @IBOutlet weak var liveImageView: UIImageView!
+    var postGroup: PostGroup!
 
     // collection view를 위한 변수
     @IBOutlet weak var collectionView: UICollectionView!
@@ -96,8 +97,6 @@ extension AlbumMemoViewController: AVCaptureVideoDataOutputSampleBufferDelegate 
             return
         }
         
-        captureSession.ou
-        
         performSegue(withIdentifier: "ShowDetail", sender: sender)
     }
 }
@@ -136,6 +135,7 @@ extension AlbumMemoViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let newPostViewController = segue.destination as! NewPostViewController
+        newPostViewController.postGroup = postGroup
         
         // 이미지에 대한 정보를 가져온다
         let indexPath = sender as! IndexPath    // sender이 indexPath이다.
