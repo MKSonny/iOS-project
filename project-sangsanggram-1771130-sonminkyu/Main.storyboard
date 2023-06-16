@@ -105,9 +105,28 @@
                     <view key="view" contentMode="scaleToFill" id="4s1-ZQ-0kj">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iza-Gs-f6P">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="bVC-7X-oXo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="iza-Gs-f6P" firstAttribute="top" secondItem="bVC-7X-oXo" secondAttribute="top" id="5BG-Eo-Idp"/>
+                            <constraint firstItem="iza-Gs-f6P" firstAttribute="leading" secondItem="bVC-7X-oXo" secondAttribute="leading" id="9fB-7h-RqK"/>
+                            <constraint firstItem="bVC-7X-oXo" firstAttribute="trailing" secondItem="iza-Gs-f6P" secondAttribute="trailing" id="hLH-UL-axm"/>
+                            <constraint firstItem="bVC-7X-oXo" firstAttribute="bottom" secondItem="iza-Gs-f6P" secondAttribute="bottom" id="vPZ-4l-AZ5"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="iza-Gs-f6P" id="VPk-bk-QHv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y4j-DC-Kvc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -221,20 +240,20 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SerachTableViewCell" id="9tX-UL-5BG">
-                                        <rect key="frame" x="0.0" y="50" width="377" height="73"/>
+                                        <rect key="frame" x="0.0" y="50" width="377" height="72.666664123535156"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9tX-UL-5BG" id="iJp-z3-vcD">
-                                            <rect key="frame" x="0.0" y="0.0" width="377" height="73"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="377" height="72.666664123535156"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0n-fG-rJ7">
-                                                    <rect key="frame" x="28" y="19" width="42" height="35"/>
+                                                    <rect key="frame" x="28" y="18.999999999999996" width="42" height="34.666666666666657"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5U-9C-YxG">
-                                                    <rect key="frame" x="290" y="19" width="75" height="35"/>
+                                                    <rect key="frame" x="290" y="18.999999999999996" width="75" height="34.666666666666657"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                 </button>
@@ -785,6 +804,9 @@
                                         <rect key="frame" x="0.0" y="615.66666666666663" width="377" height="34.333333333333371"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="take picture"/>
+                                        <connections>
+                                            <action selector="tapTakePicture:" destination="ZRs-zX-0J9" eventType="touchUpInside" id="LIl-TB-7BB"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -832,14 +854,17 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="내용을 입력해주세요..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i5a-nW-l5n">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KKr-Nd-cRm">
                                         <rect key="frame" x="0.0" y="329" width="377" height="321"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="6GV-B6-QRT" firstAttribute="height" secondItem="i5a-nW-l5n" secondAttribute="height" id="O9d-Bv-Aqi"/>
+                                    <constraint firstItem="KKr-Nd-cRm" firstAttribute="height" secondItem="6GV-B6-QRT" secondAttribute="height" id="Euw-dY-gyM"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -863,7 +888,7 @@
                         <outlet property="bottomViewContraint" destination="C80-6w-eyW" id="lXQ-5Y-PT2"/>
                         <outlet property="imageView" destination="6GV-B6-QRT" id="Rie-8x-2cI"/>
                         <outlet property="stackView" destination="BUB-71-EEN" id="yCE-KY-ezm"/>
-                        <outlet property="textField" destination="i5a-nW-l5n" id="lfK-A3-afy"/>
+                        <outlet property="textView" destination="KKr-Nd-cRm" id="qeM-HP-jUu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZyE-GP-8lj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -962,6 +987,9 @@
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

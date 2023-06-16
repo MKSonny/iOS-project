@@ -25,7 +25,25 @@ class ProfileViewController3: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBAction func logOutButtonPressed(_ sender: UIBarButtonItem) {
-        try? Auth.auth().signOut()
+        let alertController = UIAlertController(title: "로그아웃", message: "정말 로그아웃 하시겠습니까?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let logOutAction = UIAlertAction(title: "확인", style: .default) { _ in
+            do {
+                try Auth.auth().signOut()
+                // 로그아웃 성공한 후
+                if let tabBarController = self.tabBarController {
+                    // 홈 탭으로 이동하도록 설정 -> 홈 탭(게시물 리스트 페이지)에는
+                    // 현재 currentUser가 nil이면 로그인 페이지가 나오도록 설정되어 있다.
+                    tabBarController.selectedIndex = 0
+                }
+            } catch let signOutError as NSError {
+                // 로그아웃 실패한 경우
+                print("로그아웃 실패: \(signOutError.localizedDescription)")
+            }
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(logOutAction)
+        present(alertController, animated: true, completion: nil)
     }
     var postGroup: PostGroup!
     var userGroup: UserGroup!

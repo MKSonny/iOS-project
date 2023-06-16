@@ -8,6 +8,7 @@
 import UIKit
 import Photos
 import AVFoundation
+import Vision
 
 class AlbumMemoViewController: UIViewController {
     // live 이미지 처리를 위한 변수
@@ -15,7 +16,18 @@ class AlbumMemoViewController: UIViewController {
     var captureSession: AVCaptureSession?
     @IBOutlet weak var liveImageView: UIImageView!
     var postGroup: PostGroup!
+    
+    
+    @IBAction func tapTakePicture(_ sender: UIButton) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self // 이 딜리게이터를 설정하면 사진을 찍은후 호출된다
 
+        imagePickerController.sourceType = .camera
+
+        // UIImagePickerController이 활성화 된다, 11장을 보라
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
     // collection view를 위한 변수
     @IBOutlet weak var collectionView: UICollectionView!
     var fetchResult: PHFetchResult<PHAsset>! // 사진에 대한 데이터 저장
@@ -25,29 +37,31 @@ class AlbumMemoViewController: UIViewController {
         
         navigationItem.title = "게시물 작성"
         
-        takePictureButton.addTarget(self, action: #selector(takeLivePicture), for: .touchUpInside)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didtapLiveImageView))
+        liveImageView.addGestureRecognizer(tap)
+        liveImageView.isUserInteractionEnabled = true
 
-        if captureSession == nil {
-                captureSession = AVCaptureSession()
-                if let videoInput = createVideoInput(), let videoOutput = createVideoOutput() {
-                    if captureSession!.canAddInput(videoInput) && captureSession!.canAddOutput(videoOutput) {
-                        captureSession!.addInput(videoInput)
-                        captureSession!.addOutput(videoOutput)
-                        attachPreviewer(captureSession: captureSession!)
-                    }
-                }
-            }
-            
-            if let captureSession = captureSession {
-                if !captureSession.isRunning {
-                    captureSession.startRunning()
-                }
-            }
+//        if captureSession == nil {
+//                captureSession = AVCaptureSession()
+//                if let videoInput = createVideoInput(), let videoOutput = createVideoOutput() {
+//                    if captureSession!.canAddInput(videoInput) && captureSession!.canAddOutput(videoOutput) {
+//                        captureSession!.addInput(videoInput)
+//                        captureSession!.addOutput(videoOutput)
+//                        attachPreviewer(captureSession: captureSession!)
+//                    }
+//                }
+//            }
+//
+//            if let captureSession = captureSession {
+//                if !captureSession.isRunning {
+//                    captureSession.startRunning()
+//                }
+//            }
         
         liveImageView.image = UIImage(named: "helloworld")
-        let tap2 = UITapGestureRecognizer(target: self, action: #selector(takePicture2))
-        liveImageView.addGestureRecognizer(tap2)
-        liveImageView.isUserInteractionEnabled = true
+//        let tap2 = UITapGestureRecognizer(target: self, action: #selector(takePicture2))
+//        liveImageView.addGestureRecognizer(tap2)
+//        liveImageView.isUserInteractionEnabled = true
         
         // 모든 사진을 가져온다
         let allPhotosOptions = PHFetchOptions()
@@ -58,48 +72,48 @@ class AlbumMemoViewController: UIViewController {
         collectionView.dataSource = self
     }
     
-    @objc func takeLivePicture() {
-        
+    @objc func didtapLiveImageView() {
+        performSegue(withIdentifier: "ShowDetail", sender: liveImageView.image)
     }
 }
 
 // 이미지 뷰에 실시간으로 계속 받아오는 영상 데이터를 버퍼에 담아서 이미지 뷰 화면에 뿌려준다.
-extension AlbumMemoViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
-    func createVideoInput() -> AVCaptureDeviceInput? {
-        if let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) {
-            return try? AVCaptureDeviceInput(device: device)
-        }
-        return nil
-    }
-    func createVideoOutput() -> AVCaptureVideoDataOutput? {
-        let videoOutput = AVCaptureVideoDataOutput()
-        let settings: [String: Any] = [kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCVPixelFormatType_32BGRA)]
-        videoOutput.videoSettings = settings
-        videoOutput.alwaysDiscardsLateVideoFrames = true
-        videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue.global())
-        return videoOutput
-    }
-    
-    func attachPreviewer(captureSession: AVCaptureSession) {
-        let avCaptureImagePreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        avCaptureImagePreviewLayer.frame = liveImageView.layer.bounds
-        avCaptureImagePreviewLayer.videoGravity = .resize
-        liveImageView.layer.addSublayer(avCaptureImagePreviewLayer)
-    }
-    
-    @objc func takePicture2(sender: UITapGestureRecognizer) {
-        if let captureSession = captureSession {
-            if captureSession.isRunning {
-                captureSession.stopRunning()
-            } else {
-                captureSession.startRunning()
-            }
-            return
-        }
-        
-        performSegue(withIdentifier: "ShowDetail", sender: sender)
-    }
-}
+//extension AlbumMemoViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
+//    func createVideoInput() -> AVCaptureDeviceInput? {
+//        if let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) {
+//            return try? AVCaptureDeviceInput(device: device)
+//        }
+//        return nil
+//    }
+//    func createVideoOutput() -> AVCaptureVideoDataOutput? {
+//        let videoOutput = AVCaptureVideoDataOutput()
+//        let settings: [String: Any] = [kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCVPixelFormatType_32BGRA)]
+//        videoOutput.videoSettings = settings
+//        videoOutput.alwaysDiscardsLateVideoFrames = true
+//        videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue.global())
+//        return videoOutput
+//    }
+//
+//    func attachPreviewer(captureSession: AVCaptureSession) {
+//        let avCaptureImagePreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+//        avCaptureImagePreviewLayer.frame = liveImageView.layer.bounds
+//        avCaptureImagePreviewLayer.videoGravity = .resize
+//        liveImageView.layer.addSublayer(avCaptureImagePreviewLayer)
+//    }
+//
+//    @objc func takePicture2(sender: UITapGestureRecognizer) {
+//        if let captureSession = captureSession {
+//            if captureSession.isRunning {
+//                captureSession.stopRunning()
+//            } else {
+//                captureSession.startRunning()
+//            }
+//            return
+//        }
+//
+//        performSegue(withIdentifier: "ShowDetail", sender: sender)
+//    }
+//}
 
 extension AlbumMemoViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -138,14 +152,39 @@ extension AlbumMemoViewController{
         newPostViewController.postGroup = postGroup
         
         // 이미지에 대한 정보를 가져온다
-        let indexPath = sender as! IndexPath    // sender이 indexPath이다.
-        let asset = fetchResult.object(at: indexPath.row)
+        if sender is IndexPath {
+            let indexPath = sender as! IndexPath    // sender이 indexPath이다.
+            let asset = fetchResult.object(at: indexPath.row)
+            
+            let options = PHImageRequestOptions()
+            options.deliveryMode = .highQualityFormat // 고해상도를 가져오기 우l함임
+            PHCachingImageManager.default().requestImage(for: asset, targetSize: CGSize(), contentMode: .aspectFill, options: options, resultHandler: { image, _ in
+                // 한참있다가 실행된다. 즉, albumDetailViewController가 로딩되고 appear한 후에 나타난다.
+                newPostViewController.image = image  // 앞에서 didSet을 사용한 이유이다.
+            })
+        } else {
+            let senderImage = sender as! UIImage
+            newPostViewController.image = senderImage
+        }
+    }
+}
+
+// 카메라 촬영할 경우 처리
+extension AlbumMemoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    // 사진을 찍은 경우 호출되는 함수
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+ 
+       let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         
-        let options = PHImageRequestOptions()
-        options.deliveryMode = .highQualityFormat // 고해상도를 가져오기 우l함임
-        PHCachingImageManager.default().requestImage(for: asset, targetSize: CGSize(), contentMode: .aspectFill, options: options, resultHandler: { image, _ in
-            // 한참있다가 실행된다. 즉, albumDetailViewController가 로딩되고 appear한 후에 나타난다.
-            newPostViewController.image = image  // 앞에서 didSet을 사용한 이유이다.
-        })
+        // 여기서 이미지에 대한 추가적인 작업을 한다
+        liveImageView.image = image
+        picker.dismiss(animated: true, completion: nil)
+    }
+
+    // 사진 캡쳐를 취소하는 경우 호출 함수
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        // imagePickerController을 죽인다
+        picker.dismiss(animated: true, completion: nil)
     }
 }
