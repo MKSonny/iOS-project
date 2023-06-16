@@ -40,7 +40,16 @@ extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SerachTableViewCell")!
-        let userName = userGroup.getUsers()[indexPath.row].userName
+        let users = userGroup.getUsers()
+        let userName = users[indexPath.row].userName
+        
+        // 프로필 이미지 설정
+        let profileImageUrl = users[indexPath.row].imageUrl
+        let profileImageView = cell.contentView.subviews[0] as! UIImageView
+        profileImageView.layer.cornerRadius = profileImageView.frame.width / 2
+        profileImageView.clipsToBounds = true
+        downloadImage(imageView: profileImageView, urlStr: profileImageUrl)
+        
         (cell.contentView.subviews[1] as! UILabel).text = userName
         let button = cell.contentView.subviews[2] as! UIButton
         button.titleLabel?.text = "팔로우"
@@ -49,9 +58,29 @@ extension SearchViewController: UITableViewDataSource {
         return cell
     }
     
+    // 팔로잉 버튼을 눌렀을 경우
     @objc func onTapFollowingButton(_ sender: UIButton) {
         let rowIndex = sender.tag
-        print("hello world 7 \(userGroup.getUsers()[rowIndex].uid)")
         MyUserFirebaseDatabase.shared.addToFollowing(with: uid, followingUid: userGroup.getUsers()[rowIndex].uid)
+        
+        // 버튼의 텍스트 컬러와 배경색 반전
+        let button = sender
+        button.layer.cornerRadius = 8.0
+        button.setTitle("팔로잉", for: .normal)
+        button.setTitleColor(.black, for: .normal) // 텍스트 컬러를 반전시킴
+        button.backgroundColor = .systemGray5 // 배경색을 반전시킴
+    }
+    
+    func downloadImage(imageView: UIImageView, urlStr: String) {
+        let url = URL(string: urlStr)!
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data, error == nil else {
+                return
+            }
+            DispatchQueue.main.async {
+                let image = UIImage(data: data)
+                imageView.image = image
+            }
+        }.resume()
     }
 }

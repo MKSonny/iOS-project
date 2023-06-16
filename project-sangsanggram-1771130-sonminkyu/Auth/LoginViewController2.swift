@@ -67,6 +67,8 @@ extension LoginViewController2 {
     @objc func tappedLoginButton() {
         let email = emailTextField.text
         let password = passwordTextField.text
+        // 로그인 버튼을 누르면 AuthDatabase에서 loginCheck 함수를 호출한다
+        // 이상이 없으면 good는 true가 된다.
         AuthDatabase.shared.loginCheck(email: email, password: password!) { good in
             DispatchQueue.main.async {
                 if good {

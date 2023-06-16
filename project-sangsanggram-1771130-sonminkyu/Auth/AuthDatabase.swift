@@ -53,9 +53,6 @@ public class AuthDatabase {
                 completion(true)
             }
         }
-//        else if let username = username {
-//            print("username \(username)")
-//        }
     }
     
     public func logOut(completion: (Bool) -> Void) {
