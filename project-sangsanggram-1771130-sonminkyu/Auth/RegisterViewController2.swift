@@ -85,8 +85,7 @@ extension RegisterViewController2 {
                 if registered {
                     self.dismiss(animated: true)
                 } else {
-                    let vc = AlertViewController()
-                    self.present(vc, animated: true)
+                    
                 }
             }
         }

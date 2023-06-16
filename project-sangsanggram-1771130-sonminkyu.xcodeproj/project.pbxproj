@@ -87,7 +87,6 @@
 		E7EC94792A3AD66500F1B207 /* ProfileViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EC94782A3AD66500F1B207 /* ProfileViewController3.swift */; };
 		E7EC947B2A3ADBC800F1B207 /* MyPostsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EC947A2A3ADBC800F1B207 /* MyPostsCollectionViewCell.swift */; };
 		E7EC947D2A3B076C00F1B207 /* RegisterViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EC947C2A3B076C00F1B207 /* RegisterViewController2.swift */; };
-		E7EC947F2A3B0BE900F1B207 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EC947E2A3B0BE900F1B207 /* AlertViewController.swift */; };
 		E7F266032A333FDE000C2392 /* FollowingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F266022A333FDE000C2392 /* FollowingViewController.swift */; };
 		E7FBF5E02A2B6020005A56DB /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FBF5DE2A2B6020005A56DB /* PostTableViewCell.swift */; };
 		E7FBF5E12A2B6020005A56DB /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7FBF5DF2A2B6020005A56DB /* PostTableViewCell.xib */; };
@@ -149,7 +148,6 @@
 		E7EC94782A3AD66500F1B207 /* ProfileViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController3.swift; sourceTree = "<group>"; };
 		E7EC947A2A3ADBC800F1B207 /* MyPostsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsCollectionViewCell.swift; sourceTree = "<group>"; };
 		E7EC947C2A3B076C00F1B207 /* RegisterViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController2.swift; sourceTree = "<group>"; };
-		E7EC947E2A3B0BE900F1B207 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		E7F266022A333FDE000C2392 /* FollowingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingViewController.swift; sourceTree = "<group>"; };
 		E7FBF5DE2A2B6020005A56DB /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		E7FBF5DF2A2B6020005A56DB /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
@@ -261,13 +259,6 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		E78BE1DD2A2F4925009A3608 /* CollectionViewHeaders */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CollectionViewHeaders;
-			sourceTree = "<group>";
-		};
 		E7BAA7042A39BCCF00659660 /* ch13 */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,7 +303,6 @@
 				E7DF04EE2A33450B00B3D5B5 /* Main.storyboard */,
 				E74BA1292A31AA52002BD9B2 /* User */,
 				E74BA1282A31AA09002BD9B2 /* Post */,
-				E78BE1DD2A2F4925009A3608 /* CollectionViewHeaders */,
 				E78BE1DC2A2F4687009A3608 /* Profile */,
 				E78BE1CD2A2EF33C009A3608 /* Auth */,
 				E7D0631D2A2B3CF20024349C /* AppDelegate.swift */,
@@ -333,7 +323,6 @@
 				E78BE1D62A2F2A95009A3608 /* Extentions.swift */,
 				E74BA1262A319B85002BD9B2 /* ListViewController.swift */,
 				E74BA12E2A31AD7F002BD9B2 /* MyDatabase.swift */,
-				E7EC947E2A3B0BE900F1B207 /* AlertViewController.swift */,
 			);
 			path = "project-sangsanggram-1771130-sonminkyu";
 			sourceTree = "<group>";
@@ -456,7 +445,6 @@
 				E78BE1D32A2EFEB4009A3608 /* AuthDatabase.swift in Sources */,
 				E7FBF5E02A2B6020005A56DB /* PostTableViewCell.swift in Sources */,
 				E7D0633E2A2B46050024349C /* PlanGroup.swift in Sources */,
-				E7EC947F2A3B0BE900F1B207 /* AlertViewController.swift in Sources */,
 				E7EC947D2A3B076C00F1B207 /* RegisterViewController2.swift in Sources */,
 				E7D063322A2B3D8E0024349C /* Plan.swift in Sources */,
 				E78BE1D72A2F2A95009A3608 /* Extentions.swift in Sources */,

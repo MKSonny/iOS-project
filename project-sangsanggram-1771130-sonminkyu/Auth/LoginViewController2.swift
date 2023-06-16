@@ -72,7 +72,10 @@ extension LoginViewController2 {
                 if good {
                     self.dismiss(animated: true)
                 } else {
-                    print("not good")
+                    let alertController = UIAlertController(title: "오류", message: "이메일 혹은 비밀번호를 잘못 입력하셨습니다", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+                    alertController.addAction(cancelAction)
+                    self.present(alertController, animated: true, completion: nil)
                 }
             }
         }
