@@ -11,7 +11,10 @@ import FirebaseFirestore
 public class MyUserFirebaseDatabase {
     static let shared = MyUserFirebaseDatabase()
     var reference: CollectionReference = Firestore.firestore().collection("users")
-   
+    /*
+     아래 getFollowingList는 이름은 같지만 기능은 다르다(반환값이 다르다)
+     첫번째 것은 following 하는 유저들의 uid 문자열 배열을 가져 오는 것이다.
+     */
     public func getFollowingList(uid: String, completion: @escaping ([String]) -> Void) {
         let documentRef = reference.document(uid)
         print("why? \(uid)")
@@ -27,12 +30,12 @@ public class MyUserFirebaseDatabase {
         }
     }
     
+    // 이 함수는 팔로잉 리스트를 볼때 유저 이름과 유저 프로필 이미지를 조회할 수 있도록 하는 함수다
     public func getFollowingList(uid: String, completion: @escaping ([(username: String?, profileImage: String?)]) -> Void) {
         MyUserFirebaseDatabase.shared.getFollowingList(uid: uid) { followingUIDs in
             var userProfiles: [(username: String?, profileImage: String?)] = []
             let dispatchGroup = DispatchGroup()
             
-            // Iterate over the following UIDs
             for followingUid in followingUIDs {
                 dispatchGroup.enter()
                 MyUserFirebaseDatabase.shared.findUsernameAndProfileImageWithUid(with: followingUid) { username, image in
@@ -43,12 +46,21 @@ public class MyUserFirebaseDatabase {
             }
             
             dispatchGroup.notify(queue: .main) {
-                // Completion handler with the retrieved user profiles
                 completion(userProfiles)
             }
         }
     }
     
+    // 해당 유저의 팔로잉 리스트에 유저를 추가하는 함수
+    /*
+     1. 주어진 uid를 사용하여 Firestore 데이터베이스의 해당 사용자 문서에 대한 참조인 documentRef를 만듭니다.
+     documentRef를 사용하여 해당 문서를 가져온다.
+     2. 가져온 문서가 존재하면, 이미 사용자 문서가 있는 것이므로 following 필드를 업데이트 한다.
+     3. 문서에서 following 필드를 가져와서 배열로 변환한다. 만약 following 필드가 이미 배열로 존재한다면, 중복되지 않는지 확인한 후 followingUid를 배열에 추가한다.
+     4. following 필드가 존재하지 않는다면, 새로운 배열을 생성하고 followingUid를 추가한다.
+     5. 업데이트된 following 배열을 documentRef에 다시 저장한다. merge: true 옵션을 사용하여 문서의 다른 필드는 변경되지 않도록 보존한다.
+     6. 문서가 존재하지 않는 경우(해당 사용자의 문서가 아직 생성되지 않은 경우), following 필드와 followingUid를 포함한 새로운 문서를 생성한다.
+     */
     public func addToFollowing(with uid: String, followingUid: String) {
         let documentRef = reference.document(uid)
         
@@ -68,7 +80,7 @@ public class MyUserFirebaseDatabase {
         }
     }
 
-    
+    // 프로필 탭에서 본인이 올린 게시물들을 찾기 위한 함수
     public func findPostByUsername(with username: String, completion: @escaping ([String]) -> Void) {
         Firestore.firestore().collection("posts").whereField("writer", isEqualTo: username)
             .getDocuments() { (querySnapshot, err) in
@@ -86,8 +98,7 @@ public class MyUserFirebaseDatabase {
         }
     }
 
-    
-    // check if username and email is available
+    // 회원 가입을 위한 함수
     public func canCreateNewUser(withEmail: String, usernmae: String, completion: (Bool) -> Void) {
         completion(true)
     }
@@ -132,7 +143,7 @@ public class MyUserFirebaseDatabase {
     }
 
     
-    // insert new user data to database
+    // 회원가입시 새로운 유저를 데이터베이스에 추가한다
     public func insertNewUser(email: String, username: String, uid: String, completion: @escaping (Bool) -> Void) {
         var following = [String]()
         following.append(uid)

@@ -60,6 +60,7 @@
 		E7BAA70A2A39C6C300659660 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BAA7092A39C6C300659660 /* ImageCollectionViewCell.swift */; };
 		E7BAA70C2A39CD9B00659660 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BAA70B2A39CD9B00659660 /* NewPostViewController.swift */; };
 		E7BE103F2A3C0A4D00661CFF /* SqueezeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E7BE103E2A3C0A4D00661CFF /* SqueezeNet.mlmodel */; };
+		E7BE10412A3C1D6600661CFF /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BE10402A3C1D6600661CFF /* CommentViewController.swift */; };
 		E7C036E42A3B0EDC000E9E1E /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C036E32A3B0EDC000E9E1E /* ProfileEditViewController.swift */; };
 		E7C036E62A3B1D97000E9E1E /* LoginViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C036E52A3B1D97000E9E1E /* LoginViewController2.swift */; };
 		E7C036E82A3B1F3D000E9E1E /* PrivacyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C036E72A3B1F3D000E9E1E /* PrivacyInfoViewController.swift */; };
@@ -119,6 +120,7 @@
 		E7BAA7092A39C6C300659660 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E7BAA70B2A39CD9B00659660 /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
 		E7BE103E2A3C0A4D00661CFF /* SqueezeNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SqueezeNet.mlmodel; sourceTree = "<group>"; };
+		E7BE10402A3C1D6600661CFF /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		E7C036E32A3B0EDC000E9E1E /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		E7C036E52A3B1D97000E9E1E /* LoginViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController2.swift; sourceTree = "<group>"; };
 		E7C036E72A3B1F3D000E9E1E /* PrivacyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyInfoViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 		E74BA1282A31AA09002BD9B2 /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				E7BE10422A3C1D6900661CFF /* Comment */,
 				E7B825F02A2DA5F7006AB415 /* CameraViewController.swift */,
 				E7D063472A2B56890024349C /* PostGroupViewController.swift */,
 				E7FBF5DE2A2B6020005A56DB /* PostTableViewCell.swift */,
@@ -274,6 +277,14 @@
 				E7BAA70B2A39CD9B00659660 /* NewPostViewController.swift */,
 			);
 			path = ch13;
+			sourceTree = "<group>";
+		};
+		E7BE10422A3C1D6900661CFF /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				E7BE10402A3C1D6600661CFF /* CommentViewController.swift */,
+			);
+			path = Comment;
 			sourceTree = "<group>";
 		};
 		E7D063112A2B3CF20024349C = {
@@ -438,6 +449,7 @@
 				E78BE1DF2A2F4966009A3608 /* PhotoCollectionViewCell.swift in Sources */,
 				E78BE1C02A2EE90E009A3608 /* ProfileViewController.swift in Sources */,
 				E7A1E3DD2A3487E800382AFB /* LoginViewController.swift in Sources */,
+				E7BE10412A3C1D6600661CFF /* CommentViewController.swift in Sources */,
 				E7BAA70A2A39C6C300659660 /* ImageCollectionViewCell.swift in Sources */,
 				E7B825F12A2DA5F7006AB415 /* CameraViewController.swift in Sources */,
 				E78BE1E52A2F4A77009A3608 /* ProfileViewController2.swift in Sources */,

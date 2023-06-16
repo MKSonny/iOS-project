@@ -26,7 +26,6 @@ class NewPostViewController: UIViewController {
     // 오토레이아웃을 프로그램으로 조정할 수 있다.
     @IBOutlet weak var bottomViewContraint: NSLayoutConstraint!
     @IBAction func addPostButton(_ sender: UIBarButtonItem) {
-        print("hello world 11")
         let content = textView.text
         
         let post = Post(imageUrl: imageUrl!,username: username, uid: uid,writerImage: writerImage, date: Date().setCurrentTime(), content: content ?? "", likes: 0)
@@ -71,7 +70,6 @@ class NewPostViewController: UIViewController {
         imageView.image = image ?? nil
         
         vnCoreMLRequest = createCoreML(modelName: "SqueezeNet", modelExt: "mlmodelc", completionHandler: handleImageClassifier)
-        
         
         
         // 키보드가 나타나면 keyboardWillShow 함수를 호출한다
@@ -131,7 +129,7 @@ extension NewPostViewController {
 
 extension NewPostViewController {
     /*
-     "createCoreML(modelName:modelExt:completionHandler:)" 함수는 Core ML 모델을 사용하여 "VNCoreMLRequest"를 생성하는 함수입니다. 이 함수는 앱 번들에서 모델을 로드하고 모델을 사용하여 요청을 생성합니다. 제공된 completionHandler는 요청이 완료될 때 호출됩니다.
+     "createCoreML(modelName:modelExt:completionHandler:)" 함수는 Core ML 모델을 사용하여 "VNCoreMLRequest"를 생성하는 함수다. 이 함수는 앱 번들에서 모델을 로드하고 모델을 사용하여 요청을 생성한다. 제공된 completionHandler는 요청이 완료될 때 호출한다.
      */
     func createCoreML(modelName: String, modelExt: String, completionHandler: @escaping (VNRequest, Error?) -> Void) -> VNCoreMLRequest?{
         guard let modelURL = Bundle.main.url(forResource: modelName, withExtension: modelExt) else {
@@ -146,7 +144,7 @@ extension NewPostViewController {
 
 extension NewPostViewController{
     /*
-     handleImageClassifier(request:error:)" 메서드는 분류 결과를 처리합니다. 이 메서드는 요청 결과에서 분류 관측값을 가져와 가장 높은 결과의 확률과 식별자를 "messageLabel"에 업데이트합니다.
+     handleImageClassifier(request:error:)" 메서드는 분류 결과를 처리한다. 이 메서드는 요청 결과에서 분류 관측값을 가져와 가장 높은 결과의 확률과 식별자를 "textView"에 업데이트한다.
      */
     func handleImageClassifier(request: VNRequest, error: Error?) {
         guard let results = request.results as? [VNClassificationObservation] else { return }

@@ -11,10 +11,13 @@ import AVFoundation
 import Vision
 
 class AlbumMemoViewController: UIViewController {
-    // live 이미지 처리를 위한 변수
+    // 카메라를 사용하여 촬영할 경우
     @IBOutlet weak var takePictureButton: UIButton!
+    // 실시간으로 UIImageView를 보려고 시도했으나 실패했다
     var captureSession: AVCaptureSession?
+    // 카메라로 촬영한 이미지를 확인할 liveImageView 변수
     @IBOutlet weak var liveImageView: UIImageView!
+    // 내가 올린 게시물들을 담기 위한 postGroup 변수
     var postGroup: PostGroup!
     
     
@@ -65,6 +68,7 @@ class AlbumMemoViewController: UIViewController {
         
         // 모든 사진을 가져온다
         let allPhotosOptions = PHFetchOptions()
+        // 생성된 날짜 순으로 정렬한다
         allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         fetchResult = PHAsset.fetchAssets(with: allPhotosOptions)
         
@@ -163,13 +167,14 @@ extension AlbumMemoViewController{
                 newPostViewController.image = image  // 앞에서 didSet을 사용한 이유이다.
             })
         } else {
+            // 카메라를 사용하여 촬영할 경우
             let senderImage = sender as! UIImage
             newPostViewController.image = senderImage
         }
     }
 }
 
-// 카메라 촬영할 경우 처리
+// 카메라를 사용해 촬영할 경우 처리
 extension AlbumMemoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // 사진을 찍은 경우 호출되는 함수

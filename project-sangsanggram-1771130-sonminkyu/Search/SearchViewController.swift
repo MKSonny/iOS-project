@@ -41,8 +41,8 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SerachTableViewCell")!
         let userName = userGroup.getUsers()[indexPath.row].userName
-        (cell.contentView.subviews[0] as! UILabel).text = userName
-        let button = cell.contentView.subviews[1] as! UIButton
+        (cell.contentView.subviews[1] as! UILabel).text = userName
+        let button = cell.contentView.subviews[2] as! UIButton
         button.titleLabel?.text = "팔로우"
         button.tag = indexPath.row
         button.addTarget(self, action: #selector(onTapFollowingButton), for: .touchUpInside)
