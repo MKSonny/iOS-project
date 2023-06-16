@@ -45,8 +45,26 @@ class PostTableViewCell: UITableViewCell {
     let likeButton: UIButton = {
         let likeButton = UIButton()
         likeButton.translatesAutoresizingMaskIntoConstraints = false
-        likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
-        likeButton.setImage(UIImage(systemName: "heart.fill"), for: .selected)
+        
+        // Create custom heart image with desired size for normal state
+        let heartImage = UIImage(systemName: "heart")?.withRenderingMode(.alwaysTemplate)
+        let heartImageSize = CGSize(width: 30, height: 24)
+        UIGraphicsBeginImageContextWithOptions(heartImageSize, false, 0)
+        UIColor.red.setFill() // Set the fill color to red
+        heartImage?.draw(in: CGRect(origin: .zero, size: heartImageSize))
+        let resizedHeartImage = UIGraphicsGetImageFromCurrentImageContext()?.withRenderingMode(.alwaysOriginal)
+        UIGraphicsEndImageContext()
+        likeButton.setImage(resizedHeartImage, for: .normal)
+        
+        // Create custom heart image with desired size for selected state
+        let filledHeartImage = UIImage(systemName: "heart.fill")?.withRenderingMode(.alwaysTemplate)
+        UIGraphicsBeginImageContextWithOptions(heartImageSize, false, 0)
+        UIColor.red.setFill() // Set the fill color to red
+        filledHeartImage?.draw(in: CGRect(origin: .zero, size: heartImageSize))
+        let resizedFilledHeartImage = UIGraphicsGetImageFromCurrentImageContext()?.withRenderingMode(.alwaysOriginal)
+        UIGraphicsEndImageContext()
+        likeButton.setImage(resizedFilledHeartImage, for: .selected)
+        
         likeButton.tintColor = .red
         return likeButton
     }()
@@ -54,10 +72,33 @@ class PostTableViewCell: UITableViewCell {
     let commentButton: UIButton = {
         let commentButton = UIButton()
         commentButton.translatesAutoresizingMaskIntoConstraints = false
-        commentButton.setImage(UIImage(systemName: "message"), for: .normal)
+        // Create custom comment image with desired size
+        let commentImage = UIImage(systemName: "message")?.withRenderingMode(.alwaysTemplate)
+        let commentImageSize = CGSize(width: 27, height: 24)
+        UIGraphicsBeginImageContextWithOptions(commentImageSize, false, 0)
+        commentImage?.draw(in: CGRect(origin: .zero, size: commentImageSize))
+        let resizedCommentImage = UIGraphicsGetImageFromCurrentImageContext()?.withRenderingMode(.alwaysOriginal)
+        UIGraphicsEndImageContext()
+        commentButton.setImage(resizedCommentImage, for: .normal)
         commentButton.tintColor = .black
         return commentButton
     }()
+    
+    let dmButton: UIButton = {
+        let dmButton = UIButton()
+        dmButton.translatesAutoresizingMaskIntoConstraints = false
+        // Create custom comment image with desired size
+        let commentImage = UIImage(systemName: "paperplane")?.withRenderingMode(.alwaysTemplate)
+        let commentImageSize = CGSize(width: 27, height: 24)
+        UIGraphicsBeginImageContextWithOptions(commentImageSize, false, 0)
+        commentImage?.draw(in: CGRect(origin: .zero, size: commentImageSize))
+        let resizedCommentImage = UIGraphicsGetImageFromCurrentImageContext()?.withRenderingMode(.alwaysOriginal)
+        UIGraphicsEndImageContext()
+        dmButton.setImage(resizedCommentImage, for: .normal)
+        dmButton.tintColor = .black
+        return dmButton
+    }()
+
     
     let likesLabel: UILabel = {
         let label = UILabel()
@@ -97,7 +138,7 @@ class PostTableViewCell: UITableViewCell {
     
     private func updateLikes() {
         if let post = post {
-            likesLabel.text = "\(post.likes) likes"
+            likesLabel.text = "\(post.likes)명이 좋아합니다"
         }
     }
     
@@ -113,6 +154,7 @@ class PostTableViewCell: UITableViewCell {
         contentView.addSubview(likeButton)
         contentView.addSubview(commentButton)
         contentView.addSubview(likesLabel)
+        contentView.addSubview(dmButton)
         contentView.addSubview(captionLabel)
         contentView.addSubview(dateLabel)
         
@@ -135,18 +177,22 @@ class PostTableViewCell: UITableViewCell {
             postImageView.heightAnchor.constraint(equalTo: postImageView.widthAnchor),
             
             // 좋아요 버튼
-            likeButton.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 6),
+            likeButton.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 12),
             likeButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             
-            commentButton.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 6),
+            commentButton.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 12),
             commentButton.leadingAnchor.constraint(equalTo: likeButton.trailingAnchor, constant: 8),
+            
+            // dm 버튼
+            dmButton.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 12),
+            dmButton.leadingAnchor.constraint(equalTo: commentButton.trailingAnchor, constant: 8),
             
             // 좋아요 레이블
             likesLabel.topAnchor.constraint(equalTo: commentButton.bottomAnchor, constant: 8),
             likesLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             
             // 캡션 레이블
-            captionLabel.topAnchor.constraint(equalTo: likesLabel.bottomAnchor, constant: 4),
+            captionLabel.topAnchor.constraint(equalTo: likesLabel.bottomAnchor, constant: 6),
             captionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             captionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             
@@ -168,7 +214,7 @@ class PostTableViewCell: UITableViewCell {
         usernameLabel.text = post.username
         downloadImage(imageView: postImageView, url: URL(string: post.imageUrl)!)
 //        postImageView.image = post.imageUrl
-        likesLabel.text = "\(post.likes) likes"
+        likesLabel.text = "\(post.likes)명이 좋아합니다"
         captionLabel.text = post.content
         dateLabel.text = post.date.toStringDateForPostTime()
         updateLikes()
