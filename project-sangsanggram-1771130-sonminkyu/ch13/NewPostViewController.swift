@@ -28,7 +28,7 @@ class NewPostViewController: UIViewController {
     @IBAction func addPostButton(_ sender: UIBarButtonItem) {
         let content = textView.text
         let comments: [String: String] = [uid: content ?? ""]
-        let post = Post(imageUrl: imageUrl!,username: username, uid: uid,writerImage: writerImage, date: Date().setCurrentTime(), content: content ?? "", likes: 0, comments: comments)
+        let post = Post(imageUrl: imageUrl!,username: username, uid: uid,writerImage: writerImage, date: Date().setCurrentTime(), content: content ?? "", likes: 0, comments: [comments])
         
         postGroup.saveChange(post: post, action: .Add)
         navigationController?.popViewController(animated: true)

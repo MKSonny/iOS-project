@@ -118,6 +118,7 @@ extension PostGroupViewController: PostTableViewCellDelegate {
 //        performSegue(withIdentifier: "ShowComments", sender: postGroup)
         let commentVC = CommentViewController()
         commentVC.post = post
+        commentVC.postGroup = postGroup
         navigationController?.pushViewController(commentVC, animated: true)
     }
     

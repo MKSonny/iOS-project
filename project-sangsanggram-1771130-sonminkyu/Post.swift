@@ -19,9 +19,9 @@ class Post {
     var content: String
     var key: String
     // uid, comment 내용
-    var comments: [String: String]
+    var comments: [[String: String]]// 딕셔너리로 된 배열
     
-    init(imageUrl: String, username: String, uid: String,writerImage: String, date: Date, content: String, likes: Int, comments: [String: String]) {
+    init(imageUrl: String, username: String, uid: String,writerImage: String, date: Date, content: String, likes: Int, comments: [[String: String]]) {
         self.key = UUID().uuidString
         self.imageUrl = imageUrl
         self.uid = uid
@@ -42,7 +42,7 @@ class Post {
         self.likes = 0
         self.writerImage = "dafsdfadf"
         self.uid = "uid"
-        self.comments = ["comments": "comments test"]
+        self.comments = [["comments": "comments test"]]
     }
 
 }
@@ -75,6 +75,6 @@ extension Post {
         imageUrl = dict["image_url"] as! String
         writerImage = dict["writerImage"] as! String
         likes = dict["likes"] as! Int
-        comments = dict["comments"] as! [String: String]
+        comments = dict["comments"] as? [[String: String]] ?? []
     }
 }

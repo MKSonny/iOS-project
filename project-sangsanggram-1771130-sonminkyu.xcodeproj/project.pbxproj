@@ -90,6 +90,7 @@
 		E7F266032A333FDE000C2392 /* FollowingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F266022A333FDE000C2392 /* FollowingViewController.swift */; };
 		E7FBF5E02A2B6020005A56DB /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FBF5DE2A2B6020005A56DB /* PostTableViewCell.swift */; };
 		E7FBF5E12A2B6020005A56DB /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7FBF5DF2A2B6020005A56DB /* PostTableViewCell.xib */; };
+		E7FE9DB12A3D73D80035291A /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FE9DB02A3D73D80035291A /* CommentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -151,6 +152,7 @@
 		E7F266022A333FDE000C2392 /* FollowingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingViewController.swift; sourceTree = "<group>"; };
 		E7FBF5DE2A2B6020005A56DB /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		E7FBF5DF2A2B6020005A56DB /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
+		E7FE9DB02A3D73D80035291A /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				E7BE10402A3C1D6600661CFF /* CommentViewController.swift */,
+				E7FE9DB02A3D73D80035291A /* CommentTableViewCell.swift */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				E7C036E82A3B1F3D000E9E1E /* PrivacyInfoViewController.swift in Sources */,
 				E7D063342A2B3E330024349C /* Database.swift in Sources */,
 				E767A5A22A3322000027A896 /* UserGroup.swift in Sources */,
+				E7FE9DB12A3D73D80035291A /* CommentTableViewCell.swift in Sources */,
 				E78BE1D12A2EF440009A3608 /* RegisterViewController.swift in Sources */,
 				E7D063362A2B3ED10024349C /* DbMemory.swift in Sources */,
 				E7D063422A2B513F0024349C /* ExtendedDate.swift in Sources */,
