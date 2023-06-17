@@ -1,25 +1,25 @@
 //
-//  FollowersTableViewCell.swift
+//  FollowingTableViewCell.swift
 //  project-sangsanggram-1771130-sonminkyu
 //
-//  Created by son on 2023/06/17.
+//  Created by son on 2023/06/09.
 //
 
 import UIKit
 
-class FollowersTableViewCell: UITableViewCell {
-
+class FollowingTableViewCell: UITableViewCell {
+    
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = imageView.frame.width / 2
         return imageView
     }()
     
     let usernameLabel: UILabel = {
         let label = UILabel()
+        label.text = "hello world"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -48,15 +48,15 @@ class FollowersTableViewCell: UITableViewCell {
         }
         usernameLabel.text = username
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
     
     override func layoutSubviews() {
             super.layoutSubviews()
             profileImageView.layer.cornerRadius = profileImageView.frame.width / 2 // Set the corner radius after the frame has been determined
         }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
     
     func downloadImage(imageView: UIImageView, url: URL) {
         URLSession.shared.dataTask(with: url) { data, _, error in

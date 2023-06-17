@@ -136,6 +136,43 @@ public class MyUserFirebaseDatabase {
         }
     }
     
+    public func getFollowersListWithUid(with uid: String, completion: @escaping ([String]) -> Void) {
+        reference.whereField("following", arrayContains: uid).getDocuments { snapshot, error in
+            var followers: [String] = []
+            
+            if let documents = snapshot?.documents {
+                for document in documents {
+                    let followerUid = document.documentID
+                    followers.append(followerUid)
+                }
+            }
+            
+            completion(followers)
+        }
+    }
+    
+    public func getFollowersListImageWithUid(uid: String, completion: @escaping ([(username: String?, profileImage: String?)]) -> Void) {
+        MyUserFirebaseDatabase.shared.getFollowersListWithUid(with: uid) { followingUIDs in
+            var userProfiles: [(username: String?, profileImage: String?)] = []
+            let dispatchGroup = DispatchGroup()
+            
+            for followingUid in followingUIDs {
+                dispatchGroup.enter()
+                MyUserFirebaseDatabase.shared.findUsernameAndProfileImageWithUid(with: followingUid) { username, image in
+                    let userProfile = (username: username, profileImage: image)
+                    userProfiles.append(userProfile)
+                    dispatchGroup.leave()
+                }
+            }
+            
+            dispatchGroup.notify(queue: .main) {
+                completion(userProfiles)
+            }
+        }
+    }
+
+    
+    
     public func findUserProfileInfoWithUid(with uid: String, completion: @escaping (String?, String?, Int?) -> Void) {
         let docRef = reference.document(uid)
 

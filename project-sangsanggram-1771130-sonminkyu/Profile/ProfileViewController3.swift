@@ -61,9 +61,18 @@ class ProfileViewController3: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(didtapFollowersLabel))
+        followersLabel.addGestureRecognizer(tap1)
+        followersLabel.isUserInteractionEnabled = true
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(didtapFollowingLabel))
         followingLabel.addGestureRecognizer(tap)
         followingLabel.isUserInteractionEnabled = true
+    }
+    
+    @objc func didtapFollowersLabel() {
+        let vc = FollowersViewController()
+        present(vc, animated: true)
     }
     
     @objc func didtapFollowingLabel() {
@@ -79,8 +88,11 @@ class ProfileViewController3: UIViewController {
         postGroup = PostGroup(parentNotification: receivingNotification)
         postGroup.queryDataWithWriter(writer: uid)
         
-//        userGroup = UserGroup(parentNotification: receivingUsersInfo)
-//        userGroup.database.queryUser()
+        MyUserFirebaseDatabase.shared.getFollowersListWithUid(with: uid) { followers in
+            DispatchQueue.main.async {
+                self.followersLabel.text = String(followers.count - 1)
+            }
+        }
         
         MyUserFirebaseDatabase.shared.findUserProfileInfoWithUid(with: uid) { userName, profileImage, followingCount in
             DispatchQueue.main.async {

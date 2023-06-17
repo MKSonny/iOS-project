@@ -10,7 +10,7 @@ import FirebaseAuth
 
 class FollowingViewController: UIViewController {
 
-    var followersListTableView: UITableView!
+    var followingListTableView: UITableView!
     var userGroup: UserGroup!
     var usersname: [String]!
     var myFollowingList: [(username: String?, profileImage: String?)] = []
@@ -24,7 +24,7 @@ class FollowingViewController: UIViewController {
         MyUserFirebaseDatabase.shared.getFollowingList(uid: uid) { followingList in
             self.myFollowingList = followingList
             DispatchQueue.main.async {
-                self.followersListTableView.reloadData()
+                self.followingListTableView.reloadData()
             }
             // Additional code that relies on the retrieved data can be placed here
         }
@@ -39,28 +39,28 @@ class FollowingViewController: UIViewController {
         
         userGroup = UserGroup(parentNotification: notification1)
         
-        followersListTableView = UITableView(frame: CGRect())
+        followingListTableView = UITableView(frame: CGRect())
         
-        let nib = UINib(nibName: "FollowersTableViewCell", bundle: nil)
-        followersListTableView.register(nib, forCellReuseIdentifier: "FollowersTableViewCell")
+        let nib = UINib(nibName: "FollowingTableViewCell", bundle: nil)
+        followingListTableView.register(nib, forCellReuseIdentifier: "FollowingTableViewCell")
         
-        view.addSubview(followersListTableView)
+        view.addSubview(followingListTableView)
         
-        followersListTableView.translatesAutoresizingMaskIntoConstraints = false
-        followersListTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        followingListTableView.translatesAutoresizingMaskIntoConstraints = false
+        followingListTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         
-        followersListTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        followingListTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         
-        followersListTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        followingListTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         
-        followersListTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        followingListTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         
-        followersListTableView.dataSource = self
+        followingListTableView.dataSource = self
     }
     
     private func notification1(user: User?, action: UserDbAction?) {
-        self.followersListTableView.reloadData()
+        self.followingListTableView.reloadData()
     }
 }
 
@@ -71,10 +71,9 @@ extension FollowingViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FollowersTableViewCell", for: indexPath) as? FollowersTableViewCell else { return UITableViewCell() }
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: "")
-//        cell.textLabel?.text = usersname[indexPath.row]
-        cell.textLabel?.text = myFollowingList[indexPath.row].username
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FollowingTableViewCell", for: indexPath) as! FollowingTableViewCell
+        let following = myFollowingList[indexPath.row]
+        cell.setData(profileUrl: following.profileImage, username: following.username)
         return cell
     }
 }
