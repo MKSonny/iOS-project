@@ -114,6 +114,13 @@ extension PostGroupViewController: UITabBarControllerDelegate {
 }
 
 extension PostGroupViewController: PostTableViewCellDelegate {
+    func didTapCommentButton(post: Post) {
+//        performSegue(withIdentifier: "ShowComments", sender: postGroup)
+        let commentVC = CommentViewController()
+        commentVC.post = post
+        navigationController?.pushViewController(commentVC, animated: true)
+    }
+    
     // 좋아요 버튼을 누르면 파이어베이스에 업데이트
     func didTapLikeButton(post: Post) {
         postGroup.saveChange(post: post, action: .Modify)

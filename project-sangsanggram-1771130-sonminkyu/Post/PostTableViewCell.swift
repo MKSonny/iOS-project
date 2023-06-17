@@ -11,6 +11,7 @@ import UIKit
 // 파이어 스트리지와 연결되어 있지 않아 책임을 postGroupController로 넘김
 protocol PostTableViewCellDelegate: AnyObject {
     func didTapLikeButton(post: Post)
+    func didTapCommentButton(post: Post)
 }
 
 class PostTableViewCell: UITableViewCell {
@@ -81,6 +82,7 @@ class PostTableViewCell: UITableViewCell {
         UIGraphicsEndImageContext()
         commentButton.setImage(resizedCommentImage, for: .normal)
         commentButton.tintColor = .black
+        commentButton.addTarget(self, action: #selector(pushedCommentButton), for: .touchUpInside)
         return commentButton
     }()
     
@@ -134,6 +136,10 @@ class PostTableViewCell: UITableViewCell {
         }
         updateLikes() // 변경된 likes 값을 업데이트하여 화면에 반영
         delegate?.didTapLikeButton(post: post!)
+    }
+    
+    @objc func pushedCommentButton() {
+        delegate?.didTapCommentButton(post: post!)
     }
     
     private func updateLikes() {

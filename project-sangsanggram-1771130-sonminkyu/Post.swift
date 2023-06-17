@@ -18,8 +18,10 @@ class Post {
     var likes: Int
     var content: String
     var key: String
+    // uid, comment 내용
+    var comments: [String: String]
     
-    init(imageUrl: String, username: String, uid: String,writerImage: String, date: Date, content: String, likes: Int) {
+    init(imageUrl: String, username: String, uid: String,writerImage: String, date: Date, content: String, likes: Int, comments: [String: String]) {
         self.key = UUID().uuidString
         self.imageUrl = imageUrl
         self.uid = uid
@@ -28,6 +30,7 @@ class Post {
         self.content = content
         self.likes = likes
         self.writerImage = writerImage
+        self.comments = comments
     }
 
     init(date: Date) {
@@ -39,6 +42,7 @@ class Post {
         self.likes = 0
         self.writerImage = "dafsdfadf"
         self.uid = "uid"
+        self.comments = ["comments": "comments test"]
     }
 
 }
@@ -54,6 +58,7 @@ extension Post {
         dict["image_url"] = imageUrl
         dict["writerImage"] = writerImage
         dict["likes"] = likes
+        dict["comments"] = comments
         
         return dict
     }
@@ -70,5 +75,6 @@ extension Post {
         imageUrl = dict["image_url"] as! String
         writerImage = dict["writerImage"] as! String
         likes = dict["likes"] as! Int
+        comments = dict["comments"] as! [String: String]
     }
 }

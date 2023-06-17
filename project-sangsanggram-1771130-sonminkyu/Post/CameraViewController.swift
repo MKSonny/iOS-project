@@ -20,7 +20,7 @@ class CameraViewController: UIViewController {
     @IBAction func addButton(_ sender: UIButton) {
         print("imageUrl 성공 \(imageUrl)")
         
-        let post = Post(imageUrl: imageUrl!,username: username, uid: uid,writerImage: writerImage, date: Date().setCurrentTime(), content: "hello world", likes: 0)
+        let post = Post(imageUrl: imageUrl!,username: username, uid: uid,writerImage: writerImage, date: Date().setCurrentTime(), content: "hello world", likes: 0, comments: [:])
         
         postGroup.saveChange(post: post, action: .Add)
     }

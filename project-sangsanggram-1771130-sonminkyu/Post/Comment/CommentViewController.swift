@@ -8,7 +8,11 @@
 import UIKit
 
 class CommentViewController: UIViewController {
-
+    
+    @IBOutlet weak var commentTableView: UITableView!
+    
+    var post: Post!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

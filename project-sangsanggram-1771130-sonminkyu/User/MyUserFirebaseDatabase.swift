@@ -79,6 +79,21 @@ public class MyUserFirebaseDatabase {
             }
         }
     }
+    
+    // 팔로잉 버튼을 누르면 팔로잉 취소된다.
+    public func removeFromFollowing(with uid: String, followingUid: String) {
+        let documentRef = reference.document(uid)
+        
+        documentRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                if var following = document.data()?["following"] as? [String] {
+                    following.removeAll { $0 == followingUid }
+                    documentRef.setData(["following": following], merge: true)
+                }
+            }
+        }
+    }
+
 
     // 프로필 탭에서 본인이 올린 게시물들을 찾기 위한 함수
     public func findPostByUsername(with username: String, completion: @escaping ([String]) -> Void) {

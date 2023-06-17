@@ -27,8 +27,8 @@ class NewPostViewController: UIViewController {
     @IBOutlet weak var bottomViewContraint: NSLayoutConstraint!
     @IBAction func addPostButton(_ sender: UIBarButtonItem) {
         let content = textView.text
-        
-        let post = Post(imageUrl: imageUrl!,username: username, uid: uid,writerImage: writerImage, date: Date().setCurrentTime(), content: content ?? "", likes: 0)
+        let comments: [String: String] = [uid: content ?? ""]
+        let post = Post(imageUrl: imageUrl!,username: username, uid: uid,writerImage: writerImage, date: Date().setCurrentTime(), content: content ?? "", likes: 0, comments: comments)
         
         postGroup.saveChange(post: post, action: .Add)
         navigationController?.popViewController(animated: true)

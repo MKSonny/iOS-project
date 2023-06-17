@@ -41,8 +41,9 @@ extension DbFirebasePost{
          image_url: 게시글에 사용할 이미지 주소 -> firestore와 연결되어 있다
          likes: 좋아요 수
          uid" 게시글 작성자 uid -> Firebase Auth에서 생성된 uid
+         comments: 게시글 댓글
          */
-        let storeData: [String : Any] = ["date": post.date, "content": data["content"]!, "username": data["username"]!, "key": data["key"]!, "image_url": data["image_url"], "writerImage": data["writerImage"], "likes": data["likes"], "uid": data["uid"]]
+        let storeData: [String : Any] = ["date": post.date, "content": data["content"]!, "username": data["username"]!, "key": data["key"]!, "image_url": data["image_url"], "writerImage": data["writerImage"], "likes": data["likes"], "uid": data["uid"], "comments": data["comments"]]
         reference.document(post.key).setData(storeData)
     }
 }
@@ -97,7 +98,7 @@ extension DbFirebasePost{
             let data = documentChange.document.data() //["date": date, "data": data!]로 구성되어 있다
             
             let post = Post(date: Date().setCurrentTime())
-            if data["uid"] != nil {
+            if data["comments"] != nil {
                 post.toPost(dict: data)
             }
             

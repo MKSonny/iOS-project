@@ -13,17 +13,26 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchTableView: UITableView!
     var userGroup: UserGroup!
     var users: [User]!
+    var myFollowingList: [String]!
     var uid: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         uid = Auth.auth().currentUser?.uid
 
         // Do any additional setup after loading the view.
         searchTableView.dataSource = self
         userGroup = UserGroup(parentNotification: notification1)
         userGroup.queryData()
+        
+        MyUserFirebaseDatabase.shared.getFollowingList(uid: uid) { followingList in
+            self.myFollowingList = followingList
+            self.searchTableView.reloadData()
+        }
     }
     
     private func notification1(user: User?, action: UserDbAction?) {
@@ -50,26 +59,66 @@ extension SearchViewController: UITableViewDataSource {
         profileImageView.clipsToBounds = true
         downloadImage(imageView: profileImageView, urlStr: profileImageUrl)
         
+        if let myFollowingList = myFollowingList {
+            
+        }
         (cell.contentView.subviews[1] as! UILabel).text = userName
         let button = cell.contentView.subviews[2] as! UIButton
-        button.titleLabel?.text = "팔로우"
         button.tag = indexPath.row
         button.addTarget(self, action: #selector(onTapFollowingButton), for: .touchUpInside)
+
+        // Check if the UID is in myFollowingList
+        let user = users[indexPath.row]
+        print("hello world 13 \(user.uid)")
+        if let myFollowingList = myFollowingList, myFollowingList.contains(user.uid) {
+            // UID exists in myFollowingList, update button attributes
+            button.layer.cornerRadius = 8.0
+            button.setTitle("팔로잉", for: .normal)
+            button.setTitleColor(.black, for: .normal)
+            button.backgroundColor = .systemGray5
+        } else {
+            // UID does not exist in myFollowingList, reset button attributes
+            button.layer.cornerRadius = 8.0
+            button.setTitle("팔로우", for: .normal)
+            button.setTitleColor(.white, for: .normal)
+            button.backgroundColor = .systemBlue
+        }
+
         return cell
     }
     
     // 팔로잉 버튼을 눌렀을 경우
     @objc func onTapFollowingButton(_ sender: UIButton) {
         let rowIndex = sender.tag
-        MyUserFirebaseDatabase.shared.addToFollowing(with: uid, followingUid: userGroup.getUsers()[rowIndex].uid)
+        let user = userGroup.getUsers()[rowIndex]
+        let isFollowing = myFollowingList?.contains(user.uid) ?? false
+
+        if isFollowing {
+            // User is already being followed, remove from the following list
+            MyUserFirebaseDatabase.shared.removeFromFollowing(with: uid, followingUid: user.uid)
+        } else {
+            // User is not being followed, add to the following list
+            MyUserFirebaseDatabase.shared.addToFollowing(with: uid, followingUid: user.uid)
+        }
         
-        // 버튼의 텍스트 컬러와 배경색 반전
-        let button = sender
-        button.layer.cornerRadius = 8.0
-        button.setTitle("팔로잉", for: .normal)
-        button.setTitleColor(.black, for: .normal) // 텍스트 컬러를 반전시킴
-        button.backgroundColor = .systemGray5 // 배경색을 반전시킴
+        // Update following status and button attributes
+        if var myFollowingList = myFollowingList {
+            if isFollowing {
+                myFollowingList.removeAll(where: { $0 == user.uid })
+                sender.setTitle("팔로우", for: .normal)
+                sender.setTitleColor(.white, for: .normal)
+                sender.backgroundColor = .systemBlue
+            } else {
+                myFollowingList.append(user.uid)
+                sender.setTitle("팔로잉", for: .normal)
+                sender.setTitleColor(.black, for: .normal)
+                sender.backgroundColor = .systemGray5
+            }
+            self.myFollowingList = myFollowingList
+        }
     }
+
+
     
     func downloadImage(imageView: UIImageView, urlStr: String) {
         let url = URL(string: urlStr)!
