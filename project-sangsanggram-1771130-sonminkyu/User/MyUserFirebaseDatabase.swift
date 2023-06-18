@@ -118,19 +118,26 @@ public class MyUserFirebaseDatabase {
         completion(true)
     }
     
-    // 프로필 이미지 수정
-    public func editProfileImageWithUid(with uid: String, imageUrl: String, completion: @escaping (Bool) -> Void) {
+    // 프로필 이미지, 이름 수정
+    public func editProfileImageAndUsernameWithUid(with uid: String, imageUrl: String, username: String, completion: @escaping (Bool) -> Void) {
         let documentRef = reference.document(uid)
+        let data: [String: Any] = [
+            "profileImage": imageUrl,
+            "username": username
+        ]
         
-        documentRef.updateData(["profileImage": imageUrl]) { error in
+        documentRef.updateData(data) { error in
             if let error = error {
-                print("Error updating profile image: \(error.localizedDescription)")
+                // Error occurred while updating the data
+                print("Failed to update profile image and username: \(error.localizedDescription)")
                 completion(false)
             } else {
+                // Data updated successfully
                 completion(true)
             }
         }
     }
+
     
     public func findUsernameAndProfileImageWithUid(with uid: String, completion: @escaping (String?, String?) -> Void) {
         let docRef = reference.document(uid)

@@ -13,6 +13,7 @@ import FirebaseStorage
 class ProfileAlbumViewController: UIViewController {
     // 카메라를 사용하여 촬영할 경우
     @IBOutlet weak var takePictureButton: UIButton!
+    @IBOutlet weak var usernameTextField: UITextField!
     // 실시간으로 UIImageView를 보려고 시도했으나 실패했다
     var captureSession: AVCaptureSession?
     // 카메라로 촬영한 이미지를 확인할 liveImageView 변수
@@ -25,10 +26,8 @@ class ProfileAlbumViewController: UIViewController {
     var uid: String!
     
     @IBAction func tapTakePicture(_ sender: UIButton) {
-        MyUserFirebaseDatabase.shared.editProfileImageWithUid(with: uid, imageUrl: imageUrl) { upload in
-            if upload {
-                self.navigationController?.popViewController(animated: true)
-            }
+        MyUserFirebaseDatabase.shared.editProfileImageAndUsernameWithUid(with: uid, imageUrl: profileImageURl, username: usernameTextField.text!) { success in
+            self.navigationController?.popViewController(animated: true)
         }
 //        let imagePickerController = UIImagePickerController()
 //        imagePickerController.delegate = self // 이 딜리게이터를 설정하면 사진을 찍은후 호출된다
@@ -65,6 +64,8 @@ class ProfileAlbumViewController: UIViewController {
         MyUserFirebaseDatabase.shared.findUsernameAndProfileImageWithUid(with: uid!) { username, profileImageUrl in
             DispatchQueue.main.async {
                 self.navigationItem.title = username
+                self.usernameTextField.text = username
+                self.profileImageURl = profileImageUrl
                 self.downloadImage(imageView: self.profileImageView, urlStr: profileImageUrl!)
             }
         }

@@ -1042,8 +1042,13 @@
                                             <constraint firstAttribute="height" constant="377" id="FBI-d2-bhj"/>
                                         </constraints>
                                     </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="변경 이름 입력..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eWd-9F-WFG">
+                                        <rect key="frame" x="0.0" y="385" width="377" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0hv-1W-A8m">
-                                        <rect key="frame" x="0.0" y="385" width="377" height="222.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="427.00000000000006" width="377" height="180.66666666666669"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hFx-Ed-WrZ">
                                             <size key="itemSize" width="128" height="128"/>
@@ -1079,7 +1084,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y1t-i2-glK">
                                         <rect key="frame" x="0.0" y="615.66666666666663" width="377" height="34.333333333333371"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="이미지 선택"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="프로필 수정"/>
                                         <connections>
                                             <action selector="tapTakePicture:" destination="GB5-hA-kmk" eventType="touchUpInside" id="J3M-AI-UCM"/>
                                         </connections>
@@ -1101,6 +1106,7 @@
                         <outlet property="collectionView" destination="0hv-1W-A8m" id="lyK-vB-3gA"/>
                         <outlet property="profileImageView" destination="JA6-UH-b6c" id="hQO-H6-NLh"/>
                         <outlet property="takePictureButton" destination="Y1t-i2-glK" id="6oK-mN-I2Q"/>
+                        <outlet property="usernameTextField" destination="eWd-9F-WFG" id="CTS-Ba-eq5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IvP-76-xs2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
