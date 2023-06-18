@@ -84,6 +84,7 @@ class ProfileViewController3: UIViewController {
         super.viewWillAppear(animated)
         
         uid = Auth.auth().currentUser?.uid
+        print("final \(uid)")
         
         postGroup = PostGroup(parentNotification: receivingNotification)
         postGroup.queryDataWithWriter(writer: uid)

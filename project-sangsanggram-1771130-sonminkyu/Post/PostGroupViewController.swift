@@ -96,9 +96,9 @@ extension PostGroupViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         
         if let viewController = viewController as? UINavigationController{
-            if let profileVC3 = viewController.viewControllers[0] as? ProfileViewController3 {
-                profileVC3.postGroup = postGroup
-            }
+//            if let profileVC3 = viewController.viewControllers[0] as? ProfileViewController3 {
+//                profileVC3.postGroup = postGroup
+//            }
 
             if let albumMemoVC = viewController.viewControllers[0] as? AlbumMemoViewController {
                 albumMemoVC.postGroup = postGroup
