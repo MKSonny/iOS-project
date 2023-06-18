@@ -115,12 +115,26 @@ extension PostGroupViewController: UITabBarControllerDelegate {
     }
 }
 
+extension PostGroupViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let likesVC = segue.destination as? LikesViewController {
+            let likesUid = sender as! [String]
+            likesVC.likesUsers = likesUid
+        }
+    }
+}
+
 extension PostGroupViewController: PostTableViewCellDelegate {
     func didTapCommentButton(post: Post) {
         let commentVC = CommentViewController()
         commentVC.post = post
         commentVC.postGroup = postGroup
         navigationController?.pushViewController(commentVC, animated: true)
+    }
+    
+    func didTapLikeLabel(post: Post) {
+        performSegue(withIdentifier: "ShowLikes", sender: post.likes)
     }
     
     // 좋아요 버튼을 누르면 파이어베이스에 업데이트

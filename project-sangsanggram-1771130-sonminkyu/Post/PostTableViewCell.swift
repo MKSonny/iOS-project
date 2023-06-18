@@ -6,16 +6,19 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 // 다음과 같이 PostTableViewCellDelegate을 만든 이유는 이 클래스에는
 // 파이어 스트리지와 연결되어 있지 않아 책임을 postGroupController로 넘김
 protocol PostTableViewCellDelegate: AnyObject {
     func didTapLikeButton(post: Post)
+    func didTapLikeLabel(post: Post)
     func didTapCommentButton(post: Post)
 }
 
 class PostTableViewCell: UITableViewCell {
     public weak var delegate: PostTableViewCellDelegate?
+    private var uid: String!
     
     // 게시글에 표시할 요소들을 위한 아웃렛 변수 선언
     let profileImageView: UIImageView = {
@@ -111,6 +114,11 @@ class PostTableViewCell: UITableViewCell {
         return label
     }()
     
+    @objc func didTapLikesLabel() {
+        print("please final 2")
+        delegate?.didTapLikeLabel(post: post!)
+    }
+    
     let captionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -132,9 +140,9 @@ class PostTableViewCell: UITableViewCell {
     @objc func pushedLikeButton() {
         likeButton.isSelected = !likeButton.isSelected // 선택 상태 토글
         if likeButton.isSelected {
-            post?.likes += 1
+            post?.likes.append(uid)
         } else {
-            post?.likes -= 1
+            post?.likes.removeAll { $0 == uid }
         }
         updateLikes() // 변경된 likes 값을 업데이트하여 화면에 반영
         delegate?.didTapLikeButton(post: post!)
@@ -146,7 +154,7 @@ class PostTableViewCell: UITableViewCell {
     
     private func updateLikes() {
         if let post = post {
-            likesLabel.text = "\(post.likes)명이 좋아합니다"
+            likesLabel.text = "\(post.likes.count)명이 좋아합니다"
         }
     }
     
@@ -159,6 +167,12 @@ class PostTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        uid = Auth.auth().currentUser?.uid
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapLikesLabel))
+            likesLabel.addGestureRecognizer(tapGesture)
+            likesLabel.isUserInteractionEnabled = true
         
         likeButton.addTarget(self, action: #selector(pushedLikeButton), for: .touchUpInside)
         
@@ -233,8 +247,21 @@ class PostTableViewCell: UITableViewCell {
         
 //        downloadImage(imageView: profileImageView, url: URL(string: post.writerImage)!)
         usernameLabel.text = post.username
+        
+        print("please final \(post.likes)")
+        if let uid = uid, post.likes.contains(uid) {
+            DispatchQueue.main.async {
+                self.likeButton.isSelected = true
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.likeButton.isSelected = false
+            }
+        }
+
+        
         downloadImage(imageView: postImageView, urlStr: post.imageUrl)
-        likesLabel.text = "\(post.likes)명이 좋아합니다"
+        likesLabel.text = "\(post.likes.count)명이 좋아합니다"
         captionLabel.text = post.content
         dateLabel.text = post.date.toStringDateForPostTime()
         updateLikes()

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E71F74EA2A3EF45900757C2A /* LikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71F74E92A3EF45900757C2A /* LikesViewController.swift */; };
+		E71F74EC2A3EF46800757C2A /* LikesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71F74EB2A3EF46800757C2A /* LikesTableViewCell.swift */; };
 		E74BA1272A319B85002BD9B2 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BA1262A319B85002BD9B2 /* ListViewController.swift */; };
 		E74BA12F2A31AD7F002BD9B2 /* MyDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BA12E2A31AD7F002BD9B2 /* MyDatabase.swift */; };
 		E74F04592A342F9700E5546A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74F04582A342F9700E5546A /* SearchViewController.swift */; };
@@ -98,6 +100,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E71F74E92A3EF45900757C2A /* LikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesViewController.swift; sourceTree = "<group>"; };
+		E71F74EB2A3EF46800757C2A /* LikesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesTableViewCell.swift; sourceTree = "<group>"; };
 		E74BA1262A319B85002BD9B2 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		E74BA12E2A31AD7F002BD9B2 /* MyDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDatabase.swift; sourceTree = "<group>"; };
 		E74F04582A342F9700E5546A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -201,12 +205,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E71F74E82A3EF44800757C2A /* Like */ = {
+			isa = PBXGroup;
+			children = (
+				E71F74E92A3EF45900757C2A /* LikesViewController.swift */,
+				E71F74EB2A3EF46800757C2A /* LikesTableViewCell.swift */,
+			);
+			path = Like;
+			sourceTree = "<group>";
+		};
 		E74BA1282A31AA09002BD9B2 /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				E71F74E82A3EF44800757C2A /* Like */,
 				E7BE10422A3C1D6900661CFF /* Comment */,
 				E7B825F02A2DA5F7006AB415 /* CameraViewController.swift */,
 				E7D063472A2B56890024349C /* PostGroupViewController.swift */,
+				E7D063372A2B402D0024349C /* Post.swift */,
 				E7FBF5DE2A2B6020005A56DB /* PostTableViewCell.swift */,
 				E7FBF5DF2A2B6020005A56DB /* PostTableViewCell.xib */,
 				E79880DA2A2DC3B200736C96 /* DbFirebasePost.swift */,
@@ -325,7 +340,6 @@
 				E7D063262A2B3CF20024349C /* Assets.xcassets */,
 				E7D063282A2B3CF20024349C /* LaunchScreen.storyboard */,
 				E7D0632B2A2B3CF20024349C /* Info.plist */,
-				E7D063372A2B402D0024349C /* Post.swift */,
 				E7D063312A2B3D8E0024349C /* Plan.swift */,
 				E7D063332A2B3E330024349C /* Database.swift */,
 				E7D063352A2B3ED10024349C /* DbMemory.swift */,
@@ -468,6 +482,7 @@
 				E78BE1E52A2F4A77009A3608 /* ProfileViewController2.swift in Sources */,
 				E78BE1D32A2EFEB4009A3608 /* AuthDatabase.swift in Sources */,
 				E7E508552A3EA487000F8F19 /* ProfileAlbumViewController.swift in Sources */,
+				E71F74EA2A3EF45900757C2A /* LikesViewController.swift in Sources */,
 				E7FBF5E02A2B6020005A56DB /* PostTableViewCell.swift in Sources */,
 				E7D0633E2A2B46050024349C /* PlanGroup.swift in Sources */,
 				E7EC947D2A3B076C00F1B207 /* RegisterViewController2.swift in Sources */,
@@ -510,6 +525,7 @@
 				E79880DB2A2DC3B200736C96 /* DbFirebasePost.swift in Sources */,
 				E7D063382A2B402D0024349C /* Post.swift in Sources */,
 				E7D063202A2B3CF20024349C /* SceneDelegate.swift in Sources */,
+				E71F74EC2A3EF46800757C2A /* LikesTableViewCell.swift in Sources */,
 				E78BE1C22A2EEAF8009A3608 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

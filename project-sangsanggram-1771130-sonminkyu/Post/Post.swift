@@ -15,7 +15,7 @@ class Post {
     var uid: String
     var writerImage: String
     var date: Date
-    var likes: Int
+    var likes = [String]()
     var content: String
     var key: String
     // uid, comment 내용
@@ -28,7 +28,7 @@ class Post {
         self.username = username
         self.date = date
         self.content = content
-        self.likes = likes
+//        self.likes = likes
         self.writerImage = writerImage
         self.comments = comments
     }
@@ -39,7 +39,7 @@ class Post {
         self.username = "writer"
         self.date = date
         self.content = "content"
-        self.likes = 0
+//        self.likes = 0
         self.writerImage = "dafsdfadf"
         self.uid = "uid"
         self.comments = [["comments": "comments test"]]
@@ -74,7 +74,7 @@ extension Post {
         content = dict["content"] as! String
         imageUrl = dict["image_url"] as! String
         writerImage = dict["writerImage"] as! String
-        likes = dict["likes"] as! Int
+        likes = dict["likes"] as? [String] ?? []
         comments = dict["comments"] as? [[String: String]] ?? []
     }
 }
