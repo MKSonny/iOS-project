@@ -23,8 +23,10 @@ class PostTableViewCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         // 이미지 원형으로 설정
         imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFit
-        imageView.layer.cornerRadius = 40/2.0
+        imageView.contentMode = .scaleToFill
+//        profileImageView.layer.cornerRadius = profileImageView.frame.width / 2
+//        imageView.layer.cornerRadius = 40/2.0
+//        imageView.layer.cornerRadius = imageView.frame.width/2
         return imageView
     }()
     
@@ -148,6 +150,13 @@ class PostTableViewCell: UITableViewCell {
         }
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        profileImageView.layer.cornerRadius = profileImageView.frame.width / 2
+    }
+
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -215,16 +224,24 @@ class PostTableViewCell: UITableViewCell {
     
     func setData(post: Post) {
         self.post = post
-        downloadImage(imageView: profileImageView, url: URL(string: post.writerImage)!)
+        
+        MyUserFirebaseDatabase.shared.findUsernameAndProfileImageWithUid(with: post.uid) { username, imageUrl in
+            DispatchQueue.main.async {
+                self.downloadImage(imageView: self.profileImageView, urlStr: imageUrl!)
+            }
+        }
+        
+//        downloadImage(imageView: profileImageView, url: URL(string: post.writerImage)!)
         usernameLabel.text = post.username
-        downloadImage(imageView: postImageView, url: URL(string: post.imageUrl)!)
+        downloadImage(imageView: postImageView, urlStr: post.imageUrl)
         likesLabel.text = "\(post.likes)명이 좋아합니다"
         captionLabel.text = post.content
         dateLabel.text = post.date.toStringDateForPostTime()
         updateLikes()
     }
     
-    func downloadImage(imageView: UIImageView, url: URL) {
+    func downloadImage(imageView: UIImageView, urlStr: String) {
+        let url = URL(string: urlStr)!
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else {
                 return

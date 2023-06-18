@@ -109,7 +109,7 @@ extension ProfileAlbumViewController {
             self.profileImageView.image = image
             self.uploadImage(image: image!, pathRoot: "post_image") { url in
                 if let url = url {
-                    self.imageUrl = url.absoluteString
+                    self.profileImageURl = url.absoluteString
                     print("업로드 성공 \(url)")
                 }
             }

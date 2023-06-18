@@ -54,7 +54,8 @@ extension PostGroupViewController: UITableViewDataSource {
         
         cell.delegate = self
         // 해당하는 TableViewCell에 게시물 내용을 적용시킨다.
-        cell.setData(post: postGroup.getPosts()[indexPath.row])
+        let post = postGroup.getPosts()[indexPath.row]
+        cell.setData(post: post)
         return cell
     }
 }
