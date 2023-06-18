@@ -23,10 +23,11 @@ class PostGroupViewController: UIViewController {
         
         let nib = UINib(nibName: "PostTableViewCell", bundle: nil)
         postTableView.register(nib, forCellReuseIdentifier: "PostTableViewCell")
-        postTableView.dataSource = self        // 테이블뷰의 데이터 소스로 등록
+        // 테이블뷰의 데이터 소스로 등록
+        postTableView.dataSource = self
 
         // 단순히 planGroup객체만 생성한다
-        // 시간 순 정렬 필요
+        // 시간 순 정렬
         postGroup = PostGroup(parentNotification: receivingNotification)
     }
 
@@ -37,9 +38,8 @@ class PostGroupViewController: UIViewController {
 }
 
 extension PostGroupViewController: UITableViewDataSource {
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
         // 게시물의 갯수만큼 테이블뷰 행을 생성한다.
         if let postGroup = postGroup {
             return postGroup.getPosts().count
@@ -47,7 +47,7 @@ extension PostGroupViewController: UITableViewDataSource {
         // planGroup가 생성되기전에 호출될 수도 있어 일단 0을 리턴하도록 설정하였다.
         return 0
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 따로 만든 TableViewCell을 호출합니다.
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
@@ -57,8 +57,9 @@ extension PostGroupViewController: UITableViewDataSource {
         cell.setData(post: postGroup.getPosts()[indexPath.row])
         return cell
     }
-    
-    
+}
+
+extension PostGroupViewController {
     override func viewDidAppear(_ animated: Bool) {
         // 만약 현재 유저가 없다면
         if Auth.auth().currentUser == nil {
@@ -115,7 +116,6 @@ extension PostGroupViewController: UITabBarControllerDelegate {
 
 extension PostGroupViewController: PostTableViewCellDelegate {
     func didTapCommentButton(post: Post) {
-//        performSegue(withIdentifier: "ShowComments", sender: postGroup)
         let commentVC = CommentViewController()
         commentVC.post = post
         commentVC.postGroup = postGroup

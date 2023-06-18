@@ -118,6 +118,20 @@ public class MyUserFirebaseDatabase {
         completion(true)
     }
     
+    // 프로필 이미지 수정
+    public func editProfileImageWithUid(with uid: String, imageUrl: String, completion: @escaping (Bool) -> Void) {
+        let documentRef = reference.document(uid)
+        
+        documentRef.updateData(["profileImage": imageUrl]) { error in
+            if let error = error {
+                print("Error updating profile image: \(error.localizedDescription)")
+                completion(false)
+            } else {
+                completion(true)
+            }
+        }
+    }
+    
     public func findUsernameAndProfileImageWithUid(with uid: String, completion: @escaping (String?, String?) -> Void) {
         let docRef = reference.document(uid)
 

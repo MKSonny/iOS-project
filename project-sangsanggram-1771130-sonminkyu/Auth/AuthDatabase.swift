@@ -16,18 +16,16 @@ public class AuthDatabase {
             if canCreate {
                 Auth.auth().createUser(withEmail: email, password: password) { result, error in
                     guard error == nil, result != nil else {
-                        // firebase auth could not create account
-                        
+                        // 오류 발생
                         completion(false)
                         return
                     }
-                    // insert into database
                     MyUserFirebaseDatabase.shared.insertNewUser(email: email, username: username, uid: (result?.user.uid)!) { inserted in
                         if inserted {
                             completion(true)
                             return
                         } else {
-                            // failed to insert to database
+                            // 실패
                             completion(false)
                             return
                         }
@@ -35,7 +33,7 @@ public class AuthDatabase {
                 }
             }
             else {
-                // either username or email does not exist
+                // 실패
                 completion(false)
             }
         }

@@ -47,6 +47,22 @@ extension DbFirebasePost{
         reference.document(post.key).setData(storeData)
     }
 }
+
+extension DbFirebasePost {
+    func queryPostsByFollowing(followingList: [String]) {
+        if let existQuery = existQuery{    // 이미 적용 쿼리가 있으면 제거, 중복 방지
+            existQuery.remove()
+        }
+        /*
+         followingList는 팔로잉하는 사람들의 uid들이 들어있다. post 컬렉션에서 uid 필드가
+         이와 같은 post들을 찾아 postGroup에 추가한다.
+         */
+        let queryReference = reference.whereField("uid", in: followingList)
+        
+        existQuery = queryReference.addSnapshotListener(onChangingData)
+    }
+}
+
 extension DbFirebasePost {
     // 본인이 작성한 게시물을 위한 쿼리문이다.
     func queryPostsByWriter(writer: String) {
@@ -60,18 +76,7 @@ extension DbFirebasePost {
         existQuery = queryReference.addSnapshotListener(onChangingData)
     }
     
-    func queryPostsByFollowing(followingList: [String]) {
-        if let existQuery = existQuery{    // 이미 적용 쿼리가 있으면 제거, 중복 방지
-            existQuery.remove()
-        }
-        /*
-         followingList는 팔로잉하는 사람들의 uid들이 들어있다. post 컬렉션에서 uid 필드가
-         이와 같은 post들을 찾아 postGroup에 추가한다.
-         */
-        let queryReference = reference.whereField("uid", in: followingList)
-        
-        existQuery = queryReference.addSnapshotListener(onChangingData)
-    }
+    
     
     func queryPosts(fromDate: Date, toDate: Date) {
         

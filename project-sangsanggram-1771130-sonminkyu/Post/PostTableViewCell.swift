@@ -47,7 +47,7 @@ class PostTableViewCell: UITableViewCell {
         let likeButton = UIButton()
         likeButton.translatesAutoresizingMaskIntoConstraints = false
         
-        // Create custom heart image with desired size for normal state
+        // 하트이미지 설정
         let heartImage = UIImage(systemName: "heart")?.withRenderingMode(.alwaysTemplate)
         let heartImageSize = CGSize(width: 30, height: 24)
         UIGraphicsBeginImageContextWithOptions(heartImageSize, false, 0)
@@ -216,10 +216,8 @@ class PostTableViewCell: UITableViewCell {
     func setData(post: Post) {
         self.post = post
         downloadImage(imageView: profileImageView, url: URL(string: post.writerImage)!)
-//        profileImageView.image = post.imageUrl
         usernameLabel.text = post.username
         downloadImage(imageView: postImageView, url: URL(string: post.imageUrl)!)
-//        postImageView.image = post.imageUrl
         likesLabel.text = "\(post.likes)명이 좋아합니다"
         captionLabel.text = post.content
         dateLabel.text = post.date.toStringDateForPostTime()

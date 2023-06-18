@@ -83,6 +83,7 @@
 		E7D063482A2B56890024349C /* PostGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D063472A2B56890024349C /* PostGroupViewController.swift */; };
 		E7DF04EF2A33450B00B3D5B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7DF04EE2A33450B00B3D5B5 /* Main.storyboard */; };
 		E7DF04F32A33474200B3D5B5 /* FollowersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7DF04F12A33474200B3D5B5 /* FollowersTableViewCell.xib */; };
+		E7E508552A3EA487000F8F19 /* ProfileAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E508542A3EA487000F8F19 /* ProfileAlbumViewController.swift */; };
 		E7EC94792A3AD66500F1B207 /* ProfileViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EC94782A3AD66500F1B207 /* ProfileViewController3.swift */; };
 		E7EC947B2A3ADBC800F1B207 /* MyPostsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EC947A2A3ADBC800F1B207 /* MyPostsCollectionViewCell.swift */; };
 		E7EC947D2A3B076C00F1B207 /* RegisterViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EC947C2A3B076C00F1B207 /* RegisterViewController2.swift */; };
@@ -148,6 +149,7 @@
 		E7D063472A2B56890024349C /* PostGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGroupViewController.swift; sourceTree = "<group>"; };
 		E7DF04EE2A33450B00B3D5B5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E7DF04F12A33474200B3D5B5 /* FollowersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowersTableViewCell.xib; sourceTree = "<group>"; };
+		E7E508542A3EA487000F8F19 /* ProfileAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAlbumViewController.swift; sourceTree = "<group>"; };
 		E7EC94782A3AD66500F1B207 /* ProfileViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController3.swift; sourceTree = "<group>"; };
 		E7EC947A2A3ADBC800F1B207 /* MyPostsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsCollectionViewCell.swift; sourceTree = "<group>"; };
 		E7EC947C2A3B076C00F1B207 /* RegisterViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController2.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 		E78BE1DC2A2F4687009A3608 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				E7E508532A3EA45F000F8F19 /* ProfileEdit */,
 				E78BE1BF2A2EE90E009A3608 /* ProfileViewController.swift */,
 				E78BE1DE2A2F4966009A3608 /* PhotoCollectionViewCell.swift */,
 				E78BE1E02A2F49A6009A3608 /* ProfileInfoHeaderCollectionReusableView.swift */,
@@ -261,7 +264,6 @@
 				E7DF04F12A33474200B3D5B5 /* FollowersTableViewCell.xib */,
 				E7EC94782A3AD66500F1B207 /* ProfileViewController3.swift */,
 				E7EC947A2A3ADBC800F1B207 /* MyPostsCollectionViewCell.swift */,
-				E7C036E32A3B0EDC000E9E1E /* ProfileEditViewController.swift */,
 				E7FE9DB42A3D85D70035291A /* FollowersTableViewCell.swift */,
 				E7FE9DB62A3D861F0035291A /* FollowersViewController.swift */,
 				E7FE9DBA2A3D8EBA0035291A /* FollowingTableViewCell.swift */,
@@ -337,6 +339,15 @@
 				E74BA12E2A31AD7F002BD9B2 /* MyDatabase.swift */,
 			);
 			path = "project-sangsanggram-1771130-sonminkyu";
+			sourceTree = "<group>";
+		};
+		E7E508532A3EA45F000F8F19 /* ProfileEdit */ = {
+			isa = PBXGroup;
+			children = (
+				E7C036E32A3B0EDC000E9E1E /* ProfileEditViewController.swift */,
+				E7E508542A3EA487000F8F19 /* ProfileAlbumViewController.swift */,
+			);
+			path = ProfileEdit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -456,6 +467,7 @@
 				E7B825F12A2DA5F7006AB415 /* CameraViewController.swift in Sources */,
 				E78BE1E52A2F4A77009A3608 /* ProfileViewController2.swift in Sources */,
 				E78BE1D32A2EFEB4009A3608 /* AuthDatabase.swift in Sources */,
+				E7E508552A3EA487000F8F19 /* ProfileAlbumViewController.swift in Sources */,
 				E7FBF5E02A2B6020005A56DB /* PostTableViewCell.swift in Sources */,
 				E7D0633E2A2B46050024349C /* PlanGroup.swift in Sources */,
 				E7EC947D2A3B076C00F1B207 /* RegisterViewController2.swift in Sources */,

@@ -20,6 +20,8 @@ class LoginViewController2: UIViewController {
         // 다크모드 사용 가능하게 해준다.
         view.backgroundColor = .systemBackground
         
+        
+        
         emailTextField = createTextField(placeHolder: "이메일 입력...", frame: CGRect(x: 20, y: view.safeAreaInsets.top + 100, width: view.bounds.width - 49, height: 52))
         
         passwordTextField = createTextField(placeHolder: "비밀번호 입력...", frame: CGRect(x: 20, y: emailTextField.frame.maxY + 20, width: view.bounds.width - 49, height: 52))
@@ -35,6 +37,10 @@ class LoginViewController2: UIViewController {
         registerButton.addTarget(self, action: #selector(tappedRegisterButton), for: .touchUpInside)
         
         privacyButton.addTarget(self, action: #selector(tappedPrivacyButton), for: .touchUpInside)
+        
+        emailTextField.keyboardType = .emailAddress
+        emailTextField.autocorrectionType = .no
+        passwordTextField.isSecureTextEntry = true
     }
 }
 

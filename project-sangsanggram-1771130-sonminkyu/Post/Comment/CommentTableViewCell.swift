@@ -29,7 +29,7 @@ class CommentTableViewCell: UITableViewCell {
     let commentLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.numberOfLines = 0
+        label.numberOfLines = 2
         return label
     }()
     
@@ -53,16 +53,20 @@ class CommentTableViewCell: UITableViewCell {
             profileImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             profileImageView.widthAnchor.constraint(equalToConstant: 32),
             profileImageView.heightAnchor.constraint(equalToConstant: 32),
-            
-            usernameLabel.topAnchor.constraint(equalTo: profileImageView.topAnchor),
+            profileImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -1),
+            usernameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
             usernameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 8),
+            contentView.heightAnchor.constraint(equalToConstant: 60),
 //            usernameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             
-            commentLabel.topAnchor.constraint(equalTo: usernameLabel.bottomAnchor, constant: 4),
+            usernameLabel.bottomAnchor.constraint(lessThanOrEqualTo: commentLabel.topAnchor, constant: -1),
+
+            commentLabel.topAnchor.constraint(equalTo: usernameLabel.bottomAnchor, constant: 2),
             commentLabel.leadingAnchor.constraint(equalTo: usernameLabel.leadingAnchor),
 //            commentLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
 //            commentLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -8)
         ])
+
     }
     
     required init?(coder: NSCoder) {
