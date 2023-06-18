@@ -138,6 +138,39 @@ public class MyUserFirebaseDatabase {
         }
     }
 
+    public func findUsernameAndProfileImageWithUid(with uid: [String], completion: @escaping ([String], [String]) -> Void) {
+        let dispatchGroup = DispatchGroup()
+        var usernames: [String] = []
+        var profileImages: [String] = []
+        
+        for id in uid {
+            dispatchGroup.enter()
+            let docRef = reference.document(id)
+
+            docRef.getDocument { (document, error) in
+                defer {
+                    dispatchGroup.leave()
+                }
+                
+                if let document = document, document.exists {
+                    // Document exists and field values can be retrieved
+                    let data = document.data()
+                    let username = data?["username"] as? String
+                    let profileImage = data?["profileImage"] as? String
+                    
+                    if let username = username, let profileImage = profileImage {
+                        usernames.append(username)
+                        profileImages.append(profileImage)
+                    }
+                }
+            }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            completion(usernames, profileImages)
+        }
+    }
+
     
     public func findUsernameAndProfileImageWithUid(with uid: String, completion: @escaping (String?, String?) -> Void) {
         let docRef = reference.document(uid)

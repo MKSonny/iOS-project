@@ -16,10 +16,10 @@ class LikesViewController: UIViewController {
     var myFollowingList: [String]!
     var likesUsers: [String]!
     var uid: String!
-    var userName: String!
+    var userName: [String]!
     
     // 프로필 이미지 설정
-    var profileImageUrl: String!
+    var profileImageUrl: [String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +28,20 @@ class LikesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         uid = Auth.auth().currentUser?.uid
+        print("final please 7 \(uid)")
 
         // Do any additional setup after loading the view.
         searchTableView.dataSource = self
 //        userGroup = UserGroup(parentNotification: notification1)
 //        userGroup.queryData()
+        
+        MyUserFirebaseDatabase.shared.findUsernameAndProfileImageWithUid(with: likesUsers) { usernames, imageUrls in
+                self.userName = usernames
+                self.profileImageUrl = imageUrls
+                if self.userName != nil, self.profileImageUrl != nil {
+                    self.searchTableView.reloadData()
+                }
+            }
         
         
         MyUserFirebaseDatabase.shared.getFollowingList(uid: uid) { followingList in
@@ -69,17 +78,21 @@ extension LikesViewController: UITableViewDataSource {
         let button = cell.contentView.subviews[2] as! UIButton
         button.tag = indexPath.row
         button.addTarget(self, action: #selector(onTapFollowingButton), for: .touchUpInside)
-        
-        MyUserFirebaseDatabase.shared.findUsernameAndProfileImageWithUid(with: likesUsers[indexPath.row]) { username, imageUrl in
-            DispatchQueue.main.async {
-                    if let username = username {
-                        self.userName = username
-                        (cell.contentView.subviews[1] as! UILabel).text = username
-                    }
-                    self.downloadImage(imageView: profileImageView, urlStr: imageUrl!)
-                }
-                self.searchTableView.reloadData()
+        if let imageUrl = profileImageUrl?[indexPath.row] {
+            downloadImage(imageView: profileImageView, urlStr: imageUrl)
+        } else {
+            // Handle the case when the image URL is nil
+            profileImageView.image = UIImage(named: "placeholderImage")
         }
+        
+        if let username = userName?[indexPath.row] {
+            (cell.contentView.subviews[1] as! UILabel).text = username
+        } else {
+            // Handle the case when the username is nil
+            (cell.contentView.subviews[1] as! UILabel).text = "Unknown User"
+        }
+
+//        (cell.contentView.subviews[1] as! UILabel).text = userName[indexPath.row]
 
         // Check if the UID is in myFollowingList
         let user = likesUsers[indexPath.row]

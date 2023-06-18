@@ -170,6 +170,8 @@ class PostTableViewCell: UITableViewCell {
         
         uid = Auth.auth().currentUser?.uid
         
+        print("final please 8 \(uid)")
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapLikesLabel))
             likesLabel.addGestureRecognizer(tapGesture)
             likesLabel.isUserInteractionEnabled = true
@@ -238,17 +240,12 @@ class PostTableViewCell: UITableViewCell {
     
     func setData(post: Post) {
         self.post = post
-        
         MyUserFirebaseDatabase.shared.findUsernameAndProfileImageWithUid(with: post.uid) { username, imageUrl in
             DispatchQueue.main.async {
                 self.downloadImage(imageView: self.profileImageView, urlStr: imageUrl!)
             }
         }
-        
-//        downloadImage(imageView: profileImageView, url: URL(string: post.writerImage)!)
         usernameLabel.text = post.username
-        
-        print("please final \(post.likes)")
         if let uid = uid, post.likes.contains(uid) {
             DispatchQueue.main.async {
                 self.likeButton.isSelected = true
@@ -258,8 +255,6 @@ class PostTableViewCell: UITableViewCell {
                 self.likeButton.isSelected = false
             }
         }
-
-        
         downloadImage(imageView: postImageView, urlStr: post.imageUrl)
         likesLabel.text = "\(post.likes.count)명이 좋아합니다"
         captionLabel.text = post.content
