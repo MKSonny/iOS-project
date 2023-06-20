@@ -29,13 +29,6 @@ class ProfileAlbumViewController: UIViewController {
         MyUserFirebaseDatabase.shared.editProfileImageAndUsernameWithUid(with: uid, imageUrl: profileImageURl, username: usernameTextField.text!) { success in
             self.navigationController?.popViewController(animated: true)
         }
-//        let imagePickerController = UIImagePickerController()
-//        imagePickerController.delegate = self // 이 딜리게이터를 설정하면 사진을 찍은후 호출된다
-//
-//        imagePickerController.sourceType = .camera
-//
-//        // UIImagePickerController이 활성화 된다, 11장을 보라
-//        present(imagePickerController, animated: true, completion: nil)
     }
     
     // collection view를 위한 변수

@@ -126,9 +126,6 @@ extension ProfileViewController3: UICollectionViewDataSource, UICollectionViewDe
     // 위의 postGroup.queryDataWithWriter(writer: uid)에서 writer는
     // 본인의 uid이다. 즉, 본인이 작성한 게시물들만 postGroup에 추가된다.
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        if section == 0 {
-//            return 0
-//        }
         return postGroup.getPosts().count
     }
     

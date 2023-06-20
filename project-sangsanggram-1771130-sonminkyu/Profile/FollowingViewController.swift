@@ -26,16 +26,7 @@ class FollowingViewController: UIViewController {
             DispatchQueue.main.async {
                 self.followingListTableView.reloadData()
             }
-            // Additional code that relies on the retrieved data can be placed here
         }
-
-//        MyUserFirebaseDatabase.shared.getFollowingList(uid: uid) { usersname in
-//            self.usersname = usersname
-//            print("hello world 10 \(usersname)")
-////            DispatchQueue.main.async {
-////                self.followersListTableView.reloadData()
-////            }
-//        }
         
         userGroup = UserGroup(parentNotification: notification1)
         

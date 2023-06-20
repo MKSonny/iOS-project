@@ -27,15 +27,6 @@ class FollowersViewController: UIViewController {
                 self.followersListTableView.reloadData()
             }
         }
-
-//        MyUserFirebaseDatabase.shared.getFollowingList(uid: uid) { usersname in
-//            self.usersname = usersname
-//            print("hello world 10 \(usersname)")
-////            DispatchQueue.main.async {
-////                self.followersListTableView.reloadData()
-////            }
-//        }
-        
         userGroup = UserGroup(parentNotification: notification1)
         
         followersListTableView = UITableView(frame: CGRect())
@@ -73,10 +64,6 @@ extension FollowersViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FollowersTableViewCell", for: indexPath) as! FollowersTableViewCell
         let follower = myFollowersList[indexPath.row]
         cell.setData(profileUrl: follower.profileImage, username: follower.username)
-        
-//        let cell = UITableViewCell(style: .value1, reuseIdentifier: "")
-////        cell.textLabel?.text = usersname[indexPath.row]
-//        cell.textLabel?.text = myFollowersList[indexPath.row].username
         return cell
     }
 }

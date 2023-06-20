@@ -43,7 +43,6 @@ class ProfileViewController2: UIViewController {
         
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//        collectionView.backgroundColor = .red
         
         // cell
         collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
@@ -84,12 +83,10 @@ extension ProfileViewController2: UICollectionViewDelegate, UICollectionViewData
         if section == 0 {
             return 0
         }
-        // return userPosts.count
         return postGroup.getPosts().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let model = userPosts[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as! PhotoCollectionViewCell
         
         // cell의 이미지를 포스트의 이미지로 설정한다, 일종의 썸네일
@@ -105,14 +102,7 @@ extension ProfileViewController2: UICollectionViewDelegate, UICollectionViewData
         collectionView.deselectItem(at: indexPath, animated: true)
         
         users = userGroup.getUsers()
-        print("users \(users.count)")
-        // get the model and open post contoller
-//        let model = userPosts[indexPath.row]
-//        print("hello world2 \(postGroup.getPosts().count)")
-//        let vc = PostGroupViewController()
-//        vc.postGroup = postGroup
-//        vc.postTableView = self.tableView
-//        present(vc, animated: true)
+        print("users \(users.count)"))
     }
     
     

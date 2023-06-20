@@ -29,9 +29,6 @@ public class MyDatabase {
                 }
         }
     }
-
-    
-    // check if username and email is available
     public func canCreateNewUser(withEmail: String, usernmae: String, completion: (Bool) -> Void) {
         completion(true)
     }
@@ -55,7 +52,6 @@ public class MyDatabase {
     }
 
     
-    // insert new user data to database
     public func insertNewUser(with email: String, username: String, uid: String, completion: @escaping (Bool) -> Void) {
         reference.document(uid).setData(
             ["username" : username, "profileImage" : "https://firebasestorage.googleapis.com/v0/b/sangsanggram.appspot.com/o/images.png?alt=media&token=10c7d64c-0aa6-40bc-8199-16f5b0d94a67&_gl=1*tc4kn7*_ga*MTE3NTg0NzAzNi4xNjczMjQzOTM3*_ga_CW55HF8NVT*MTY4NjA0MTYyMS40OC4xLjE2ODYwNDQ5ODMuMC4wLjA."]) { error in

@@ -74,9 +74,9 @@ extension PostGroup {
                     postForDate.append(post)
                 }
             }
-            return postForDate.sorted(by: { $0.date > $1.date }) // Sort in reverse order by date
+            return postForDate.sorted(by: { $0.date > $1.date })
         }
-        return posts.sorted(by: { $0.date > $1.date }) // Sort all posts in reverse order by date
+        return posts.sorted(by: { $0.date > $1.date }) 
     }
 }
 

@@ -83,7 +83,6 @@ extension DbFirebasePost {
         if let existQuery = existQuery{    // 이미 적용 쿼리가 있으면 제거, 중복 방지
             existQuery.remove()
         }
-        // where plan.date >= fromDate and plan.date <= toDate
         let queryReference = reference.whereField("date", isGreaterThanOrEqualTo: fromDate).whereField("date", isLessThanOrEqualTo: toDate)
         
         // onChangingData는 쿼리를 만족하는 데이터가 있거나 firestore내에서 다른 앱에 의하여

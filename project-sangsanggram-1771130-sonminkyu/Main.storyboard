@@ -1178,7 +1178,7 @@
                     <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="Bfx-sZ-gyb"/>
                     <navigationItem key="navigationItem" title="좋아요" id="LV3-bH-cjs"/>
                     <connections>
-                        <outlet property="searchTableView" destination="uJY-AJ-OQQ" id="1eH-gk-tN6"/>
+                        <outlet property="likesTableView" destination="uJY-AJ-OQQ" id="A5A-DL-I6M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sO0-AQ-nGy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

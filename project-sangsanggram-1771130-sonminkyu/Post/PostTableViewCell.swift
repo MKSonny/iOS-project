@@ -27,9 +27,6 @@ class PostTableViewCell: UITableViewCell {
         // 이미지 원형으로 설정
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleToFill
-//        profileImageView.layer.cornerRadius = profileImageView.frame.width / 2
-//        imageView.layer.cornerRadius = 40/2.0
-//        imageView.layer.cornerRadius = imageView.frame.width/2
         return imageView
     }()
     
@@ -56,16 +53,15 @@ class PostTableViewCell: UITableViewCell {
         let heartImage = UIImage(systemName: "heart")?.withRenderingMode(.alwaysTemplate)
         let heartImageSize = CGSize(width: 30, height: 24)
         UIGraphicsBeginImageContextWithOptions(heartImageSize, false, 0)
-        UIColor.red.setFill() // Set the fill color to red
+        UIColor.red.setFill()
         heartImage?.draw(in: CGRect(origin: .zero, size: heartImageSize))
         let resizedHeartImage = UIGraphicsGetImageFromCurrentImageContext()?.withRenderingMode(.alwaysOriginal)
         UIGraphicsEndImageContext()
         likeButton.setImage(resizedHeartImage, for: .normal)
         
-        // Create custom heart image with desired size for selected state
         let filledHeartImage = UIImage(systemName: "heart.fill")?.withRenderingMode(.alwaysTemplate)
         UIGraphicsBeginImageContextWithOptions(heartImageSize, false, 0)
-        UIColor.red.setFill() // Set the fill color to red
+        UIColor.red.setFill()
         filledHeartImage?.draw(in: CGRect(origin: .zero, size: heartImageSize))
         let resizedFilledHeartImage = UIGraphicsGetImageFromCurrentImageContext()?.withRenderingMode(.alwaysOriginal)
         UIGraphicsEndImageContext()
@@ -78,7 +74,6 @@ class PostTableViewCell: UITableViewCell {
     let commentButton: UIButton = {
         let commentButton = UIButton()
         commentButton.translatesAutoresizingMaskIntoConstraints = false
-        // Create custom comment image with desired size
         let commentImage = UIImage(systemName: "message")?.withRenderingMode(.alwaysTemplate)
         let commentImageSize = CGSize(width: 27, height: 24)
         UIGraphicsBeginImageContextWithOptions(commentImageSize, false, 0)
@@ -94,7 +89,6 @@ class PostTableViewCell: UITableViewCell {
     let dmButton: UIButton = {
         let dmButton = UIButton()
         dmButton.translatesAutoresizingMaskIntoConstraints = false
-        // Create custom comment image with desired size
         let commentImage = UIImage(systemName: "paperplane")?.withRenderingMode(.alwaysTemplate)
         let commentImageSize = CGSize(width: 27, height: 24)
         UIGraphicsBeginImageContextWithOptions(commentImageSize, false, 0)

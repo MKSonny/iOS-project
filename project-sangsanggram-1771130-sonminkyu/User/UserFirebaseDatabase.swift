@@ -29,8 +29,6 @@ extension UserFirebaseDatabase{
         }
         
         let data = user.toDict()
-//        let storeData: [String : Any] = ["date": post.date, "content": data["content"]!, "username": data["username"]!, "key": data["key"]!, "image_url": data["image_url"], "writerImage": data["writerImage"], "likes": data["likes"], "uid": data["uid"]]
-//        reference.document(post.key).setData(storeData)
         // 저장 형태로 만든다
         let storeData: [String : Any] = ["username": data["username"], "image_url": data["image_url"], "uid": data["uid"]]
         print("hello world 8 \(data["uid"])")
@@ -44,10 +42,8 @@ extension UserFirebaseDatabase{
         if let existQuery = existQuery{    // 이미 적용 쿼리가 있으면 제거, 중복 방지
             existQuery.remove()
         }
-        // Retrieve all plans
         let queryReference = reference
         
-        // onChangingData is called when there are changes to the data that satisfy the query or when data is modified by another app in Firestore
         existQuery = queryReference.addSnapshotListener(onChangingData)
     }
     
@@ -64,7 +60,6 @@ extension UserFirebaseDatabase{
         if let existQuery = existQuery{    // 이미 적용 쿼리가 있으면 제거, 중복 방지
             existQuery.remove()
         }
-        // where plan.date >= fromDate and plan.date <= toDate
         let queryReference = reference.whereField("date", isGreaterThanOrEqualTo: fromDate).whereField("date", isLessThanOrEqualTo: toDate)
         
         // onChangingData는 쿼리를 만족하는 데이터가 있거나 firestore내에서 다른 앱에 의하여

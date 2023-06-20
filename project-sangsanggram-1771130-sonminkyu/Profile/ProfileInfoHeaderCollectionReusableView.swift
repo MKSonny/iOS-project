@@ -18,15 +18,12 @@ class ProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
     
     public let profilePhotoImageView: UIImageView = {
         let imageView = UIImageView()
-//        imageView.backgroundColor = .red
-        // 이미지 원형으로 설정
         imageView.layer.masksToBounds = true
         return imageView
     }()
     
     public let postsCountLabel: UILabel = {
         let label = UILabel()
-//        label.text = "0"
         return label
     }()
     
@@ -75,7 +72,7 @@ class ProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
         let label = UILabel()
         label.text = "explain"
         label.textColor = .label
-        label.numberOfLines = 0 // line wrap
+        label.numberOfLines = 0
         return label
     }()
     

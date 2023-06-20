@@ -10,12 +10,10 @@ class User {
     var imageUrl: String
     var userName: String
     var postCount: Int
-//    var key: String
     var following = [User]()
     var uid: String
     
     init(imageUrl: String, userName: String, postCount: Int, uid: String) {
-//        self.key = UUID().uuidString
         self.imageUrl = imageUrl
         self.userName = userName
         self.postCount = postCount
@@ -23,7 +21,6 @@ class User {
     }
 
     init() {
-//        self.key = UUID().uuidString
         self.imageUrl =  "https://firebasestorage.googleapis.com/v0/b/sangsanggram.appspot.com/o/1C768A5D-E42E-4C78-AEDC-AC241026BFDB1686022565.9349241?alt=media&token=bc33a00e-d755-4c29-bfea-5abf9f01da9a&_gl=1*1bb2xin*_ga*MTE3NTg0NzAzNi4xNjczMjQzOTM3*_ga_CW55HF8NVT*MTY4NjAxOTc5Mi40Ni4xLjE2ODYwMjI5NjkuMC4wLjA."
         self.userName = "userName"
         self.postCount = 0
@@ -35,7 +32,6 @@ class User {
 extension User {
     func toDict() -> [String: Any?] {
         var dict: [String: Any?] = [:]
-//        dict["key"] = key
         dict["userName"] = userName
         dict["postCount"] = 0
         dict["image_url"] = imageUrl
@@ -44,9 +40,7 @@ extension User {
     }
     
     func toUser(dict: [String: Any?]) {
-//        key = dict["key"] as! String
         userName = dict["username"] as! String
-//        postCount = dict["postCount"] as! Int
         imageUrl = dict["profileImage"] as! String
         uid = dict["uid"] as! String
     }

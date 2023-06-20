@@ -28,16 +28,13 @@ class FollowersTableViewCell: UITableViewCell {
         super.awakeFromNib()
         contentView.addSubview(usernameLabel)
         contentView.addSubview(profileImageView)
-        // Set up constraints for profileImageView
         contentView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         profileImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
         profileImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
-        profileImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true // Set desired width
-        profileImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true // Set desired height
-        // Set up constraints for usernameLabel
+        profileImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        profileImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         usernameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 10).isActive = true
         usernameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-//        usernameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
     }
     
     func setData(profileUrl: String?, username: String?) {
@@ -55,7 +52,7 @@ class FollowersTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
             super.layoutSubviews()
-            profileImageView.layer.cornerRadius = profileImageView.frame.width / 2 // Set the corner radius after the frame has been determined
+            profileImageView.layer.cornerRadius = profileImageView.frame.width / 2
         }
     
     func downloadImage(imageView: UIImageView, url: URL) {

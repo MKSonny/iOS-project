@@ -153,7 +153,6 @@ public class MyUserFirebaseDatabase {
                 }
                 
                 if let document = document, document.exists {
-                    // Document exists and field values can be retrieved
                     let data = document.data()
                     let username = data?["username"] as? String
                     let profileImage = data?["profileImage"] as? String

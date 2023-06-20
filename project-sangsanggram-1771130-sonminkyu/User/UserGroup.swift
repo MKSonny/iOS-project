@@ -13,7 +13,6 @@ class UserGroup {
     
     init(parentNotification: ((User?, UserDbAction?) -> Void)?) {
         self.parentNotification = parentNotification
-//        database = PostDbMemory(parentNotification: receivingNotification)
         database = UserFirebaseDatabase(parentNotification: receivingNotification)
     }
     
@@ -23,7 +22,6 @@ class UserGroup {
             switch(action){    // 액션에 따라 적절히     plans에 적용한다
             case .Add: addUser(user: user)
             case .Modify: modifyUser(modifiedUser: user)
-//            case .Delete: removeUser(removedUser: user)
             default: break
             }
         }

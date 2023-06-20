@@ -46,7 +46,6 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     }
     
     public func configure(withImage imageName: String) {
-//        photoImageView.image = UIImage(named: imageName)
         downloadImage(imageView: photoImageView, url: URL(string: imageName)!)
     }
     

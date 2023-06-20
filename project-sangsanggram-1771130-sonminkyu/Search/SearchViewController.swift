@@ -24,7 +24,6 @@ class SearchViewController: UIViewController {
         super.viewWillAppear(animated)
         uid = Auth.auth().currentUser?.uid
 
-        // Do any additional setup after loading the view.
         searchTableView.dataSource = self
         userGroup = UserGroup(parentNotification: notification1)
         userGroup.queryData()
@@ -36,14 +35,12 @@ class SearchViewController: UIViewController {
     }
     
     private func notification1(user: User?, action: UserDbAction?) {
-        print("users count \(userGroup.getUsers().count)")
         self.searchTableView.reloadData()
     }
 }
 
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("users count2 \(userGroup.getUsers().count)")
         return userGroup.getUsers().count
     }
     
@@ -67,17 +64,16 @@ extension SearchViewController: UITableViewDataSource {
         button.tag = indexPath.row
         button.addTarget(self, action: #selector(onTapFollowingButton), for: .touchUpInside)
 
-        // Check if the UID is in myFollowingList
+        // uid가 내 myFollowingList에 존재하는지 확인
         let user = users[indexPath.row]
-        print("hello world 13 \(user.uid)")
         if let myFollowingList = myFollowingList, myFollowingList.contains(user.uid) {
-            // UID exists in myFollowingList, update button attributes
+            // uid가 myFollowingList에 존재하면 버튼 속성을 업데이트한다
             button.layer.cornerRadius = 8.0
             button.setTitle("팔로잉", for: .normal)
             button.setTitleColor(.black, for: .normal)
             button.backgroundColor = .systemGray5
         } else {
-            // UID does not exist in myFollowingList, reset button attributes
+            // uid가 myFollowingList 존재하지 않는다면 버튼을 속성을 원래대로 되돌린다
             button.layer.cornerRadius = 8.0
             button.setTitle("팔로우", for: .normal)
             button.setTitleColor(.white, for: .normal)
@@ -94,14 +90,13 @@ extension SearchViewController: UITableViewDataSource {
         let isFollowing = myFollowingList?.contains(user.uid) ?? false
 
         if isFollowing {
-            // User is already being followed, remove from the following list
+            // 이미 팔로잉 목록에 있을 경우 데이터베이스에서 해당 uid 팔로잉을 삭제한다
             MyUserFirebaseDatabase.shared.removeFromFollowing(with: uid, followingUid: user.uid)
         } else {
-            // User is not being followed, add to the following list
+            // 만약 팔로잉하고 있지 않는다면 해당 uid를 팔로잉에 추가한다
             MyUserFirebaseDatabase.shared.addToFollowing(with: uid, followingUid: user.uid)
         }
         
-        // Update following status and button attributes
         if var myFollowingList = myFollowingList {
             if isFollowing {
                 myFollowingList.removeAll(where: { $0 == user.uid })
